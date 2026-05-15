@@ -2048,17 +2048,14 @@ if (tab === ‘admin’)       renderAdminTab();
 // Init L2L on page load (uses defaults even before login)
 initL2L();
 
-</script>
-</body>
-</html>
 // ══════════════════════════════════════════════════════════════
 //  AUTH — email / password via Supabase
 // ══════════════════════════════════════════════════════════════
 const EMAIL_ROLES = {
-  'maintmanager@novusfoods.com': 'maintenance',
-  'planner1730@novusfoods.com':  'planner',
-  'production@novusfoods.com':   'production',
-  'admin@novusfoods.com':        'admin',
+‘maintmanager@novusfoods.com’: ‘maintenance’,
+‘planner1730@novusfoods.com’:  ‘planner’,
+‘production@novusfoods.com’:   ‘production’,
+‘admin@novusfoods.com’:        ‘admin’,
 };
 
 function roleFromEmail(email) {
@@ -2082,7 +2079,7 @@ AppState.role = role;
 AppState.email = data.user.email;
 applyRoleUI(role);
 document.getElementById(‘landing’).style.display = ‘none’;
-document.getElementById(‘app’).style.display     = ‘block’;
+document.getElementById(‘app’).classList.add(‘visible’);
 switchTab(role === ‘maintenance’ ? ‘maintenance’ : role === ‘production’ ? ‘production’ : ‘planner’);
 if (role === ‘admin’) {
 document.getElementById(‘tab-btn-admin’).style.display = ‘’;
@@ -2832,3 +2829,7 @@ default:         body=_renderL2LOverview(dispatches, oeeData);
 
 container.innerHTML = topbar + daySelector + subnav + body;
 }
+
+</script>
+</body>
+</html>
