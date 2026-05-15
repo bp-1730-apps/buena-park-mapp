@@ -7125,9 +7125,10 @@ async function l2lRefreshDispatches() {
       limit:   200,
       order_by:'-created',
     });
-    if (data && (Array.isArray(data) || Array.isArray(data.objects))) {
-      L2LState.dispatches   = data?.data || data?.objects || (Array.isArray(data) ? data : []);
-      L2LState.lastFetchTime= Date.now();
+    const records = data?.data || data?.objects || (Array.isArray(data) ? data : null);
+    if (records) {
+      L2LState.dispatches    = records;
+      L2LState.lastFetchTime = Date.now();
     } else if (data && data.error) {
       L2LState.error = data.error;
     }
