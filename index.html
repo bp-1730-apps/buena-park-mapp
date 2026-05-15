@@ -7126,7 +7126,7 @@ async function l2lRefreshDispatches() {
       order_by:'-created',
     });
     if (data && (Array.isArray(data) || Array.isArray(data.objects))) {
-      L2LState.dispatches   = data.objects || data;
+      L2LState.dispatches   = data?.data || data?.objects || (Array.isArray(data) ? data : []);
       L2LState.lastFetchTime= Date.now();
     } else if (data && data.error) {
       L2LState.error = data.error;
@@ -7470,7 +7470,7 @@ async function l2lFetchSites() {
       return;
     }
 
-    const sites = data?.objects || (Array.isArray(data) ? data : []);
+    const sites = data?.data || data?.objects || (Array.isArray(data) ? data : []);
     if (!sites.length) {
       res.innerHTML = '<div class="l2l-error">Connected but no sites returned. Make sure APIUSER_BUENOPARK has site access in L2L.</div>';
     } else {
@@ -7495,7 +7495,7 @@ async function l2lTestConnection() {
   status.innerHTML = '<div class="l2l-badge loading">Testing…</div>';
   try {
     const data = await callL2L('dispatches', { site: L2L.siteId, limit: 1 });
-    const count = data?.objects?.length ?? (Array.isArray(data) ? data.length : '?');
+    const count = (data?.data || data?.objects || []).length;
     status.innerHTML = `<div class="l2l-success">✓ Connected — L2L API is responding. Site ID ${esc(L2L.siteId)} is valid.</div>`;
   } catch(e) {
     status.innerHTML = `<div class="l2l-error">✗ Failed: ${esc(e.message)}</div>`;
@@ -7668,7 +7668,7 @@ async function l2lFetchMachines() {
   if (container && AppState.activeTab === 'l2l') _buildL2LTabShell(container);
   try {
     const data = await callL2L('machines', { site: L2L.siteId, active: 'True', limit: 500 });
-    L2LMachinesState.machines = data?.objects || (Array.isArray(data) ? data : []);
+    L2LMachinesState.machines = data?.data || data?.objects || (Array.isArray(data) ? data : []);
     // Auto-select first mapped line
     if (!L2LMachinesState.selectedLine) {
       const firstLine = Object.values(L2L.lineCodes).find(c => c);
@@ -8158,7 +8158,7 @@ async function l2lFetchMachines() {
   if (container && AppState.activeTab === 'l2l') _buildL2LTabShell(container);
   try {
     const data = await callL2L('machines', { site: L2L.siteId, active: 'True', limit: 500 });
-    L2LMachinesState.machines = data?.objects || (Array.isArray(data) ? data : []);
+    L2LMachinesState.machines = data?.data || data?.objects || (Array.isArray(data) ? data : []);
     // Auto-select first mapped line
     if (!L2LMachinesState.selectedLine) {
       const firstLine = Object.values(L2L.lineCodes).find(c => c);
