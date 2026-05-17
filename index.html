@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -29,232 +28,232 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-si
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(circle,rgba(9,14,26,.1) 1px,transparent 1px);background-size:20px 20px}
 
 /* ── LANDING ── */
-#landing{position:fixed;inset:0;z-index:1000;background:var(–navy);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;transition:opacity .4s ease,transform .4s ease}
-#landing::before{content:’’;position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);background-size:24px 24px}
+#landing{position:fixed;inset:0;z-index:1000;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;transition:opacity .4s ease,transform .4s ease}
+#landing::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);background-size:24px 24px}
 #landing.hiding{opacity:0;transform:scale(1.02);pointer-events:none}
-.landing-eyebrow{font-family:var(–font-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(–amber-xl);border:1px solid rgba(245,158,11,.3);padding:4px 14px;border-radius:2px;margin-bottom:20px}
-.landing-title{font-family:var(–font-head);font-weight:800;font-size:48px;letter-spacing:.04em;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:6px;text-align:center}
-.landing-title span{color:var(–amber-xl)}
-.landing-sub{font-family:var(–font-mono);font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.14em;text-transform:uppercase;margin-bottom:48px;text-align:center}
-.landing-prompt{font-family:var(–font-body);font-size:14px;color:rgba(255,255,255,.45);margin-bottom:28px;text-align:center}
+.landing-eyebrow{font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber-xl);border:1px solid rgba(245,158,11,.3);padding:4px 14px;border-radius:2px;margin-bottom:20px}
+.landing-title{font-family:var(--font-head);font-weight:800;font-size:48px;letter-spacing:.04em;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:6px;text-align:center}
+.landing-title span{color:var(--amber-xl)}
+.landing-sub{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.14em;text-transform:uppercase;margin-bottom:48px;text-align:center}
+.landing-prompt{font-family:var(--font-body);font-size:14px;color:rgba(255,255,255,.45);margin-bottom:28px;text-align:center}
 
 /* ── APP SHELL ── */
 #app{display:none;flex-direction:column;min-height:100vh;position:relative;z-index:1}
 #app.visible{display:flex}
-header{background:linear-gradient(90deg,#0d1b2e,#1e3a6e 55%,#0d1b2e);border-bottom:2px solid var(–amber-l);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:var(–elev-2)}
+header{background:linear-gradient(90deg,#0d1b2e,#1e3a6e 55%,#0d1b2e);border-bottom:2px solid var(--amber-l);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:var(--elev-2)}
 .hdr-left{display:flex;align-items:center;gap:14px}
-.plant-badge{font-family:var(–font-mono);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;background:var(–amber);color:#fff;padding:3px 9px;border-radius:2px}
-.hdr-title{font-family:var(–font-head);font-weight:800;font-size:20px;letter-spacing:.06em;color:#fff;text-transform:uppercase}
-.hdr-subtitle{font-family:var(–font-mono);font-size:9px;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase;margin-top:1px}
+.plant-badge{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;background:var(--amber);color:#fff;padding:3px 9px;border-radius:2px}
+.hdr-title{font-family:var(--font-head);font-weight:800;font-size:20px;letter-spacing:.06em;color:#fff;text-transform:uppercase}
+.hdr-subtitle{font-family:var(--font-mono);font-size:9px;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase;margin-top:1px}
 .hdr-right{display:flex;align-items:center;gap:12px}
-.role-chip{font-family:var(–font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:40px;border:1px solid currentColor;cursor:pointer;transition:opacity .15s;color:var(–amber-xl);background:rgba(180,83,9,.1)}
+.role-chip{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:40px;border:1px solid currentColor;cursor:pointer;transition:opacity .15s;color:var(--amber-xl);background:rgba(180,83,9,.1)}
 .role-chip:hover{opacity:.75}
 .notif-bell{position:relative;width:36px;height:36px;border-radius:2px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:rgba(255,255,255,.6)}
-.notif-bell .badge{position:absolute;top:-4px;right:-4px;background:var(–amber);color:#fff;font-family:var(–font-mono);font-size:9px;font-weight:600;min-width:16px;height:16px;border-radius:8px;padding:0 4px;display:none;align-items:center;justify-content:center}
+.notif-bell .badge{position:absolute;top:-4px;right:-4px;background:var(--amber);color:#fff;font-family:var(--font-mono);font-size:9px;font-weight:600;min-width:16px;height:16px;border-radius:8px;padding:0 4px;display:none;align-items:center;justify-content:center}
 .notif-bell .badge.show{display:flex}
-.tab-bar{background:var(–surface);border-bottom:1px solid var(–border);display:flex;padding:0 24px;box-shadow:var(–elev-1);position:relative;z-index:10}
-.tab{font-family:var(–font-head);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:0 16px;height:46px;display:inline-flex;align-items:center;gap:7px;cursor:pointer;color:var(–muted);border-bottom:3px solid transparent;transition:color .15s,border-color .15s;white-space:nowrap}
-.tab:hover{color:var(–text)}
-.tab.active{color:var(–amber);border-bottom-color:var(–amber);background:var(–amber-bg);font-weight:800}
-.tab .tab-badge{font-size:10px;font-family:var(–font-mono);font-weight:600;background:var(–amber);color:#fff;min-width:18px;height:18px;border-radius:9px;padding:0 5px;display:none;align-items:center;justify-content:center}
+.tab-bar{background:var(--surface);border-bottom:1px solid var(--border);display:flex;padding:0 24px;box-shadow:var(--elev-1);position:relative;z-index:10}
+.tab{font-family:var(--font-head);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:0 16px;height:46px;display:inline-flex;align-items:center;gap:7px;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent;transition:color .15s,border-color .15s;white-space:nowrap}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--amber);border-bottom-color:var(--amber);background:var(--amber-bg);font-weight:800}
+.tab .tab-badge{font-size:10px;font-family:var(--font-mono);font-weight:600;background:var(--amber);color:#fff;min-width:18px;height:18px;border-radius:9px;padding:0 5px;display:none;align-items:center;justify-content:center}
 .tab .tab-badge.show{display:inline-flex}
 .view{display:none;flex:1}
 .view.active{display:flex;flex-direction:column}
 
 /* ── PLANNER ── */
-.planner-week-bar{background:var(–surface);border-bottom:1px solid var(–border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;box-shadow:var(–elev-1);flex-shrink:0}
+.planner-week-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;box-shadow:var(--elev-1);flex-shrink:0}
 .week-nav{display:flex;align-items:center;gap:10px}
-.week-nav-btn{width:32px;height:32px;border:1px solid var(–border2);background:var(–surface);border-radius:2px;cursor:pointer;font-size:18px;color:var(–muted2);display:flex;align-items:center;justify-content:center;transition:all .15s;line-height:1}
-.week-nav-btn:hover{border-color:var(–amber);color:var(–amber)}
+.week-nav-btn{width:32px;height:32px;border:1px solid var(--border2);background:var(--surface);border-radius:2px;cursor:pointer;font-size:18px;color:var(--muted2);display:flex;align-items:center;justify-content:center;transition:all .15s;line-height:1}
+.week-nav-btn:hover{border-color:var(--amber);color:var(--amber)}
 .week-info{text-align:center}
-.week-label{font-family:var(–font-head);font-weight:800;font-size:18px;letter-spacing:.04em;text-transform:uppercase;display:block}
-.week-dates{font-family:var(–font-mono);font-size:10px;color:var(–muted);letter-spacing:.06em;display:block;margin-top:1px}
+.week-label{font-family:var(--font-head);font-weight:800;font-size:18px;letter-spacing:.04em;text-transform:uppercase;display:block}
+.week-dates{font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:.06em;display:block;margin-top:1px}
 .week-bar-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.week-status-pill{font-family:var(–font-mono);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:2px;border:1px solid}
-.week-status-pill.draft{color:var(–yellow);border-color:var(–yellow);background:rgba(217,119,6,.07)}
-.week-status-pill.published{color:var(–green);border-color:var(–green);background:var(–green-bg)}
-.week-status-pill.locked{color:var(–blue);border-color:var(–blue);background:var(–blue-bg)}
-.week-status-pill.none{color:var(–muted);border-color:var(–border2);background:var(–card)}
-.publish-btn{font-family:var(–font-head);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:7px 18px;border-radius:2px;border:none;cursor:pointer;background:var(–amber);color:#fff;transition:all .15s}
+.week-status-pill{font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:2px;border:1px solid}
+.week-status-pill.draft{color:var(--yellow);border-color:var(--yellow);background:rgba(217,119,6,.07)}
+.week-status-pill.published{color:var(--green);border-color:var(--green);background:var(--green-bg)}
+.week-status-pill.locked{color:var(--blue);border-color:var(--blue);background:var(--blue-bg)}
+.week-status-pill.none{color:var(--muted);border-color:var(--border2);background:var(--card)}
+.publish-btn{font-family:var(--font-head);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:7px 18px;border-radius:2px;border:none;cursor:pointer;background:var(--amber);color:#fff;transition:all .15s}
 .publish-btn:hover{background:#92400e}
-.publish-btn:disabled{background:var(–border2);cursor:not-allowed}
+.publish-btn:disabled{background:var(--border2);cursor:not-allowed}
 .planner-split{display:grid;grid-template-columns:1fr 400px;flex:1;min-height:0;overflow:hidden}
-.schedule-panel{background:var(–bg);border-right:1px solid var(–border);display:flex;flex-direction:column;overflow:hidden;min-height:0}
-.panel-hdr{padding:14px 20px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(–border);flex-shrink:0;background:var(–surface)}
-.panel-title{font-family:var(–font-head);font-weight:800;font-size:20px;letter-spacing:.04em;text-transform:uppercase;color:var(–text);display:flex;align-items:center;gap:10px}
-.panel-title::before{content:’’;width:4px;height:20px;background:var(–amber);border-radius:1px;display:block}
-.panel-count{font-family:var(–font-mono);font-size:11px;color:var(–muted);letter-spacing:.06em}
+.schedule-panel{background:var(--bg);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;min-height:0}
+.panel-hdr{padding:14px 20px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--surface)}
+.panel-title{font-family:var(--font-head);font-weight:800;font-size:20px;letter-spacing:.04em;text-transform:uppercase;color:var(--text);display:flex;align-items:center;gap:10px}
+.panel-title::before{content:'';width:4px;height:20px;background:var(--amber);border-radius:1px;display:block}
+.panel-count{font-family:var(--font-mono);font-size:11px;color:var(--muted);letter-spacing:.06em}
 .sched-grid-wrap{flex:1;overflow:auto;padding:20px}
-.sched-grid{display:grid;grid-template-columns:70px repeat(6,1fr);border:1px solid var(–border2);border-radius:3px;overflow:hidden;background:var(–border);gap:1px;min-width:560px;box-shadow:var(–elev-1)}
-.sg-corner{background:var(–navy);display:flex;align-items:center;justify-content:center;padding:10px}
-.sg-corner span{font-family:var(–font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)}
-.sg-day-hdr{background:var(–navy);padding:10px 8px;text-align:center;display:flex;flex-direction:column;gap:2px}
-.sg-day-hdr.today{background:#1a2d4f;border-top:2px solid var(–amber)}
-.sg-day-name{font-family:var(–font-head);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85)}
-.sg-day-date{font-family:var(–font-mono);font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.05em}
-.sg-day-hdr.today .sg-day-name{color:var(–amber-xl)}
+.sched-grid{display:grid;grid-template-columns:70px repeat(6,1fr);border:1px solid var(--border2);border-radius:3px;overflow:hidden;background:var(--border);gap:1px;min-width:560px;box-shadow:var(--elev-1)}
+.sg-corner{background:var(--navy);display:flex;align-items:center;justify-content:center;padding:10px}
+.sg-corner span{font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.sg-day-hdr{background:var(--navy);padding:10px 8px;text-align:center;display:flex;flex-direction:column;gap:2px}
+.sg-day-hdr.today{background:#1a2d4f;border-top:2px solid var(--amber)}
+.sg-day-name{font-family:var(--font-head);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.sg-day-date{font-family:var(--font-mono);font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.05em}
+.sg-day-hdr.today .sg-day-name{color:var(--amber-xl)}
 .sg-line-lbl{background:#1e293b;display:flex;align-items:center;justify-content:center;padding:8px 4px}
-.sg-line-lbl span{font-family:var(–font-head);font-weight:700;font-size:18px;color:#94a3b8;letter-spacing:.03em}
-.sg-cell{background:var(–surface);padding:10px 10px 8px;display:flex;flex-direction:column;gap:5px;min-height:80px;position:relative;transition:background .12s}
+.sg-line-lbl span{font-family:var(--font-head);font-weight:700;font-size:18px;color:#94a3b8;letter-spacing:.03em}
+.sg-cell{background:var(--surface);padding:10px 10px 8px;display:flex;flex-direction:column;gap:5px;min-height:80px;position:relative;transition:background .12s}
 .sg-cell.has-runs:hover{background:#fffbf5;cursor:pointer}
 .sg-cell.today-col{background:#fffdf9}
 .sg-cell.empty{background:#fafbfc}
-.sg-run-count{font-family:var(–font-mono);font-size:11px;font-weight:600;color:var(–text)}
-.sg-cases{font-family:var(–font-mono);font-size:10px;color:var(–muted)}
+.sg-run-count{font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--text)}
+.sg-cases{font-family:var(--font-mono);font-size:10px;color:var(--muted)}
 .sg-shift-dots{display:flex;gap:3px;margin-top:auto}
 .sg-dot{width:6px;height:6px;border-radius:50%}
 .sg-dot.shift-1st{background:#3b82f6}.sg-dot.shift-2nd{background:#8b5cf6}.sg-dot.shift-both{background:#6d28d9}
 .sg-pm-flag{position:absolute;top:5px;right:6px;font-size:10px;cursor:pointer;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;transition:transform .1s}
 .sg-pm-flag.pending{background:rgba(217,119,6,.15);color:#d97706}
-.sg-pm-flag.approved{background:var(–green-bg);color:var(–green)}
+.sg-pm-flag.approved{background:var(--green-bg);color:var(--green)}
 .sg-empty-dash{font-size:16px;color:#e2e8f0;margin:auto}
-.sched-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:48px 20px;text-align:center;color:var(–muted)}
+.sched-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:48px 20px;text-align:center;color:var(--muted)}
 .sched-empty .empty-icon{font-size:36px;opacity:.4}
 .sched-empty p{font-size:13px;max-width:280px;line-height:1.6}
-.sched-empty .empty-note{font-family:var(–font-mono);font-size:10px;color:var(–border2);letter-spacing:.06em}
-.queue-panel{background:var(–surface);display:flex;flex-direction:column;overflow:hidden;min-height:0}
-.queue-filters{display:flex;gap:0;border-bottom:1px solid var(–border);padding:0 16px;flex-shrink:0;background:var(–card)}
-.qf-btn{font-family:var(–font-head);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:0 14px;height:38px;background:none;border:none;border-bottom:2px solid transparent;color:var(–muted);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px}
-.qf-btn:hover{color:var(–text)}.qf-btn.active{color:var(–amber);border-bottom-color:var(–amber)}
+.sched-empty .empty-note{font-family:var(--font-mono);font-size:10px;color:var(--border2);letter-spacing:.06em}
+.queue-panel{background:var(--surface);display:flex;flex-direction:column;overflow:hidden;min-height:0}
+.queue-filters{display:flex;gap:0;border-bottom:1px solid var(--border);padding:0 16px;flex-shrink:0;background:var(--card)}
+.qf-btn{font-family:var(--font-head);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:0 14px;height:38px;background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px}
+.qf-btn:hover{color:var(--text)}.qf-btn.active{color:var(--amber);border-bottom-color:var(--amber)}
 .request-list{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
-.req-card{border:1px solid var(–border);border-left:4px solid var(–border2);border-radius:3px;background:var(–surface);overflow:hidden;transition:box-shadow .15s;box-shadow:var(–elev-1)}
-.req-card:hover{box-shadow:var(–elev-2)}
-.req-card.priority-critical{border-left-color:var(–pri-critical)}.req-card.priority-high{border-left-color:var(–pri-high)}.req-card.priority-normal{border-left-color:var(–pri-normal)}.req-card.priority-low{border-left-color:var(–pri-low)}
+.req-card{border:1px solid var(--border);border-left:4px solid var(--border2);border-radius:3px;background:var(--surface);overflow:hidden;transition:box-shadow .15s;box-shadow:var(--elev-1)}
+.req-card:hover{box-shadow:var(--elev-2)}
+.req-card.priority-critical{border-left-color:var(--pri-critical)}.req-card.priority-high{border-left-color:var(--pri-high)}.req-card.priority-normal{border-left-color:var(--pri-normal)}.req-card.priority-low{border-left-color:var(--pri-low)}
 .req-card-hdr{padding:11px 14px 9px;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;cursor:pointer;user-select:none}
 .req-card-hdr-left{flex:1;min-width:0}
-.req-equip-name{font-family:var(–font-head);font-weight:700;font-size:16px;letter-spacing:.03em;color:var(–text);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.req-equip-name{font-family:var(--font-head);font-weight:700;font-size:16px;letter-spacing:.03em;color:var(--text);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .req-type-row{display:flex;align-items:center;gap:6px;margin-top:4px;flex-wrap:wrap}
-.req-type-badge{font-family:var(–font-mono);font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:2px}
+.req-type-badge{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:2px}
 .req-type-badge.PM{background:rgba(29,78,216,.1);color:#1d4ed8}.req-type-badge.repair{background:rgba(185,28,28,.08);color:#b91c1c}.req-type-badge.inspection{background:rgba(21,128,61,.08);color:#15803d}.req-type-badge.calibration{background:rgba(124,58,237,.08);color:#7c3aed}
-.req-status-badge{font-family:var(–font-mono);font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:2px}
+.req-status-badge{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border-radius:2px}
 .req-status-badge.pending{background:rgba(217,119,6,.1);color:#92400e;border:1px solid rgba(217,119,6,.3)}
-.req-status-badge.approved{background:var(–green-bg);color:#065f46;border:1px solid var(–green-border)}
-.req-status-badge.denied{background:var(–red-bg);color:#7f1d1d;border:1px solid var(–red-border)}
-.req-status-badge.rescheduled{background:var(–blue-bg);color:#1e3a8a;border:1px solid rgba(29,78,216,.3)}
-.req-priority-badge{font-family:var(–font-mono);font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;border-radius:2px}
-.req-priority-badge.critical{background:rgba(220,38,38,.1);color:var(–pri-critical)}.req-priority-badge.high{background:rgba(217,119,6,.1);color:var(–pri-high)}.req-priority-badge.normal,.req-priority-badge.low{display:none}
+.req-status-badge.approved{background:var(--green-bg);color:#065f46;border:1px solid var(--green-border)}
+.req-status-badge.denied{background:var(--red-bg);color:#7f1d1d;border:1px solid var(--red-border)}
+.req-status-badge.rescheduled{background:var(--blue-bg);color:#1e3a8a;border:1px solid rgba(29,78,216,.3)}
+.req-priority-badge{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px;border-radius:2px}
+.req-priority-badge.critical{background:rgba(220,38,38,.1);color:var(--pri-critical)}.req-priority-badge.high{background:rgba(217,119,6,.1);color:var(--pri-high)}.req-priority-badge.normal,.req-priority-badge.low{display:none}
 .req-card-body{padding:0 14px 12px;display:grid;grid-template-columns:1fr 1fr;gap:6px 16px}
 .req-meta-item{display:flex;flex-direction:column;gap:1px}
-.req-meta-label{font-family:var(–font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(–muted)}
-.req-meta-val{font-size:12px;font-weight:500;color:var(–text)}.req-meta-val.mono{font-family:var(–font-mono);font-size:11px;color:var(–muted2)}
-.req-desc{padding:8px 14px;font-size:12px;color:var(–muted2);line-height:1.5;border-top:1px solid var(–card);background:var(–card);border-radius:0 0 2px 2px}
-.req-desc-label{font-family:var(–font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(–muted);margin-bottom:3px}
-.req-actions{padding:10px 14px;border-top:1px solid var(–border);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.req-meta-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.req-meta-val{font-size:12px;font-weight:500;color:var(--text)}.req-meta-val.mono{font-family:var(--font-mono);font-size:11px;color:var(--muted2)}
+.req-desc{padding:8px 14px;font-size:12px;color:var(--muted2);line-height:1.5;border-top:1px solid var(--card);background:var(--card);border-radius:0 0 2px 2px}
+.req-desc-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.req-actions{padding:10px 14px;border-top:1px solid var(--border);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .req-actions.hidden{display:none}
-.btn-approve{flex:1;font-family:var(–font-head);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border-radius:2px;border:none;cursor:pointer;background:var(–green);color:#fff;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:6px}
-.btn-approve:hover{background:#166534}.btn-approve:disabled{background:var(–border2);cursor:not-allowed}
-.btn-deny{flex:1;font-family:var(–font-head);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border-radius:2px;cursor:pointer;border:1px solid var(–red-border);background:#fff;color:var(–red);transition:all .15s;display:flex;align-items:center;justify-content:center;gap:6px}
-.btn-deny:hover,.btn-deny.active{background:var(–red-bg);border-color:var(–red)}.btn-deny:disabled{border-color:var(–border2);color:var(–muted);cursor:not-allowed}
+.btn-approve{flex:1;font-family:var(--font-head);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border-radius:2px;border:none;cursor:pointer;background:var(--green);color:#fff;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn-approve:hover{background:#166534}.btn-approve:disabled{background:var(--border2);cursor:not-allowed}
+.btn-deny{flex:1;font-family:var(--font-head);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border-radius:2px;cursor:pointer;border:1px solid var(--red-border);background:#fff;color:var(--red);transition:all .15s;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn-deny:hover,.btn-deny.active{background:var(--red-bg);border-color:var(--red)}.btn-deny:disabled{border-color:var(--border2);color:var(--muted);cursor:not-allowed}
 .deny-panel{overflow:hidden;max-height:0;opacity:0;transition:max-height .35s ease,opacity .25s ease,padding .3s ease;padding:0 14px}
-.deny-panel.open{max-height:400px;opacity:1;padding:14px;border-top:1px solid var(–red-border);background:rgba(185,28,28,.03)}
-.deny-panel-title{font-family:var(–font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(–red);margin-bottom:12px;display:flex;align-items:center;gap:6px}
-.deny-panel-title::before{content:‘✕’;font-size:11px}
+.deny-panel.open{max-height:400px;opacity:1;padding:14px;border-top:1px solid var(--red-border);background:rgba(185,28,28,.03)}
+.deny-panel-title{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.deny-panel-title::before{content:'✕';font-size:11px}
 .dp-field{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
-.dp-label{font-family:var(–font-mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(–muted2)}
-.dp-label .req-mark{color:var(–red);margin-left:2px}
-.dp-input,.dp-textarea{width:100%;padding:8px 10px;border:1px solid var(–border2);border-radius:2px;font-family:var(–font-body);font-size:13px;color:var(–text);background:var(–surface);outline:none;transition:border-color .12s}
-.dp-input:focus,.dp-textarea:focus{border-color:var(–red);box-shadow:0 0 0 2px rgba(185,28,28,.1)}
+.dp-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted2)}
+.dp-label .req-mark{color:var(--red);margin-left:2px}
+.dp-input,.dp-textarea{width:100%;padding:8px 10px;border:1px solid var(--border2);border-radius:2px;font-family:var(--font-body);font-size:13px;color:var(--text);background:var(--surface);outline:none;transition:border-color .12s}
+.dp-input:focus,.dp-textarea:focus{border-color:var(--red);box-shadow:0 0 0 2px rgba(185,28,28,.1)}
 .dp-textarea{resize:vertical;min-height:72px;line-height:1.5}
 .dp-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.dp-hint{font-size:11px;color:var(–muted);font-style:italic}
-.btn-confirm-deny{width:100%;font-family:var(–font-head);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;padding:9px 16px;border-radius:2px;border:none;cursor:pointer;background:var(–red);color:#fff;margin-top:4px;transition:all .15s}
-.btn-confirm-deny:hover{background:#991b1b}.btn-confirm-deny:disabled{background:var(–border2);cursor:not-allowed}
-.req-reviewed-banner{padding:8px 14px;border-top:1px solid var(–border);font-family:var(–font-mono);font-size:10px;letter-spacing:.05em;color:var(–muted);display:flex;align-items:center;gap:8px}
-.req-reviewed-banner.approved{color:#065f46;background:var(–green-bg)}.req-reviewed-banner.denied{color:#7f1d1d;background:var(–red-bg)}
-.denial-reason-display{padding:8px 14px 10px;border-top:1px solid var(–border);background:rgba(185,28,28,.03)}
-.drd-label{font-family:var(–font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(–red);margin-bottom:4px}
-.drd-text{font-size:12px;color:var(–muted2);line-height:1.5}
-.alt-date-display{font-family:var(–font-mono);font-size:10px;color:var(–muted2);padding:4px 14px 8px}
-.queue-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:48px 20px;text-align:center;color:var(–muted);flex:1}
+.dp-hint{font-size:11px;color:var(--muted);font-style:italic}
+.btn-confirm-deny{width:100%;font-family:var(--font-head);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;padding:9px 16px;border-radius:2px;border:none;cursor:pointer;background:var(--red);color:#fff;margin-top:4px;transition:all .15s}
+.btn-confirm-deny:hover{background:#991b1b}.btn-confirm-deny:disabled{background:var(--border2);cursor:not-allowed}
+.req-reviewed-banner{padding:8px 14px;border-top:1px solid var(--border);font-family:var(--font-mono);font-size:10px;letter-spacing:.05em;color:var(--muted);display:flex;align-items:center;gap:8px}
+.req-reviewed-banner.approved{color:#065f46;background:var(--green-bg)}.req-reviewed-banner.denied{color:#7f1d1d;background:var(--red-bg)}
+.denial-reason-display{padding:8px 14px 10px;border-top:1px solid var(--border);background:rgba(185,28,28,.03)}
+.drd-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+.drd-text{font-size:12px;color:var(--muted2);line-height:1.5}
+.alt-date-display{font-family:var(--font-mono);font-size:10px;color:var(--muted2);padding:4px 14px 8px}
+.queue-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:48px 20px;text-align:center;color:var(--muted);flex:1}
 .queue-empty .empty-icon{font-size:32px;opacity:.35}
-.loading-state{display:flex;align-items:center;justify-content:center;gap:10px;padding:48px 20px;color:var(–muted);font-family:var(–font-mono);font-size:11px;letter-spacing:.06em}
+.loading-state{display:flex;align-items:center;justify-content:center;gap:10px;padding:48px 20px;color:var(--muted);font-family:var(--font-mono);font-size:11px;letter-spacing:.06em}
 @keyframes spin{to{transform:rotate(360deg)}}
-.spinner{width:20px;height:20px;border:2px solid var(–border);border-top-color:var(–amber);border-radius:50%;animation:spin .7s linear infinite}
-.conn-bar{display:none;align-items:center;gap:8px;padding:8px 24px;font-family:var(–font-mono);font-size:11px;letter-spacing:.04em;flex-shrink:0}
-.conn-bar.error{display:flex;background:var(–red-bg);color:#7f1d1d;border-bottom:1px solid var(–red-border)}
+.spinner{width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--amber);border-radius:50%;animation:spin .7s linear infinite}
+.conn-bar{display:none;align-items:center;gap:8px;padding:8px 24px;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;flex-shrink:0}
+.conn-bar.error{display:flex;background:var(--red-bg);color:#7f1d1d;border-bottom:1px solid var(--red-border)}
 .placeholder-view{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:80px 24px;text-align:center;flex:1}
 .placeholder-icon{font-size:48px;opacity:.25}
-.placeholder-title{font-family:var(–font-head);font-weight:800;font-size:28px;letter-spacing:.04em;text-transform:uppercase;color:var(–text);opacity:.4}
-.placeholder-sub{font-family:var(–font-mono);font-size:11px;color:var(–muted);letter-spacing:.06em}
+.placeholder-title{font-family:var(--font-head);font-weight:800;font-size:28px;letter-spacing:.04em;text-transform:uppercase;color:var(--text);opacity:.4}
+.placeholder-sub{font-family:var(--font-mono);font-size:11px;color:var(--muted);letter-spacing:.06em}
 #toast-container{position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;flex-direction:column;gap:8px}
-.toast{font-family:var(–font-mono);font-size:12px;letter-spacing:.03em;padding:10px 16px;border-radius:3px;color:#fff;box-shadow:var(–elev-3);max-width:360px;animation:toastIn .2s ease both;display:flex;align-items:center;gap:8px}
-.toast.success{background:var(–green)}.toast.error{background:var(–red)}.toast.info{background:#1d4ed8}.toast.warning{background:var(–amber)}
+.toast{font-family:var(--font-mono);font-size:12px;letter-spacing:.03em;padding:10px 16px;border-radius:3px;color:#fff;box-shadow:var(--elev-3);max-width:360px;animation:toastIn .2s ease both;display:flex;align-items:center;gap:8px}
+.toast.success{background:var(--green)}.toast.error{background:var(--red)}.toast.info{background:#1d4ed8}.toast.warning{background:var(--amber)}
 @keyframes toastIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes toastOut{to{opacity:0;transform:translateY(8px)}}
-::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(–border2);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(–muted)}
+::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--muted)}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .fade-in{animation:fadeIn .18s ease both}
 
 /* ══ L2L TAB ══ */
-.l2l-topbar{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(–navy);border-bottom:2px solid var(–amber);flex-shrink:0}
-.l2l-topbar-label{font-family:var(–font-head);font-weight:800;font-size:16px;letter-spacing:.07em;color:#fff;flex:1}
-.l2l-nav-btn{font-family:var(–font-head);font-weight:700;font-size:12px;padding:5px 14px;border-radius:3px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;cursor:pointer;letter-spacing:.06em}
+.l2l-topbar{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--navy);border-bottom:2px solid var(--amber);flex-shrink:0}
+.l2l-topbar-label{font-family:var(--font-head);font-weight:800;font-size:16px;letter-spacing:.07em;color:#fff;flex:1}
+.l2l-nav-btn{font-family:var(--font-head);font-weight:700;font-size:12px;padding:5px 14px;border-radius:3px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;cursor:pointer;letter-spacing:.06em}
 .l2l-nav-btn:hover{background:rgba(255,255,255,.16)}
 .l2l-nav-btn.arrow{font-size:20px;padding:3px 12px}
-.l2l-refresh-btn{font-family:var(–font-mono);font-size:10px;padding:4px 10px;border-radius:2px;border:1px solid rgba(255,255,255,.2);background:transparent;color:rgba(255,255,255,.7);cursor:pointer}
+.l2l-refresh-btn{font-family:var(--font-mono);font-size:10px;padding:4px 10px;border-radius:2px;border:1px solid rgba(255,255,255,.2);background:transparent;color:rgba(255,255,255,.7);cursor:pointer}
 .l2l-refresh-btn:hover{background:rgba(255,255,255,.1)}
 
 /* Day selector */
-.l2l-day-selector{display:flex;gap:6px;padding:10px 16px;background:var(–navy-mid);border-bottom:2px solid var(–amber);overflow-x:auto;flex-wrap:nowrap;flex-shrink:0}
-.l2l-day-pill{font-family:var(–font-head);font-weight:700;font-size:12px;padding:7px 14px;border-radius:3px;cursor:pointer;flex-shrink:0;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);transition:all .15s;text-align:center;min-width:88px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.l2l-day-selector{display:flex;gap:6px;padding:10px 16px;background:var(--navy-mid);border-bottom:2px solid var(--amber);overflow-x:auto;flex-wrap:nowrap;flex-shrink:0}
+.l2l-day-pill{font-family:var(--font-head);font-weight:700;font-size:12px;padding:7px 14px;border-radius:3px;cursor:pointer;flex-shrink:0;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);transition:all .15s;text-align:center;min-width:88px;display:flex;flex-direction:column;align-items:center;gap:2px}
 .l2l-day-pill:hover{background:rgba(255,255,255,.14);color:#fff}
-.l2l-day-pill.active{background:var(–amber-l);color:#fff;border-color:var(–amber-xl)}
-.l2l-day-pill.today{border-color:var(–amber-xl)}
+.l2l-day-pill.active{background:var(--amber-l);color:#fff;border-color:var(--amber-xl)}
+.l2l-day-pill.today{border-color:var(--amber-xl)}
 .dp-day{font-size:13px;letter-spacing:.06em}
-.dp-date{font-family:var(–font-mono);font-size:9px;opacity:.75}
-.dp-cnt{font-family:var(–font-mono);font-size:9px;font-weight:400;opacity:.8}
-.dp-oee{font-family:var(–font-head);font-size:11px;font-weight:700;margin-top:1px}
+.dp-date{font-family:var(--font-mono);font-size:9px;opacity:.75}
+.dp-cnt{font-family:var(--font-mono);font-size:9px;font-weight:400;opacity:.8}
+.dp-oee{font-family:var(--font-head);font-size:11px;font-weight:700;margin-top:1px}
 .dp-oee.green{color:#4ade80}.dp-oee.amber{color:#fcd34d}.dp-oee.red{color:#fca5a5}
 .dp-badges{display:flex;gap:3px;justify-content:center;flex-wrap:wrap;margin-top:2px}
 
 /* Sub-nav */
-.l2l-subnav{display:flex;gap:4px;padding:8px 16px;background:var(–card);border-bottom:2px solid var(–border2);flex-wrap:wrap}
-.l2l-subnav-btn{font-family:var(–font-mono);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 16px;border-radius:2px;cursor:pointer;border:1px solid var(–border);background:#fff;color:var(–muted);transition:all .15s}
-.l2l-subnav-btn:hover{border-color:var(–navy);color:var(–navy)}
-.l2l-subnav-btn.active{background:var(–navy);color:#fff;border-color:var(–navy)}
+.l2l-subnav{display:flex;gap:4px;padding:8px 16px;background:var(--card);border-bottom:2px solid var(--border2);flex-wrap:wrap}
+.l2l-subnav-btn{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 16px;border-radius:2px;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--muted);transition:all .15s}
+.l2l-subnav-btn:hover{border-color:var(--navy);color:var(--navy)}
+.l2l-subnav-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
 
 /* Badges */
-.l2l-badge{font-family:var(–font-mono);font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:2px}
-.l2l-badge.connected{background:rgba(21,128,61,.1);color:var(–green)}
-.l2l-badge.loading{background:rgba(180,83,9,.1);color:var(–amber)}
-.l2l-badge.disconnected{background:var(–red-bg);color:var(–red)}
-.l2l-meta-badge{font-family:var(–font-mono);font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:2px}
+.l2l-badge{font-family:var(--font-mono);font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:2px}
+.l2l-badge.connected{background:rgba(21,128,61,.1);color:var(--green)}
+.l2l-badge.loading{background:rgba(180,83,9,.1);color:var(--amber)}
+.l2l-badge.disconnected{background:var(--red-bg);color:var(--red)}
+.l2l-meta-badge{font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:2px}
 .l2l-meta-badge.pm{background:rgba(124,58,237,.1);color:#7c3aed}
-.l2l-meta-badge.repair{background:rgba(185,28,28,.08);color:var(–red)}
+.l2l-meta-badge.repair{background:rgba(185,28,28,.08);color:var(--red)}
 .l2l-meta-badge.wo{background:rgba(3,105,161,.08);color:#0369a1}
 .l2l-meta-badge.code-red{background:#dc2626;color:#fff}
 .l2l-meta-badge.code-yellow{background:#d97706;color:#fff}
-.l2l-meta-badge.other{background:var(–card);color:var(–muted2);border:1px solid var(–border)}
+.l2l-meta-badge.other{background:var(--card);color:var(--muted2);border:1px solid var(--border)}
 .l2l-meta-badge.open{background:rgba(217,119,6,.1);color:#92400e}
-.l2l-meta-badge.closed{background:rgba(21,128,61,.08);color:var(–green)}
-.l2l-meta-badge.overdue{background:rgba(185,28,28,.1);color:var(–red)}
+.l2l-meta-badge.closed{background:rgba(21,128,61,.08);color:var(--green)}
+.l2l-meta-badge.overdue{background:rgba(185,28,28,.1);color:var(--red)}
 
 /* Stats */
-.l2l-tab-stats{display:flex;gap:0;border-bottom:2px solid var(–border2);background:#fff;flex-wrap:wrap}
-.l2l-tab-stat{flex:1;min-width:100px;padding:12px 16px;border-right:1px solid var(–border)}
+.l2l-tab-stats{display:flex;gap:0;border-bottom:2px solid var(--border2);background:#fff;flex-wrap:wrap}
+.l2l-tab-stat{flex:1;min-width:100px;padding:12px 16px;border-right:1px solid var(--border)}
 .l2l-tab-stat:last-child{border-right:none}
-.l2l-tab-stat-label{font-family:var(–font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(–muted);margin-bottom:4px}
-.l2l-tab-stat-val{font-family:var(–font-head);font-size:26px;font-weight:800;line-height:1}
-.l2l-tab-stat-val.green{color:var(–green)}.l2l-tab-stat-val.amber{color:#92400e}.l2l-tab-stat-val.red{color:var(–red)}
+.l2l-tab-stat-label{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px}
+.l2l-tab-stat-val{font-family:var(--font-head);font-size:26px;font-weight:800;line-height:1}
+.l2l-tab-stat-val.green{color:var(--green)}.l2l-tab-stat-val.amber{color:#92400e}.l2l-tab-stat-val.red{color:var(--red)}
 
 /* Sections */
 .l2l-tab-body{padding:0}
-.l2l-section{background:#fff;border-bottom:1px solid var(–border2)}
-.l2l-section-hdr{display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid var(–border);background:var(–card)}
-.l2l-section-title{font-family:var(–font-head);font-size:14px;font-weight:800;letter-spacing:.05em;color:var(–navy);flex:1}
-.l2l-empty{padding:32px;text-align:center;font-family:var(–font-mono);font-size:12px;color:var(–muted);letter-spacing:.04em}
-.l2l-error{font-family:var(–font-mono);font-size:11px;color:var(–red);background:var(–red-bg);border:1px solid var(–red-border);border-radius:3px;padding:8px 12px}
-.l2l-filter-bar{display:flex;gap:6px;padding:10px 16px;flex-wrap:wrap;border-bottom:1px solid var(–border);background:var(–card)}
-.l2l-filter-btn{font-family:var(–font-mono);font-size:10px;font-weight:700;letter-spacing:.06em;padding:4px 12px;border-radius:2px;cursor:pointer;border:1px solid var(–border);background:#fff;color:var(–muted2);transition:all .15s}
-.l2l-filter-btn:hover{border-color:var(–navy);color:var(–navy)}
-.l2l-filter-btn.active{background:var(–navy);color:#fff;border-color:var(–navy)}
+.l2l-section{background:#fff;border-bottom:1px solid var(--border2)}
+.l2l-section-hdr{display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid var(--border);background:var(--card)}
+.l2l-section-title{font-family:var(--font-head);font-size:14px;font-weight:800;letter-spacing:.05em;color:var(--navy);flex:1}
+.l2l-empty{padding:32px;text-align:center;font-family:var(--font-mono);font-size:12px;color:var(--muted);letter-spacing:.04em}
+.l2l-error{font-family:var(--font-mono);font-size:11px;color:var(--red);background:var(--red-bg);border:1px solid var(--red-border);border-radius:3px;padding:8px 12px}
+.l2l-filter-bar{display:flex;gap:6px;padding:10px 16px;flex-wrap:wrap;border-bottom:1px solid var(--border);background:var(--card)}
+.l2l-filter-btn{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.06em;padding:4px 12px;border-radius:2px;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--muted2);transition:all .15s}
+.l2l-filter-btn:hover{border-color:var(--navy);color:var(--navy)}
+.l2l-filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
 .l2l-count{font-weight:400;opacity:.7}
 
 /* WO Table */
 .l2l-wo-wrap{overflow:auto;max-height:calc(100vh - 320px);min-height:280px}
 .l2l-wo-table{width:100%;border-collapse:collapse;font-size:12px}
-.l2l-wo-table th{background:var(–card);padding:6px 12px;font-family:var(–font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(–muted);border-bottom:2px solid var(–border2);text-align:left;white-space:nowrap;position:sticky;top:0;z-index:2}
-.l2l-wo-table td{padding:6px 12px;border-bottom:1px solid var(–border);vertical-align:middle;max-width:0}
+.l2l-wo-table th{background:var(--card);padding:6px 12px;font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:2px solid var(--border2);text-align:left;white-space:nowrap;position:sticky;top:0;z-index:2}
+.l2l-wo-table td{padding:6px 12px;border-bottom:1px solid var(--border);vertical-align:middle;max-width:0}
 .l2l-wo-table tr:hover td{background:rgba(29,78,216,.03)}
 .l2l-wo-table tr.row-code-red td{background:rgba(185,28,28,.09);font-weight:600}
 .l2l-wo-table tr.row-code-red td:first-child{border-left:4px solid #dc2626;padding-left:8px}
@@ -264,69 +263,68 @@ header{background:linear-gradient(90deg,#0d1b2e,#1e3a6e 55%,#0d1b2e);border-bott
 .l2l-wo-table tr.row-code-yellow:hover td{background:rgba(217,119,6,.15)}
 .l2l-wo-table tr.row-overdue td{background:rgba(185,28,28,.03)}
 .l2l-wo-desc{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:260px;max-width:260px}
-.l2l-wo-machine{font-family:var(–font-mono);font-size:10px;color:var(–muted2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:110px;max-width:110px}
-.l2l-wo-num{font-family:var(–font-mono);font-size:10px;color:var(–muted);white-space:nowrap}
-.l2l-day-hdr-row td{background:var(–navy)!important;color:#fff;padding:5px 12px;font-family:var(–font-head);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-bottom:2px solid var(–amber);position:sticky;top:30px;z-index:1}
-.l2l-day-hdr-row:hover td{background:var(–navy)!important}
-.l2l-day-empty td{background:var(–card);color:var(–muted);font-family:var(–font-mono);font-size:10px;text-align:center;padding:6px}
+.l2l-wo-machine{font-family:var(--font-mono);font-size:10px;color:var(--muted2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:110px;max-width:110px}
+.l2l-wo-num{font-family:var(--font-mono);font-size:10px;color:var(--muted);white-space:nowrap}
+.l2l-day-hdr-row td{background:var(--navy)!important;color:#fff;padding:5px 12px;font-family:var(--font-head);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;border-bottom:2px solid var(--amber);position:sticky;top:30px;z-index:1}
+.l2l-day-hdr-row:hover td{background:var(--navy)!important}
+.l2l-day-empty td{background:var(--card);color:var(--muted);font-family:var(--font-mono);font-size:10px;text-align:center;padding:6px}
 
 /* OEE table */
 .l2l-oee-table{width:100%;border-collapse:collapse;font-size:12px}
-.l2l-oee-table th{background:var(–card);padding:6px 12px;font-family:var(–font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(–muted);border-bottom:2px solid var(–border2);text-align:left}
-.l2l-oee-table td{padding:7px 12px;border-bottom:1px solid var(–border);vertical-align:middle}
+.l2l-oee-table th{background:var(--card);padding:6px 12px;font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:2px solid var(--border2);text-align:left}
+.l2l-oee-table td{padding:7px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
 .l2l-oee-table tr:hover td{background:rgba(29,78,216,.02)}
-.l2l-oee-line{font-family:var(–font-head);font-weight:800;font-size:15px;color:var(–navy)}
-.l2l-oee-val{font-family:var(–font-head);font-weight:800;font-size:16px}
-.l2l-oee-val.green{color:var(–green)}.l2l-oee-val.amber{color:#92400e}.l2l-oee-val.red{color:var(–red)}
-.l2l-oee-bar{height:4px;background:var(–border);border-radius:2px;margin-top:3px;width:80px}
+.l2l-oee-line{font-family:var(--font-head);font-weight:800;font-size:15px;color:var(--navy)}
+.l2l-oee-val{font-family:var(--font-head);font-weight:800;font-size:16px}
+.l2l-oee-val.green{color:var(--green)}.l2l-oee-val.amber{color:#92400e}.l2l-oee-val.red{color:var(--red)}
+.l2l-oee-bar{height:4px;background:var(--border);border-radius:2px;margin-top:3px;width:80px}
 .l2l-oee-fill{height:100%;border-radius:2px}
-.l2l-oee-fill.green{background:var(–green)}.l2l-oee-fill.amber{background:#d97706}.l2l-oee-fill.red{background:var(–red)}
-.l2l-dt-val{font-family:var(–font-mono);font-size:11px;color:var(–muted2)}
-.l2l-dt-val.high{color:var(–red);font-weight:700}
+.l2l-oee-fill.green{background:var(--green)}.l2l-oee-fill.amber{background:#d97706}.l2l-oee-fill.red{background:var(--red)}
+.l2l-dt-val{font-family:var(--font-mono);font-size:11px;color:var(--muted2)}
+.l2l-dt-val.high{color:var(--red);font-weight:700}
 
 /* OEE Day group table */
-.l2l-oee-day-hdr td{background:var(–navy-mid)!important;color:#fff;padding:5px 12px;font-family:var(–font-head);font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(–amber-l)}
-.l2l-oee-day-hdr:hover td{background:var(–navy-mid)!important}
+.l2l-oee-day-hdr td{background:var(--navy-mid)!important;color:#fff;padding:5px 12px;font-family:var(--font-head);font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--amber-l)}
+.l2l-oee-day-hdr:hover td{background:var(--navy-mid)!important}
 
 /* Downtime */
-.l2l-tab-split{display:flex;gap:0;border-top:1px solid var(–border2)}
-.l2l-tab-split .l2l-section{flex:1;border-right:1px solid var(–border2);border-bottom:none}
+.l2l-tab-split{display:flex;gap:0;border-top:1px solid var(--border2)}
+.l2l-tab-split .l2l-section{flex:1;border-right:1px solid var(--border2);border-bottom:none}
 .l2l-tab-split .l2l-section:last-child{border-right:none}
-.l2l-dt-bar-row{display:flex;align-items:center;gap:10px;padding:7px 14px;border-bottom:1px solid var(–border)}
-.l2l-dt-bar-label{font-family:var(–font-head);font-weight:700;font-size:14px;color:var(–navy);width:60px;flex-shrink:0}
-.l2l-dt-bar-track{flex:1;height:10px;background:var(–border);border-radius:5px;overflow:hidden}
-.l2l-dt-bar-fill{height:100%;border-radius:5px;background:var(–red)}
-.l2l-dt-bar-val{font-family:var(–font-mono);font-size:11px;color:var(–muted2);width:70px;text-align:right;flex-shrink:0}
-.l2l-dt-event-row{display:flex;align-items:flex-start;gap:10px;padding:8px 14px;border-bottom:1px solid var(–border);font-size:12px}
+.l2l-dt-bar-row{display:flex;align-items:center;gap:10px;padding:7px 14px;border-bottom:1px solid var(--border)}
+.l2l-dt-bar-label{font-family:var(--font-head);font-weight:700;font-size:14px;color:var(--navy);width:60px;flex-shrink:0}
+.l2l-dt-bar-track{flex:1;height:10px;background:var(--border);border-radius:5px;overflow:hidden}
+.l2l-dt-bar-fill{height:100%;border-radius:5px;background:var(--red)}
+.l2l-dt-bar-val{font-family:var(--font-mono);font-size:11px;color:var(--muted2);width:70px;text-align:right;flex-shrink:0}
+.l2l-dt-event-row{display:flex;align-items:flex-start;gap:10px;padding:8px 14px;border-bottom:1px solid var(--border);font-size:12px}
 .l2l-dt-event-row:hover{background:rgba(29,78,216,.03)}
-.l2l-dt-event-line{font-family:var(–font-head);font-weight:700;font-size:13px;color:var(–navy);width:70px;flex-shrink:0}
-.l2l-dt-event-machine{font-family:var(–font-mono);font-size:10px;color:var(–muted2);width:90px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.l2l-dt-event-desc{flex:1;color:var(–text);font-size:11px;line-height:1.5}
-.l2l-dt-event-mins{font-family:var(–font-mono);font-size:11px;font-weight:700;color:var(–red);width:60px;text-align:right;flex-shrink:0}
-.l2l-dt-event-date{font-family:var(–font-mono);font-size:9px;color:var(–muted);width:70px;text-align:right;flex-shrink:0}
+.l2l-dt-event-line{font-family:var(--font-head);font-weight:700;font-size:13px;color:var(--navy);width:70px;flex-shrink:0}
+.l2l-dt-event-machine{font-family:var(--font-mono);font-size:10px;color:var(--muted2);width:90px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.l2l-dt-event-desc{flex:1;color:var(--text);font-size:11px;line-height:1.5}
+.l2l-dt-event-mins{font-family:var(--font-mono);font-size:11px;font-weight:700;color:var(--red);width:60px;text-align:right;flex-shrink:0}
+.l2l-dt-event-date{font-family:var(--font-mono);font-size:9px;color:var(--muted);width:70px;text-align:right;flex-shrink:0}
 
 /* MTTR */
 .l2l-mttr-table{width:100%;border-collapse:collapse;font-size:12px}
-.l2l-mttr-table th{background:var(–card);padding:7px 12px;font-family:var(–font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(–muted);border-bottom:2px solid var(–border2);text-align:left}
-.l2l-mttr-table td{padding:9px 12px;border-bottom:1px solid var(–border);vertical-align:middle}
-.l2l-mttr-val{font-family:var(–font-head);font-weight:800;font-size:17px}
-.l2l-mttr-val.green{color:var(–green)}.l2l-mttr-val.amber{color:#92400e}.l2l-mttr-val.red{color:var(–red)}
-.l2l-mttr-sub{font-family:var(–font-mono);font-size:9px;color:var(–muted);margin-top:2px}
+.l2l-mttr-table th{background:var(--card);padding:7px 12px;font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:2px solid var(--border2);text-align:left}
+.l2l-mttr-table td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+.l2l-mttr-val{font-family:var(--font-head);font-weight:800;font-size:17px}
+.l2l-mttr-val.green{color:var(--green)}.l2l-mttr-val.amber{color:#92400e}.l2l-mttr-val.red{color:var(--red)}
+.l2l-mttr-sub{font-family:var(--font-mono);font-size:9px;color:var(--muted);margin-top:2px}
 
 /* Machines */
-.l2l-line-selector{display:flex;gap:6px;padding:10px 14px;flex-wrap:wrap;border-bottom:1px solid var(–border);background:var(–card)}
-.l2l-line-pill{font-family:var(–font-head);font-weight:700;font-size:12px;padding:5px 14px;border-radius:12px;cursor:pointer;border:1px solid var(–border);background:#fff;color:var(–muted2);transition:all .15s}
-.l2l-line-pill.active{background:var(–navy);color:#fff;border-color:var(–navy)}
+.l2l-line-selector{display:flex;gap:6px;padding:10px 14px;flex-wrap:wrap;border-bottom:1px solid var(--border);background:var(--card)}
+.l2l-line-pill{font-family:var(--font-head);font-weight:700;font-size:12px;padding:5px 14px;border-radius:12px;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--muted2);transition:all .15s}
+.l2l-line-pill.active{background:var(--navy);color:#fff;border-color:var(--navy)}
 .l2l-machine-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;padding:14px}
-.l2l-machine-card{background:#fff;border:1px solid var(–border);border-radius:3px;border-left:4px solid var(–border2);padding:12px 14px;transition:all .15s}
-.l2l-machine-card.critical{border-left-color:var(–red)}.l2l-machine-card.has-open{border-left-color:var(–amber)}
-.l2l-machine-name{font-family:var(–font-head);font-weight:700;font-size:14px;margin-bottom:4px}
-.l2l-machine-code{font-family:var(–font-mono);font-size:9px;color:var(–muted);letter-spacing:.07em;text-transform:uppercase}
+.l2l-machine-card{background:#fff;border:1px solid var(--border);border-radius:3px;border-left:4px solid var(--border2);padding:12px 14px;transition:all .15s}
+.l2l-machine-card.critical{border-left-color:var(--red)}.l2l-machine-card.has-open{border-left-color:var(--amber)}
+.l2l-machine-name{font-family:var(--font-head);font-weight:700;font-size:14px;margin-bottom:4px}
+.l2l-machine-code{font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:.07em;text-transform:uppercase}
 .l2l-machine-stats{display:flex;gap:10px;margin-top:8px}
-.l2l-machine-stat{font-family:var(–font-mono);font-size:10px}
+.l2l-machine-stat{font-family:var(--font-mono);font-size:10px}
 .l2l-machine-stat span{font-weight:700;font-size:13px;display:block}
 </style>
-
 </head>
 <body>
 <!-- LANDING -->
@@ -351,7 +349,6 @@ header{background:linear-gradient(90deg,#0d1b2e,#1e3a6e 55%,#0d1b2e);border-bott
 </div>
 
 <!-- APP SHELL -->
-
 <div id="app">
   <header>
     <div class="hdr-left">
@@ -376,7 +373,6 @@ header{background:linear-gradient(90deg,#0d1b2e,#1e3a6e 55%,#0d1b2e);border-bott
   </div>
 
   <!-- PLANNER VIEW -->
-
   <div class="view active" id="view-planner">
     <div class="planner-week-bar">
       <div class="week-nav">
@@ -458,817 +454,816 @@ const DAY_KEYS = ['mon','tue','wed','thu','fri','sat'];
 const DAY_LABELS = {mon:'Mon',tue:'Tue',wed:'Wed',thu:'Thu',fri:'Fri',sat:'Sat'};
 
 const AppState = {
-role:null, email:null, activeTab:‘planner’,
-weekId:null, weekStart:null, weekStatus:null,
-runs:{}, requests:{}, notifications:[], unreadCount:0, loading:true,
-queueFilter:‘pending’, openDenyPanelId:null,
+  role:null, email:null, activeTab:'planner',
+  weekId:null, weekStart:null, weekStatus:null,
+  runs:{}, requests:{}, notifications:[], unreadCount:0, loading:true,
+  queueFilter:'pending', openDenyPanelId:null,
 };
 
 let db = null, realtimeChannel = null;
 
 function initSupabase() {
-try { db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON); return true; }
-catch(e) { showConnError(’Supabase init failed: ’ + e.message); return false; }
+  try { db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON); return true; }
+  catch(e) { showConnError('Supabase init failed: ' + e.message); return false; }
 }
-function showConnError(m){const b=document.getElementById(‘conn-bar’),el=document.getElementById(‘conn-msg’);if(b&&el){el.textContent=m;b.className=‘conn-bar error’;}}
-function hideConnBar(){const b=document.getElementById(‘conn-bar’);if(b)b.className=‘conn-bar’;}
+function showConnError(m){const b=document.getElementById('conn-bar'),el=document.getElementById('conn-msg');if(b&&el){el.textContent=m;b.className='conn-bar error';}}
+function hideConnBar(){const b=document.getElementById('conn-bar');if(b)b.className='conn-bar';}
 
 function patchState(p,r=true){Object.assign(AppState,p);if(r)renderActiveTab();}
-function renderActiveTab(){if(AppState.activeTab===‘planner’)renderPlannerTab();}
+function renderActiveTab(){if(AppState.activeTab==='planner')renderPlannerTab();}
 
 // ─── AUTH ─────────────────────────────────────────────────────
 const EMAIL_ROLES = {
-‘maintmanager@novusfoods.com’:‘maintenance’,
-‘planner1730@novusfoods.com’:‘planner’,
-‘production@novusfoods.com’:‘production’,
-‘admin@novusfoods.com’:‘admin’,
+  'maintmanager@novusfoods.com':'maintenance',
+  'planner1730@novusfoods.com':'planner',
+  'production@novusfoods.com':'production',
+  'admin@novusfoods.com':'admin',
 };
-function roleFromEmail(e){return EMAIL_ROLES[(e||’’).toLowerCase()]||‘maintenance’;}
+function roleFromEmail(e){return EMAIL_ROLES[(e||'').toLowerCase()]||'maintenance';}
 
 async function doLogin() {
-if(!db){if(!initSupabase())return;}
-const email=document.getElementById(‘login-email’).value.trim();
-const pass=document.getElementById(‘login-pass’).value;
-const errEl=document.getElementById(‘login-error’);
-const btn=document.getElementById(‘login-btn’);
-errEl.style.display=‘none’; btn.textContent=‘Signing in…’; btn.disabled=true;
-try {
-const {data,error}=await db.auth.signInWithPassword({email,password:pass});
-if(error) throw error;
-const role=roleFromEmail(data.user.email);
-AppState.role=role; AppState.email=data.user.email;
-document.getElementById(‘role-chip’).textContent=role.toUpperCase();
-document.getElementById(‘landing’).style.display=‘none’;
-document.getElementById(‘app’).classList.add(‘visible’);
-if(role===‘admin’) document.getElementById(‘tab-btn-admin’).style.display=’’;
-const info=document.getElementById(‘admin-user-info’);
-if(info) info.textContent=data.user.email+’ · ’+role;
-const defaultTab=role===‘maintenance’?‘maintenance’:role===‘production’?‘production’:role===‘admin’?‘l2l’:‘planner’;
-switchTab(defaultTab);
-try { await bootstrapData(); subscribeRealtime(); } catch(e){}
-} catch(e) {
-errEl.textContent=e.message||‘Sign-in failed.’; errEl.style.display=‘block’;
-}
-btn.textContent=‘SIGN IN’; btn.disabled=false;
+  if(!db){if(!initSupabase())return;}
+  const email=document.getElementById('login-email').value.trim();
+  const pass=document.getElementById('login-pass').value;
+  const errEl=document.getElementById('login-error');
+  const btn=document.getElementById('login-btn');
+  errEl.style.display='none'; btn.textContent='Signing in…'; btn.disabled=true;
+  try {
+    const {data,error}=await db.auth.signInWithPassword({email,password:pass});
+    if(error) throw error;
+    const role=roleFromEmail(data.user.email);
+    AppState.role=role; AppState.email=data.user.email;
+    document.getElementById('role-chip').textContent=role.toUpperCase();
+    document.getElementById('landing').style.display='none';
+    document.getElementById('app').classList.add('visible');
+    if(role==='admin') document.getElementById('tab-btn-admin').style.display='';
+    const info=document.getElementById('admin-user-info');
+    if(info) info.textContent=data.user.email+' · '+role;
+    const defaultTab=role==='maintenance'?'maintenance':role==='production'?'production':role==='admin'?'l2l':'planner';
+    switchTab(defaultTab);
+    try { await bootstrapData(); subscribeRealtime(); } catch(e){}
+  } catch(e) {
+    errEl.textContent=e.message||'Sign-in failed.'; errEl.style.display='block';
+  }
+  btn.textContent='SIGN IN'; btn.disabled=false;
 }
 
 async function doLogout() {
-if(db) await db.auth.signOut();
-document.getElementById(‘landing’).style.display=’’;
-document.getElementById(‘app’).classList.remove(‘visible’);
-AppState.role=null;
+  if(db) await db.auth.signOut();
+  document.getElementById('landing').style.display='';
+  document.getElementById('app').classList.remove('visible');
+  AppState.role=null;
 }
 
 // ─── TAB SWITCHING ────────────────────────────────────────────
 function switchTab(tab) {
-AppState.activeTab=tab;
-document.querySelectorAll(’.tab’).forEach(el=>el.classList.toggle(‘active’,el.dataset.tab===tab));
-document.querySelectorAll(’.view’).forEach(el=>el.classList.toggle(‘active’,el.id===‘view-’+tab));
-if(tab===‘planner’)     renderPlannerTab();
-if(tab===‘l2l’)         renderL2LTab();
-if(tab===‘admin’)       renderAdminTab();
+  AppState.activeTab=tab;
+  document.querySelectorAll('.tab').forEach(el=>el.classList.toggle('active',el.dataset.tab===tab));
+  document.querySelectorAll('.view').forEach(el=>el.classList.toggle('active',el.id==='view-'+tab));
+  if(tab==='planner')     renderPlannerTab();
+  if(tab==='l2l')         renderL2LTab();
+  if(tab==='admin')       renderAdminTab();
 }
 
 // ─── ADMIN ────────────────────────────────────────────────────
-const LINES_MAPP=[‘2A’,‘2E’,‘2F’,‘MP4’,‘PL1’,‘PL2’,‘PXM6’];
+const LINES_MAPP=['2A','2E','2F','MP4','PL1','PL2','PXM6'];
 function renderAdminTab(){
-const g=document.getElementById(‘l2l-line-mappings’);
-if(!g) return;
-g.innerHTML=LINES_MAPP.map(ln=>’<div><label style="font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase">’+ln+’</label>’+
-‘<input id="l2l-map-'+ln+'" value="'+(L2L.lineCodes[ln]||'')+'" placeholder="BP-LINE?" style="width:100%;padding:6px 10px;border:1px solid var(--border2);border-radius:3px;font-family:var(--font-mono);font-size:12px;margin-top:3px;box-sizing:border-box"></div>’).join(’’);
+  const g=document.getElementById('l2l-line-mappings');
+  if(!g) return;
+  g.innerHTML=LINES_MAPP.map(ln=>'<div><label style="font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase">'+ln+'</label>'+
+    '<input id="l2l-map-'+ln+'" value="'+(L2L.lineCodes[ln]||'')+'" placeholder="BP-LINE?" style="width:100%;padding:6px 10px;border:1px solid var(--border2);border-radius:3px;font-family:var(--font-mono);font-size:12px;margin-top:3px;box-sizing:border-box"></div>').join('');
 }
 function saveL2LConfig(){
-LINES_MAPP.forEach(ln=>{const i=document.getElementById(‘l2l-map-’+ln);if(i)L2L.lineCodes[ln]=i.value.trim();});
-try{localStorage.setItem(‘l2lConfig’,JSON.stringify(L2L));}catch(e){}
-const m=document.getElementById(‘l2l-save-msg’);
-if(m){m.style.display=‘inline’;setTimeout(()=>m.style.display=‘none’,2000);}
-toast(‘L2L config saved’,‘success’);
+  LINES_MAPP.forEach(ln=>{const i=document.getElementById('l2l-map-'+ln);if(i)L2L.lineCodes[ln]=i.value.trim();});
+  try{localStorage.setItem('l2lConfig',JSON.stringify(L2L));}catch(e){}
+  const m=document.getElementById('l2l-save-msg');
+  if(m){m.style.display='inline';setTimeout(()=>m.style.display='none',2000);}
+  toast('L2L config saved','success');
 }
 
 // ─── L2L CONFIG ───────────────────────────────────────────────
-const L2L_EDGE_FN=‘https://sgshmwjkpymbcqfqkgpl.supabase.co/functions/v1/l2l-proxy’;
-const L2L_DEFAULTS={siteId:‘2’,baseUrl:‘https://lakeviewfarms.leading2lean.com’,lineCodes:{‘2A’:‘BP-LINE1’,‘2E’:‘BP-LINE6’,‘2F’:’’,‘MP4’:‘BP-LINE3’,‘PL1’:‘BP-LINE4’,‘PL2’:‘BP-LINE5’,‘PXM6’:‘BP-LINE2’}};
-let L2L={ready:false,siteId:‘2’,baseUrl:’’,lineCodes:{}};
+const L2L_EDGE_FN='https://sgshmwjkpymbcqfqkgpl.supabase.co/functions/v1/l2l-proxy';
+const L2L_DEFAULTS={siteId:'2',baseUrl:'https://lakeviewfarms.leading2lean.com',lineCodes:{'2A':'BP-LINE1','2E':'BP-LINE6','2F':'','MP4':'BP-LINE3','PL1':'BP-LINE4','PL2':'BP-LINE5','PXM6':'BP-LINE2'}};
+let L2L={ready:false,siteId:'2',baseUrl:'',lineCodes:{}};
 
 function initL2L(){
-try{
-const saved=JSON.parse(localStorage.getItem(‘l2lConfig’)||‘null’);
-const cfg=saved||L2L_DEFAULTS;
-L2L={ready:true,siteId:cfg.siteId||‘2’,baseUrl:cfg.baseUrl||L2L_DEFAULTS.baseUrl,lineCodes:{…L2L_DEFAULTS.lineCodes,…(cfg.lineCodes||{})}};
-}catch(e){L2L={ready:true,…L2L_DEFAULTS};}
+  try{
+    const saved=JSON.parse(localStorage.getItem('l2lConfig')||'null');
+    const cfg=saved||L2L_DEFAULTS;
+    L2L={ready:true,siteId:cfg.siteId||'2',baseUrl:cfg.baseUrl||L2L_DEFAULTS.baseUrl,lineCodes:{...L2L_DEFAULTS.lineCodes,...(cfg.lineCodes||{})}};
+  }catch(e){L2L={ready:true,...L2L_DEFAULTS};}
 }
 
 async function callL2L(endpoint,params={}) {
-const qs=new URLSearchParams(params).toString();
-const url=L2L_EDGE_FN+’?endpoint=’+encodeURIComponent(endpoint)+(qs?’&’+qs:’’);
-const session=db?(await db.auth.getSession()).data.session:null;
-const hdrs={‘Content-Type’:‘application/json’};
-if(session?.access_token) hdrs[‘Authorization’]=’Bearer ’+session.access_token;
-const res=await fetch(url,{headers:hdrs});
-if(!res.ok) throw new Error(’L2L proxy ‘+res.status+’: ’+await res.text());
-return res.json();
+  const qs=new URLSearchParams(params).toString();
+  const url=L2L_EDGE_FN+'?endpoint='+encodeURIComponent(endpoint)+(qs?'&'+qs:'');
+  const session=db?(await db.auth.getSession()).data.session:null;
+  const hdrs={'Content-Type':'application/json'};
+  if(session?.access_token) hdrs['Authorization']='Bearer '+session.access_token;
+  const res=await fetch(url,{headers:hdrs});
+  if(!res.ok) throw new Error('L2L proxy '+res.status+': '+await res.text());
+  return res.json();
 }
 
 // ─── L2L STATE ────────────────────────────────────────────────
-const L2LState={dispatches:[],dispatchFilter:‘all’,loading:false,error:null,lastFetchTime:null,fetchedWeek:null};
+const L2LState={dispatches:[],dispatchFilter:'all',loading:false,error:null,lastFetchTime:null,fetchedWeek:null};
 const L2LOeeState={data:[],loading:false,error:null,weekStart:null};
 const L2LMachinesState={machines:[],loading:false,error:null,selectedLine:null};
 
 // ─── DATE HELPERS ─────────────────────────────────────────────
 function getMondayOf(d){const dt=new Date(d);const day=dt.getDay();dt.setDate(dt.getDate()+(day===0?-6:1-day));dt.setHours(0,0,0,0);return dt;}
-function toISODate(d){if(!d)return’’;const dt=d instanceof Date?d:new Date(d);return dt.getFullYear()+’-’+String(dt.getMonth()+1).padStart(2,‘0’)+’-’+String(dt.getDate()).padStart(2,‘0’);}
-function buildWeekLabel(mon){if(!mon)return’—’;const sat=new Date(mon);sat.setDate(sat.getDate()+5);const fmt=d=>d.toLocaleDateString(‘en-US’,{month:‘short’,day:‘numeric’});return fmt(mon)+’ – ’+fmt(sat);}
+function toISODate(d){if(!d)return'';const dt=d instanceof Date?d:new Date(d);return dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0');}
+function buildWeekLabel(mon){if(!mon)return'—';const sat=new Date(mon);sat.setDate(sat.getDate()+5);const fmt=d=>d.toLocaleDateString('en-US',{month:'short',day:'numeric'});return fmt(mon)+' – '+fmt(sat);}
 function getWeekDays(mon){
-const days=[],SHORTS=[‘MON’,‘TUE’,‘WED’,‘THU’,‘FRI’,‘SAT’];
-for(let i=0;i<6;i++){const d=new Date(mon);d.setDate(d.getDate()+i);days.push({date:toISODate(d),short:SHORTS[i],displayDate:d.toLocaleDateString(‘en-US’,{month:‘numeric’,day:‘numeric’})});}
-return days;
+  const days=[],SHORTS=['MON','TUE','WED','THU','FRI','SAT'];
+  for(let i=0;i<6;i++){const d=new Date(mon);d.setDate(d.getDate()+i);days.push({date:toISODate(d),short:SHORTS[i],displayDate:d.toLocaleDateString('en-US',{month:'numeric',day:'numeric'})});}
+  return days;
 }
 
 let _l2lWeekStart=getMondayOf(new Date());
-let _l2lSubTab=‘overview’;
+let _l2lSubTab='overview';
 let _l2lSelectedDay=toISODate(new Date());
 
 function l2lNavWeek(dir){
-if(dir===0){_l2lWeekStart=getMondayOf(new Date());_l2lSelectedDay=toISODate(new Date());}
-else{const n=new Date(_l2lWeekStart);n.setDate(n.getDate()+dir*7);_l2lWeekStart=n;_l2lSelectedDay=toISODate(n);}
-renderL2LTab();
+  if(dir===0){_l2lWeekStart=getMondayOf(new Date());_l2lSelectedDay=toISODate(new Date());}
+  else{const n=new Date(_l2lWeekStart);n.setDate(n.getDate()+dir*7);_l2lWeekStart=n;_l2lSelectedDay=toISODate(n);}
+  renderL2LTab();
 }
 function switchL2LSubTab(tab){
-_l2lSubTab=tab;
-const c=document.getElementById(‘l2l-tab-layout’);
-if(!c)return;
-if(tab===‘machines’&&!L2LMachinesState.machines.length&&!L2LMachinesState.loading)l2lFetchMachines();
-else _buildL2LTabShell(c);
+  _l2lSubTab=tab;
+  const c=document.getElementById('l2l-tab-layout');
+  if(!c)return;
+  if(tab==='machines'&&!L2LMachinesState.machines.length&&!L2LMachinesState.loading)l2lFetchMachines();
+  else _buildL2LTabShell(c);
 }
 function l2lSelectDay(dateStr){
-if(_l2lSelectedDay===dateStr) return; // already selected — no-op
-_l2lSelectedDay=dateStr;
-const c=document.getElementById(‘l2l-tab-layout’);
-if(c)_buildL2LTabShell(c);
+  if(_l2lSelectedDay===dateStr) return; // already selected — no-op
+  _l2lSelectedDay=dateStr;
+  const c=document.getElementById('l2l-tab-layout');
+  if(c)_buildL2LTabShell(c);
 }
 
 // ─── L2L HELPERS ─────────────────────────────────────────────
-function esc(s){return String(s||’’).replace(/&/g,’&’).replace(/</g,’<’).replace(/>/g,’>’).replace(/”/g,’"’);}
-function truncate(s,n){s=String(s||’’);return s.length>n?s.slice(0,n)+’…’:s;}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function truncate(s,n){s=String(s||'');return s.length>n?s.slice(0,n)+'…':s;}
 function fmtNumber(n){return Number(n).toLocaleString();}
 
 function l2lDispDate(d){const ts=d.reported||d.created;return ts?toISODate(new Date(ts)):null;}
 
 // Extract date from OEE record — try multiple known L2L field names
 function l2lOeeDate(row){
-const ts=row.date||row.start_time||row.time_period||row.day||row.period||row.reported_date||row.created||row.updated;
-if(!ts)return null;
-try{const d=new Date(ts);return isNaN(d)?null:toISODate(d);}catch(e){return null;}
+  const ts=row.date||row.start_time||row.time_period||row.day||row.period||row.reported_date||row.created||row.updated;
+  if(!ts)return null;
+  try{const d=new Date(ts);return isNaN(d)?null:toISODate(d);}catch(e){return null;}
 }
 
 function l2lTypeClass(code){
-const u=String(code||’’).toUpperCase();
-if(u.includes(‘CODE RED’)||u===‘CODE RED’) return ‘code-red’;
-if(u.includes(‘CODE YELLOW’)||u===‘CODE YELLOW’) return ‘code-yellow’;
-if(u.includes(‘PM’)||u.includes(‘PREVENT’)||u.includes(‘PLANNED’)) return ‘pm’;
-if(u.includes(‘REPAIR’)||u.includes(‘CORREC’)||u.includes(‘BREAKDOWN’)) return ‘repair’;
-if(u.includes(‘WORK ORDER’)||u.includes(‘WORK’)||u===‘WO’) return ‘wo’;
-return ‘other’;
+  const u=String(code||'').toUpperCase();
+  if(u.includes('CODE RED')||u==='CODE RED') return 'code-red';
+  if(u.includes('CODE YELLOW')||u==='CODE YELLOW') return 'code-yellow';
+  if(u.includes('PM')||u.includes('PREVENT')||u.includes('PLANNED')) return 'pm';
+  if(u.includes('REPAIR')||u.includes('CORREC')||u.includes('BREAKDOWN')) return 'repair';
+  if(u.includes('WORK ORDER')||u.includes('WORK')||u==='WO') return 'wo';
+  return 'other';
 }
-function l2lOeeClass(pct){if(pct==null)return’’;if(pct>=85)return’green’;if(pct>=65)return’amber’;return’red’;}
-function l2lFriendlyLine(l2lCode){if(!l2lCode)return’’;const k=Object.keys(L2L.lineCodes).find(k=>L2L.lineCodes[k]===l2lCode);return k||l2lCode;}
-function mttrClass(m){return m<60?‘green’:m<240?‘amber’:‘red’;}
-function fmtMTTR(m){return m<60?Math.round(m)+’ min’:(m/60).toFixed(1)+’ hrs’;}
+function l2lOeeClass(pct){if(pct==null)return'';if(pct>=85)return'green';if(pct>=65)return'amber';return'red';}
+function l2lFriendlyLine(l2lCode){if(!l2lCode)return'';const k=Object.keys(L2L.lineCodes).find(k=>L2L.lineCodes[k]===l2lCode);return k||l2lCode;}
+function mttrClass(m){return m<60?'green':m<240?'amber':'red';}
+function fmtMTTR(m){return m<60?Math.round(m)+' min':(m/60).toFixed(1)+' hrs';}
 
 function calcDowntime(dispatches){
-const byLine={},events=dispatches.filter(d=>(d.downtime||0)>0);
-events.forEach(d=>{const l=d.linecode||‘Unknown’;byLine[l]=(byLine[l]||0)+d.downtime;});
-return{byLine:Object.entries(byLine).sort((a,b)=>b[1]-a[1]),events:events.sort((a,b)=>(b.downtime||0)-(a.downtime||0)).slice(0,60),totalMins:Object.values(byLine).reduce((s,v)=>s+v,0)};
+  const byLine={},events=dispatches.filter(d=>(d.downtime||0)>0);
+  events.forEach(d=>{const l=d.linecode||'Unknown';byLine[l]=(byLine[l]||0)+d.downtime;});
+  return{byLine:Object.entries(byLine).sort((a,b)=>b[1]-a[1]),events:events.sort((a,b)=>(b.downtime||0)-(a.downtime||0)).slice(0,60),totalMins:Object.values(byLine).reduce((s,v)=>s+v,0)};
 }
 function calcMTTR(dispatches){
-const closed=dispatches.filter(d=>d.open===‘F’&&d.reported&&d.completed);
-const byLine={},byMachine={};
-closed.forEach(d=>{
-const lk=d.linecode||‘Unknown’,mk=d.machinedescription||d.machinecode||‘Unknown’;
-const mins=(new Date(d.completed)-new Date(d.reported))/60000;
-if(mins<=0||mins>43200)return;
-(byLine[lk]=byLine[lk]||[]).push(mins);
-const key=lk+’||’+mk;
-if(!byMachine[key])byMachine[key]={line:lk,machine:mk,vals:[]};
-byMachine[key].vals.push(mins);
-});
-return Object.entries(byLine).map(([line,vals])=>{
-const avg=vals.reduce((s,v)=>s+v,0)/vals.length,max=Math.max(…vals);
-const worst=Object.values(byMachine).filter(m=>m.line===line).map(m=>({machine:m.machine,avg:m.vals.reduce((s,v)=>s+v,0)/m.vals.length})).sort((a,b)=>b.avg-a.avg)[0]||null;
-return{line,avg,max,count:vals.length,worstMachine:worst};
-}).sort((a,b)=>b.avg-a.avg);
+  const closed=dispatches.filter(d=>d.open==='F'&&d.reported&&d.completed);
+  const byLine={},byMachine={};
+  closed.forEach(d=>{
+    const lk=d.linecode||'Unknown',mk=d.machinedescription||d.machinecode||'Unknown';
+    const mins=(new Date(d.completed)-new Date(d.reported))/60000;
+    if(mins<=0||mins>43200)return;
+    (byLine[lk]=byLine[lk]||[]).push(mins);
+    const key=lk+'||'+mk;
+    if(!byMachine[key])byMachine[key]={line:lk,machine:mk,vals:[]};
+    byMachine[key].vals.push(mins);
+  });
+  return Object.entries(byLine).map(([line,vals])=>{
+    const avg=vals.reduce((s,v)=>s+v,0)/vals.length,max=Math.max(...vals);
+    const worst=Object.values(byMachine).filter(m=>m.line===line).map(m=>({machine:m.machine,avg:m.vals.reduce((s,v)=>s+v,0)/m.vals.length})).sort((a,b)=>b.avg-a.avg)[0]||null;
+    return{line,avg,max,count:vals.length,worstMachine:worst};
+  }).sort((a,b)=>b.avg-a.avg);
 }
 
 // ─── L2L FETCH ───────────────────────────────────────────────
 async function l2lRefreshDispatches(){
-L2LState.loading=true;L2LState.error=null;
-try{
-const wMon=_l2lWeekStart||getMondayOf(new Date());
-const wEnd=new Date(wMon);wEnd.setDate(wEnd.getDate()+6);
-const data=await callL2L(‘dispatches’,{site:L2L.siteId,limit:500,order_by:‘created’,start:toISODate(wMon)+’ 00:00’,end:toISODate(wEnd)+’ 23:59’});
-const recs=data?.data||data?.objects||(Array.isArray(data)?data:null);
-if(recs){
-const monMs=wMon.getTime(),endMs=wEnd.getTime()+864e5;
-L2LState.dispatches=recs.filter(d=>{const ts=d.reported||d.created;if(!ts)return true;const t=new Date(ts).getTime();return t>=monMs&&t<endMs;});
-L2LState.lastFetchTime=Date.now();L2LState.fetchedWeek=toISODate(wMon);
-}else if(data?.error)L2LState.error=data.error;
-}catch(e){L2LState.error=e.message;}
-L2LState.loading=false;
-const c=document.getElementById(‘l2l-tab-layout’);if(c)_buildL2LTabShell(c);
+  L2LState.loading=true;L2LState.error=null;
+  try{
+    const wMon=_l2lWeekStart||getMondayOf(new Date());
+    const wEnd=new Date(wMon);wEnd.setDate(wEnd.getDate()+6);
+    const data=await callL2L('dispatches',{site:L2L.siteId,limit:500,order_by:'created',start:toISODate(wMon)+' 00:00',end:toISODate(wEnd)+' 23:59'});
+    const recs=data?.data||data?.objects||(Array.isArray(data)?data:null);
+    if(recs){
+      const monMs=wMon.getTime(),endMs=wEnd.getTime()+864e5;
+      L2LState.dispatches=recs.filter(d=>{const ts=d.reported||d.created;if(!ts)return true;const t=new Date(ts).getTime();return t>=monMs&&t<endMs;});
+      L2LState.lastFetchTime=Date.now();L2LState.fetchedWeek=toISODate(wMon);
+    }else if(data?.error)L2LState.error=data.error;
+  }catch(e){L2LState.error=e.message;}
+  L2LState.loading=false;
+  const c=document.getElementById('l2l-tab-layout');if(c)_buildL2LTabShell(c);
 }
 
 async function l2lRefreshOEE(){
-L2LOeeState.loading=true;L2LOeeState.error=null;
-try{
-const wMon=_l2lWeekStart||getMondayOf(new Date());
-const wSat=new Date(wMon);wSat.setDate(wSat.getDate()+5);
-const data=await callL2L(‘daily_summary_data_by_line’,{site:L2L.siteId,start:toISODate(wMon)+’ 00:00’,end:toISODate(wSat)+’ 23:59’,limit:500});
-L2LOeeState.data=data?.data||data?.objects||(Array.isArray(data)?data:[]);
-}catch(e){L2LOeeState.error=e.message;}
-L2LOeeState.loading=false;
-const c=document.getElementById(‘l2l-tab-layout’);if(c)_buildL2LTabShell(c);
+  L2LOeeState.loading=true;L2LOeeState.error=null;
+  try{
+    const wMon=_l2lWeekStart||getMondayOf(new Date());
+    const wSat=new Date(wMon);wSat.setDate(wSat.getDate()+5);
+    const data=await callL2L('daily_summary_data_by_line',{site:L2L.siteId,start:toISODate(wMon)+' 00:00',end:toISODate(wSat)+' 23:59',limit:500});
+    L2LOeeState.data=data?.data||data?.objects||(Array.isArray(data)?data:[]);
+  }catch(e){L2LOeeState.error=e.message;}
+  L2LOeeState.loading=false;
+  const c=document.getElementById('l2l-tab-layout');if(c)_buildL2LTabShell(c);
 }
 
 async function l2lFetchMachines(){
-L2LMachinesState.loading=true;L2LMachinesState.error=null;
-const c=document.getElementById(‘l2l-tab-layout’);if(c)_buildL2LTabShell(c);
-try{
-const data=await callL2L(‘machines’,{site:L2L.siteId,active:‘True’,limit:500});
-L2LMachinesState.machines=data?.objects||(Array.isArray(data)?data:[]);
-if(!L2LMachinesState.selectedLine){const f=Object.values(L2L.lineCodes).find(c=>c);L2LMachinesState.selectedLine=f||null;}
-}catch(e){L2LMachinesState.error=e.message;}
-L2LMachinesState.loading=false;
-const c2=document.getElementById(‘l2l-tab-layout’);if(c2)_buildL2LTabShell(c2);
+  L2LMachinesState.loading=true;L2LMachinesState.error=null;
+  const c=document.getElementById('l2l-tab-layout');if(c)_buildL2LTabShell(c);
+  try{
+    const data=await callL2L('machines',{site:L2L.siteId,active:'True',limit:500});
+    L2LMachinesState.machines=data?.objects||(Array.isArray(data)?data:[]);
+    if(!L2LMachinesState.selectedLine){const f=Object.values(L2L.lineCodes).find(c=>c);L2LMachinesState.selectedLine=f||null;}
+  }catch(e){L2LMachinesState.error=e.message;}
+  L2LMachinesState.loading=false;
+  const c2=document.getElementById('l2l-tab-layout');if(c2)_buildL2LTabShell(c2);
 }
 
 async function _loadL2LTabData(force=false){
-if(!L2L.ready)return;
-const wk=toISODate(_l2lWeekStart);
-const needsOEE=force||L2LOeeState.weekStart!==wk||!L2LOeeState.data.length;
-const needsDisp=force||L2LState.fetchedWeek!==wk;
-L2LOeeState.weekStart=wk;
-const p=[];
-if(needsOEE)p.push(l2lRefreshOEE());
-if(needsDisp)p.push(l2lRefreshDispatches());
-if(p.length)await Promise.all(p);
-else{const c=document.getElementById(‘l2l-tab-layout’);if(c)_buildL2LTabShell(c);}
+  if(!L2L.ready)return;
+  const wk=toISODate(_l2lWeekStart);
+  const needsOEE=force||L2LOeeState.weekStart!==wk||!L2LOeeState.data.length;
+  const needsDisp=force||L2LState.fetchedWeek!==wk;
+  L2LOeeState.weekStart=wk;
+  const p=[];
+  if(needsOEE)p.push(l2lRefreshOEE());
+  if(needsDisp)p.push(l2lRefreshDispatches());
+  if(p.length)await Promise.all(p);
+  else{const c=document.getElementById('l2l-tab-layout');if(c)_buildL2LTabShell(c);}
 }
 
 async function renderL2LTab(){initL2L();await _loadL2LTabData(false);}
 
 // ─── DAY SELECTOR ────────────────────────────────────────────
 function _l2lDaySelectorHTML(allDispatches, allOee){
-const weekDays=getWeekDays(_l2lWeekStart);
-const today=toISODate(new Date());
-// Counts per day from dispatches
-const cntByDay={},crByDay={},cyByDay={};
-weekDays.forEach(d=>{cntByDay[d.date]=0;crByDay[d.date]=0;cyByDay[d.date]=0;});
-allDispatches.forEach(d=>{
-const dt=l2lDispDate(d);
-if(dt&&cntByDay[dt]!==undefined){cntByDay[dt]++;const t=l2lTypeClass(d.dispatchtypecode);if(t===‘code-red’)crByDay[dt]++;if(t===‘code-yellow’)cyByDay[dt]++;}
-});
-// OEE per day
-const oeeByDay={};
-weekDays.forEach(d=>{oeeByDay[d.date]=[];});
-allOee.forEach(row=>{
-const dt=l2lOeeDate(row);
-if(dt&&oeeByDay[dt]!==undefined){const v=parseFloat(row.overall_equipment_effectiveness);if(!isNaN(v))oeeByDay[dt].push(v);}
-});
+  const weekDays=getWeekDays(_l2lWeekStart);
+  const today=toISODate(new Date());
+  // Counts per day from dispatches
+  const cntByDay={},crByDay={},cyByDay={};
+  weekDays.forEach(d=>{cntByDay[d.date]=0;crByDay[d.date]=0;cyByDay[d.date]=0;});
+  allDispatches.forEach(d=>{
+    const dt=l2lDispDate(d);
+    if(dt&&cntByDay[dt]!==undefined){cntByDay[dt]++;const t=l2lTypeClass(d.dispatchtypecode);if(t==='code-red')crByDay[dt]++;if(t==='code-yellow')cyByDay[dt]++;}
+  });
+  // OEE per day
+  const oeeByDay={};
+  weekDays.forEach(d=>{oeeByDay[d.date]=[];});
+  allOee.forEach(row=>{
+    const dt=l2lOeeDate(row);
+    if(dt&&oeeByDay[dt]!==undefined){const v=parseFloat(row.overall_equipment_effectiveness);if(!isNaN(v))oeeByDay[dt].push(v);}
+  });
 
-let html=’<div class="l2l-day-selector">’;
+  let html='<div class="l2l-day-selector">';
 
-weekDays.forEach(d=>{
-const isToday=d.date===today,isActive=_l2lSelectedDay===d.date;
-const cr=crByDay[d.date]||0,cy=cyByDay[d.date]||0,cnt=cntByDay[d.date]||0;
-const dayOeeVals=oeeByDay[d.date]||[];
-const dayAvgOEE=dayOeeVals.length?dayOeeVals.reduce((s,v)=>s+v,0)/dayOeeVals.length:null;
-const dayOeeCls=l2lOeeClass(dayAvgOEE);
-html+=’<button class="l2l-day-pill'+(isActive?' active':'')+(isToday?' today':'')+'" onclick="l2lSelectDay(\''+d.date+'\')">’+
-‘<span class="dp-day">’+d.short+’</span>’+
-‘<span class="dp-date">’+d.displayDate+(isToday?’ ◀’:’ ‘)+’</span>’+
-‘<span class="dp-cnt">’+cnt+’ disp</span>’+
-(dayAvgOEE!=null?’<span class="dp-oee '+(isActive?'':dayOeeCls)+'">OEE ‘+dayAvgOEE.toFixed(0)+’%</span>’:’<span class="dp-oee" style="opacity:.4">OEE —</span>’)+
-‘<span class="dp-badges">’+
-(cr?’<span style="background:#dc2626;color:#fff;padding:0 4px;border-radius:2px;font-family:var(--font-mono);font-size:9px">CR ‘+cr+’</span>’:’’)+
-(cy?’<span style="background:#d97706;color:#fff;padding:0 4px;border-radius:2px;font-family:var(--font-mono);font-size:9px">CY ‘+cy+’</span>’:’’)+
-‘</span></button>’;
-});
-return html+’</div>’;
+  weekDays.forEach(d=>{
+    const isToday=d.date===today,isActive=_l2lSelectedDay===d.date;
+    const cr=crByDay[d.date]||0,cy=cyByDay[d.date]||0,cnt=cntByDay[d.date]||0;
+    const dayOeeVals=oeeByDay[d.date]||[];
+    const dayAvgOEE=dayOeeVals.length?dayOeeVals.reduce((s,v)=>s+v,0)/dayOeeVals.length:null;
+    const dayOeeCls=l2lOeeClass(dayAvgOEE);
+    html+='<button class="l2l-day-pill'+(isActive?' active':'')+(isToday?' today':'')+'" onclick="l2lSelectDay(\''+d.date+'\')">'+
+      '<span class="dp-day">'+d.short+'</span>'+
+      '<span class="dp-date">'+d.displayDate+(isToday?' ◀':' ')+'</span>'+
+      '<span class="dp-cnt">'+cnt+' disp</span>'+
+      (dayAvgOEE!=null?'<span class="dp-oee '+(isActive?'':dayOeeCls)+'">OEE '+dayAvgOEE.toFixed(0)+'%</span>':'<span class="dp-oee" style="opacity:.4">OEE —</span>')+
+      '<span class="dp-badges">'+
+      (cr?'<span style="background:#dc2626;color:#fff;padding:0 4px;border-radius:2px;font-family:var(--font-mono);font-size:9px">CR '+cr+'</span>':'')+
+      (cy?'<span style="background:#d97706;color:#fff;padding:0 4px;border-radius:2px;font-family:var(--font-mono);font-size:9px">CY '+cy+'</span>':'')+
+      '</span></button>';
+  });
+  return html+'</div>';
 }
 
 // ─── OEE TABLE HELPER ────────────────────────────────────────
 function _oeeTable(oeeData, label){
-const byLine={};
-oeeData.forEach(row=>{
-const code=row.line||’?’;
-if(!byLine[code])byLine[code]={code,oeeVals:[],downtime:0,actual:0,demand:0};
-const oee=parseFloat(row.overall_equipment_effectiveness);
-if(!isNaN(oee))byLine[code].oeeVals.push(oee);
-byLine[code].downtime+=parseFloat(row.downtime_minutes||0);
-byLine[code].actual+=parseFloat(row.actual||0);
-byLine[code].demand+=parseFloat(row.demand||0);
-});
-const rows=Object.values(byLine).sort((a,b)=>a.code.localeCompare(b.code));
-if(!rows.length) return ‘<div class="l2l-empty">’+(L2LOeeState.loading?‘Loading OEE…’:‘No OEE data for ‘+label+’.’)+’</div>’;
-return ‘<table class="l2l-oee-table"><thead><tr><th>Line</th><th>OEE</th><th>Downtime</th><th>Actual cs</th><th>Planned cs</th></tr></thead><tbody>’+
-rows.map(r=>{
-const avg=r.oeeVals.length?r.oeeVals.reduce((s,v)=>s+v,0)/r.oeeVals.length:null;
-const cls=l2lOeeClass(avg),w=avg!=null?Math.min(100,avg).toFixed(0):0;
-return ‘<tr><td><span class="l2l-oee-line">’+esc(l2lFriendlyLine(r.code))+’</span></td>’+
-‘<td><div class="l2l-oee-val '+cls+'">’+(avg!=null?avg.toFixed(1)+’%’:’—’)+’</div>’+
-‘<div class="l2l-oee-bar"><div class="l2l-oee-fill '+cls+'" style="width:'+w+'%"></div></div></td>’+
-‘<td><span class="l2l-dt-val'+(r.downtime>120?' high':'')+'">’+( r.downtime>0?r.downtime.toFixed(0)+’ min’:’—’)+’</span></td>’+
-‘<td style="font-family:var(--font-mono);font-size:11px">’+(r.actual>0?fmtNumber(Math.round(r.actual)):’—’)+’</td>’+
-‘<td style="font-family:var(--font-mono);font-size:11px">’+(r.demand>0?fmtNumber(Math.round(r.demand)):’—’)+’</td></tr>’;
-}).join(’’)+’</tbody></table>’;
+  const byLine={};
+  oeeData.forEach(row=>{
+    const code=row.line||'?';
+    if(!byLine[code])byLine[code]={code,oeeVals:[],downtime:0,actual:0,demand:0};
+    const oee=parseFloat(row.overall_equipment_effectiveness);
+    if(!isNaN(oee))byLine[code].oeeVals.push(oee);
+    byLine[code].downtime+=parseFloat(row.downtime_minutes||0);
+    byLine[code].actual+=parseFloat(row.actual||0);
+    byLine[code].demand+=parseFloat(row.demand||0);
+  });
+  const rows=Object.values(byLine).sort((a,b)=>a.code.localeCompare(b.code));
+  if(!rows.length) return '<div class="l2l-empty">'+(L2LOeeState.loading?'Loading OEE…':'No OEE data for '+label+'.')+'</div>';
+  return '<table class="l2l-oee-table"><thead><tr><th>Line</th><th>OEE</th><th>Downtime</th><th>Actual cs</th><th>Planned cs</th></tr></thead><tbody>'+
+    rows.map(r=>{
+      const avg=r.oeeVals.length?r.oeeVals.reduce((s,v)=>s+v,0)/r.oeeVals.length:null;
+      const cls=l2lOeeClass(avg),w=avg!=null?Math.min(100,avg).toFixed(0):0;
+      return '<tr><td><span class="l2l-oee-line">'+esc(l2lFriendlyLine(r.code))+'</span></td>'+
+        '<td><div class="l2l-oee-val '+cls+'">'+(avg!=null?avg.toFixed(1)+'%':'—')+'</div>'+
+        '<div class="l2l-oee-bar"><div class="l2l-oee-fill '+cls+'" style="width:'+w+'%"></div></div></td>'+
+        '<td><span class="l2l-dt-val'+(r.downtime>120?' high':'')+'">'+( r.downtime>0?r.downtime.toFixed(0)+' min':'—')+'</span></td>'+
+        '<td style="font-family:var(--font-mono);font-size:11px">'+(r.actual>0?fmtNumber(Math.round(r.actual)):'—')+'</td>'+
+        '<td style="font-family:var(--font-mono);font-size:11px">'+(r.demand>0?fmtNumber(Math.round(r.demand)):'—')+'</td></tr>';
+    }).join('')+'</tbody></table>';
 }
 
 // ─── OEE ALL-WEEK (grouped by day) ───────────────────────────
 function _oeeAllWeekTable(allOee){
-const weekDays=getWeekDays(_l2lWeekStart);
-const today=toISODate(new Date());
-// Group OEE records by day
-const byDay={};
-weekDays.forEach(d=>{byDay[d.date]=[];});
-const undated=[];
-allOee.forEach(row=>{
-const dt=l2lOeeDate(row);
-if(dt&&byDay[dt]!==undefined) byDay[dt].push(row);
-else undated.push(row);
-});
+  const weekDays=getWeekDays(_l2lWeekStart);
+  const today=toISODate(new Date());
+  // Group OEE records by day
+  const byDay={};
+  weekDays.forEach(d=>{byDay[d.date]=[];});
+  const undated=[];
+  allOee.forEach(row=>{
+    const dt=l2lOeeDate(row);
+    if(dt&&byDay[dt]!==undefined) byDay[dt].push(row);
+    else undated.push(row);
+  });
 
-// Check if any day has OEE data
-const hasAnyDayData=weekDays.some(d=>byDay[d.date].length>0);
-if(!hasAnyDayData&&undated.length===0) return ‘<div class="l2l-empty">’+(L2LOeeState.loading?‘Loading OEE…’:‘No OEE data for this week.’)+’</div>’;
+  // Check if any day has OEE data
+  const hasAnyDayData=weekDays.some(d=>byDay[d.date].length>0);
+  if(!hasAnyDayData&&undated.length===0) return '<div class="l2l-empty">'+(L2LOeeState.loading?'Loading OEE…':'No OEE data for this week.')+'</div>';
 
-// If no day breakdown available (all undated), fall back to regular table
-if(!hasAnyDayData&&undated.length>0) return _oeeTable(undated,‘this week’);
+  // If no day breakdown available (all undated), fall back to regular table
+  if(!hasAnyDayData&&undated.length>0) return _oeeTable(undated,'this week');
 
-let html=’<table class="l2l-oee-table"><thead><tr><th>Line</th><th>OEE</th><th>Downtime</th><th>Actual cs</th><th>Planned cs</th></tr></thead><tbody>’;
-weekDays.forEach(day=>{
-const dayData=byDay[day.date]||[];
-const isToday=day.date===today;
-// Day header row
-const dayOeeVals=dayData.map(r=>parseFloat(r.overall_equipment_effectiveness)).filter(v=>!isNaN(v));
-const dayAvg=dayOeeVals.length?dayOeeVals.reduce((s,v)=>s+v,0)/dayOeeVals.length:null;
-const dayCls=l2lOeeClass(dayAvg);
-html+=’<tr class="l2l-oee-day-hdr"><td colspan="5">’+
-day.short+’ ‘+day.displayDate+(isToday?’ ◀ TODAY’:’’)+
-(dayAvg!=null?’<span style="margin-left:12px;font-family:var(--font-head);font-size:13px;color:'+(dayCls==='green'?'#4ade80':dayCls==='amber'?'#fcd34d':'#fca5a5')+'">’+dayAvg.toFixed(1)+’% avg OEE</span>’:’’)+
-‘<span style="font-family:var(--font-mono);font-size:10px;font-weight:400;opacity:.6;margin-left:12px">’+dayData.length+’ line record’+(dayData.length!==1?‘s’:’’)+’</span>’+
-‘</td></tr>’;
-if(!dayData.length){
-html+=’<tr class="l2l-day-empty"><td colspan="5">No OEE records for this day</td></tr>’;
-} else {
-// Build byLine for this day
-const byLine={};
-dayData.forEach(row=>{
-const code=row.line||’?’;
-if(!byLine[code])byLine[code]={code,oeeVals:[],downtime:0,actual:0,demand:0};
-const oee=parseFloat(row.overall_equipment_effectiveness);
-if(!isNaN(oee))byLine[code].oeeVals.push(oee);
-byLine[code].downtime+=parseFloat(row.downtime_minutes||0);
-byLine[code].actual+=parseFloat(row.actual||0);
-byLine[code].demand+=parseFloat(row.demand||0);
-});
-Object.values(byLine).sort((a,b)=>a.code.localeCompare(b.code)).forEach(r=>{
-const avg=r.oeeVals.length?r.oeeVals.reduce((s,v)=>s+v,0)/r.oeeVals.length:null;
-const cls=l2lOeeClass(avg),w=avg!=null?Math.min(100,avg).toFixed(0):0;
-html+=’<tr><td><span class="l2l-oee-line">’+esc(l2lFriendlyLine(r.code))+’</span></td>’+
-‘<td><div class="l2l-oee-val '+cls+'">’+(avg!=null?avg.toFixed(1)+’%’:’—’)+’</div>’+
-‘<div class="l2l-oee-bar"><div class="l2l-oee-fill '+cls+'" style="width:'+w+'%"></div></div></td>’+
-‘<td><span class="l2l-dt-val'+(r.downtime>120?' high':'')+'">’+( r.downtime>0?r.downtime.toFixed(0)+’ min’:’—’)+’</span></td>’+
-‘<td style="font-family:var(--font-mono);font-size:11px">’+(r.actual>0?fmtNumber(Math.round(r.actual)):’—’)+’</td>’+
-‘<td style="font-family:var(--font-mono);font-size:11px">’+(r.demand>0?fmtNumber(Math.round(r.demand)):’—’)+’</td></tr>’;
-});
-}
-});
-return html+’</tbody></table>’;
+  let html='<table class="l2l-oee-table"><thead><tr><th>Line</th><th>OEE</th><th>Downtime</th><th>Actual cs</th><th>Planned cs</th></tr></thead><tbody>';
+  weekDays.forEach(day=>{
+    const dayData=byDay[day.date]||[];
+    const isToday=day.date===today;
+    // Day header row
+    const dayOeeVals=dayData.map(r=>parseFloat(r.overall_equipment_effectiveness)).filter(v=>!isNaN(v));
+    const dayAvg=dayOeeVals.length?dayOeeVals.reduce((s,v)=>s+v,0)/dayOeeVals.length:null;
+    const dayCls=l2lOeeClass(dayAvg);
+    html+='<tr class="l2l-oee-day-hdr"><td colspan="5">'+
+      day.short+' '+day.displayDate+(isToday?' ◀ TODAY':'')+
+      (dayAvg!=null?'<span style="margin-left:12px;font-family:var(--font-head);font-size:13px;color:'+(dayCls==='green'?'#4ade80':dayCls==='amber'?'#fcd34d':'#fca5a5')+'">'+dayAvg.toFixed(1)+'% avg OEE</span>':'')+
+      '<span style="font-family:var(--font-mono);font-size:10px;font-weight:400;opacity:.6;margin-left:12px">'+dayData.length+' line record'+(dayData.length!==1?'s':'')+'</span>'+
+      '</td></tr>';
+    if(!dayData.length){
+      html+='<tr class="l2l-day-empty"><td colspan="5">No OEE records for this day</td></tr>';
+    } else {
+      // Build byLine for this day
+      const byLine={};
+      dayData.forEach(row=>{
+        const code=row.line||'?';
+        if(!byLine[code])byLine[code]={code,oeeVals:[],downtime:0,actual:0,demand:0};
+        const oee=parseFloat(row.overall_equipment_effectiveness);
+        if(!isNaN(oee))byLine[code].oeeVals.push(oee);
+        byLine[code].downtime+=parseFloat(row.downtime_minutes||0);
+        byLine[code].actual+=parseFloat(row.actual||0);
+        byLine[code].demand+=parseFloat(row.demand||0);
+      });
+      Object.values(byLine).sort((a,b)=>a.code.localeCompare(b.code)).forEach(r=>{
+        const avg=r.oeeVals.length?r.oeeVals.reduce((s,v)=>s+v,0)/r.oeeVals.length:null;
+        const cls=l2lOeeClass(avg),w=avg!=null?Math.min(100,avg).toFixed(0):0;
+        html+='<tr><td><span class="l2l-oee-line">'+esc(l2lFriendlyLine(r.code))+'</span></td>'+
+          '<td><div class="l2l-oee-val '+cls+'">'+(avg!=null?avg.toFixed(1)+'%':'—')+'</div>'+
+          '<div class="l2l-oee-bar"><div class="l2l-oee-fill '+cls+'" style="width:'+w+'%"></div></div></td>'+
+          '<td><span class="l2l-dt-val'+(r.downtime>120?' high':'')+'">'+( r.downtime>0?r.downtime.toFixed(0)+' min':'—')+'</span></td>'+
+          '<td style="font-family:var(--font-mono);font-size:11px">'+(r.actual>0?fmtNumber(Math.round(r.actual)):'—')+'</td>'+
+          '<td style="font-family:var(--font-mono);font-size:11px">'+(r.demand>0?fmtNumber(Math.round(r.demand)):'—')+'</td></tr>';
+      });
+    }
+  });
+  return html+'</tbody></table>';
 }
 
 // ─── WO TABLE ────────────────────────────────────────────────
 function _l2lDispRow(d){
-const open=d.open===‘T’,t=l2lTypeClass(d.dispatchtypecode);
-const age=Math.floor((Date.now()-new Date(d.created||Date.now()).getTime())/864e5);
-const overdue=open&&age>7;
-const line=l2lFriendlyLine(d.linecode||d.lineabbreviation||’’);
-const machine=d.machinedescription||d.machinecode||’’;
-const rowCls=t===‘code-red’?‘row-code-red’:t===‘code-yellow’?‘row-code-yellow’:overdue?‘row-overdue’:’’;
-const ageLabel=age===0?‘Today’:age===1?‘1d’:age+‘d’;
-const stsBadge=open?(overdue?’<span class="l2l-meta-badge overdue">⚠ Overdue</span>’:’<span class="l2l-meta-badge open">Open</span>’):’<span class="l2l-meta-badge closed">Done</span>’;
-const woPrefix=t===‘code-red’?‘🔴 ‘:t===‘code-yellow’?‘🟡 ‘:’’;
-return ‘<tr class="'+rowCls+'">’+
-‘<td class="l2l-wo-num">’+woPrefix+’#’+(d.dispatchnumber||d.id)+’</td>’+
-‘<td><span class="l2l-meta-badge '+t+'">’+esc(d.dispatchtypecode||t)+’</span></td>’+
-‘<td style="font-family:var(--font-head);font-weight:700;font-size:13px;color:var(--navy);white-space:nowrap">’+esc(line||’—’)+’</td>’+
-‘<td><div class="l2l-wo-machine">’+esc(machine||’—’)+’</div></td>’+
-‘<td><div class="l2l-wo-desc">’+esc(d.description||’(no description)’)+’</div></td>’+
-‘<td>’+stsBadge+’</td>’+
-‘<td style="font-family:var(--font-mono);font-size:10px;color:var(--muted);white-space:nowrap">’+ageLabel+’</td>’+
-‘<td style="font-family:var(--font-mono);font-size:11px;font-weight:700;color:var(--red);white-space:nowrap">’+(d.downtime?d.downtime+‘m’:’—’)+’</td>’+
-‘</tr>’;
+  const open=d.open==='T',t=l2lTypeClass(d.dispatchtypecode);
+  const age=Math.floor((Date.now()-new Date(d.created||Date.now()).getTime())/864e5);
+  const overdue=open&&age>7;
+  const line=l2lFriendlyLine(d.linecode||d.lineabbreviation||'');
+  const machine=d.machinedescription||d.machinecode||'';
+  const rowCls=t==='code-red'?'row-code-red':t==='code-yellow'?'row-code-yellow':overdue?'row-overdue':'';
+  const ageLabel=age===0?'Today':age===1?'1d':age+'d';
+  const stsBadge=open?(overdue?'<span class="l2l-meta-badge overdue">⚠ Overdue</span>':'<span class="l2l-meta-badge open">Open</span>'):'<span class="l2l-meta-badge closed">Done</span>';
+  const woPrefix=t==='code-red'?'🔴 ':t==='code-yellow'?'🟡 ':'';
+  return '<tr class="'+rowCls+'">'+
+    '<td class="l2l-wo-num">'+woPrefix+'#'+(d.dispatchnumber||d.id)+'</td>'+
+    '<td><span class="l2l-meta-badge '+t+'">'+esc(d.dispatchtypecode||t)+'</span></td>'+
+    '<td style="font-family:var(--font-head);font-weight:700;font-size:13px;color:var(--navy);white-space:nowrap">'+esc(line||'—')+'</td>'+
+    '<td><div class="l2l-wo-machine">'+esc(machine||'—')+'</div></td>'+
+    '<td><div class="l2l-wo-desc">'+esc(d.description||'(no description)')+'</div></td>'+
+    '<td>'+stsBadge+'</td>'+
+    '<td style="font-family:var(--font-mono);font-size:10px;color:var(--muted);white-space:nowrap">'+ageLabel+'</td>'+
+    '<td style="font-family:var(--font-mono);font-size:11px;font-weight:700;color:var(--red);white-space:nowrap">'+(d.downtime?d.downtime+'m':'—')+'</td>'+
+    '</tr>';
 }
 
 function _l2lWoTable(filtered){
-let rows=’’;
-if(_l2lSelectedDay){
-rows=filtered.length?filtered.map(_l2lDispRow).join(’’):’<tr><td colspan="8"><div class="l2l-empty">No dispatches for this day matching the filter.</div></td></tr>’;
-} else {
-const weekDays=getWeekDays(_l2lWeekStart);
-const today=toISODate(new Date());
-const byDay={};weekDays.forEach(d=>{byDay[d.date]=[];});
-filtered.forEach(d=>{const dt=l2lDispDate(d);if(dt&&byDay[dt]!==undefined)byDay[dt].push(d);else if(weekDays.length)byDay[weekDays[0].date].push(d);});
-weekDays.forEach(day=>{
-const dayDisps=(byDay[day.date]||[]).slice().sort((a,b)=>{
-const p=d=>{const t=l2lTypeClass(d.dispatchtypecode);return t===‘code-red’?0:t===‘code-yellow’?1:2;};
-return p(a)-p(b);
-});
-const isToday=day.date===today;
-const crD=dayDisps.filter(d=>l2lTypeClass(d.dispatchtypecode)===‘code-red’).length;
-const cyD=dayDisps.filter(d=>l2lTypeClass(d.dispatchtypecode)===‘code-yellow’).length;
-rows+=’<tr class="l2l-day-hdr-row"><td colspan="8">’+day.short+’ ‘+day.displayDate+(isToday?’ ◀ TODAY’:’’)+
-‘<span style="font-family:var(--font-mono);font-size:10px;font-weight:400;opacity:.65;margin-left:12px">’+dayDisps.length+’ dispatch’+(dayDisps.length!==1?‘es’:’’)+’</span>’+
-(crD?’<span style="margin-left:8px;font-family:var(--font-mono);font-size:9px;background:#dc2626;color:#fff;padding:1px 7px;border-radius:2px">CR ‘+crD+’</span>’:’’)+
-(cyD?’<span style="margin-left:4px;font-family:var(--font-mono);font-size:9px;background:#d97706;color:#fff;padding:1px 7px;border-radius:2px">CY ‘+cyD+’</span>’:’’)+
-‘</td></tr>’;
-if(!dayDisps.length) rows+=’<tr class="l2l-day-empty"><td colspan="8">No dispatches</td></tr>’;
-else rows+=dayDisps.map(_l2lDispRow).join(’’);
-});
-}
-return ‘<div class="l2l-wo-wrap"><table class="l2l-wo-table"><thead><tr>’+
-‘<th>#</th><th>Type</th><th>Line</th><th>Machine</th><th>Description</th><th>Status</th><th>Age</th><th>DT</th>’+
-‘</tr></thead><tbody>’+rows+’</tbody></table></div>’;
+  let rows='';
+  if(_l2lSelectedDay){
+    rows=filtered.length?filtered.map(_l2lDispRow).join(''):'<tr><td colspan="8"><div class="l2l-empty">No dispatches for this day matching the filter.</div></td></tr>';
+  } else {
+    const weekDays=getWeekDays(_l2lWeekStart);
+    const today=toISODate(new Date());
+    const byDay={};weekDays.forEach(d=>{byDay[d.date]=[];});
+    filtered.forEach(d=>{const dt=l2lDispDate(d);if(dt&&byDay[dt]!==undefined)byDay[dt].push(d);else if(weekDays.length)byDay[weekDays[0].date].push(d);});
+    weekDays.forEach(day=>{
+      const dayDisps=(byDay[day.date]||[]).slice().sort((a,b)=>{
+        const p=d=>{const t=l2lTypeClass(d.dispatchtypecode);return t==='code-red'?0:t==='code-yellow'?1:2;};
+        return p(a)-p(b);
+      });
+      const isToday=day.date===today;
+      const crD=dayDisps.filter(d=>l2lTypeClass(d.dispatchtypecode)==='code-red').length;
+      const cyD=dayDisps.filter(d=>l2lTypeClass(d.dispatchtypecode)==='code-yellow').length;
+      rows+='<tr class="l2l-day-hdr-row"><td colspan="8">'+day.short+' '+day.displayDate+(isToday?' ◀ TODAY':'')+
+        '<span style="font-family:var(--font-mono);font-size:10px;font-weight:400;opacity:.65;margin-left:12px">'+dayDisps.length+' dispatch'+(dayDisps.length!==1?'es':'')+'</span>'+
+        (crD?'<span style="margin-left:8px;font-family:var(--font-mono);font-size:9px;background:#dc2626;color:#fff;padding:1px 7px;border-radius:2px">CR '+crD+'</span>':'')+
+        (cyD?'<span style="margin-left:4px;font-family:var(--font-mono);font-size:9px;background:#d97706;color:#fff;padding:1px 7px;border-radius:2px">CY '+cyD+'</span>':'')+
+        '</td></tr>';
+      if(!dayDisps.length) rows+='<tr class="l2l-day-empty"><td colspan="8">No dispatches</td></tr>';
+      else rows+=dayDisps.map(_l2lDispRow).join('');
+    });
+  }
+  return '<div class="l2l-wo-wrap"><table class="l2l-wo-table"><thead><tr>'+
+    '<th>#</th><th>Type</th><th>Line</th><th>Machine</th><th>Description</th><th>Status</th><th>Age</th><th>DT</th>'+
+    '</tr></thead><tbody>'+rows+'</tbody></table></div>';
 }
 
 // ─── OVERVIEW ────────────────────────────────────────────────
 function _renderL2LOverview(dispatches, oeeData, allOee){
-const isOpen=d=>d.open===‘T’;
-const tc=d=>l2lTypeClass(d.dispatchtypecode);
-const ageD=d=>Math.floor((Date.now()-new Date(d.created||Date.now()).getTime())/864e5);
-const openCount=dispatches.filter(d=>isOpen(d)).length;
-const crCount=dispatches.filter(d=>isOpen(d)&&tc(d)===‘code-red’).length;
-const cyCount=dispatches.filter(d=>isOpen(d)&&tc(d)===‘code-yellow’).length;
-const pmCount=dispatches.filter(d=>isOpen(d)&&tc(d)===‘pm’).length;
-const repCount=dispatches.filter(d=>isOpen(d)&&tc(d)===‘repair’).length;
-const woCount=dispatches.filter(d=>isOpen(d)&&tc(d)===‘wo’).length;
-const overdueCount=dispatches.filter(d=>isOpen(d)&&ageD(d)>7).length;
-const closedCount=dispatches.filter(d=>!isOpen(d)).length;
+  const isOpen=d=>d.open==='T';
+  const tc=d=>l2lTypeClass(d.dispatchtypecode);
+  const ageD=d=>Math.floor((Date.now()-new Date(d.created||Date.now()).getTime())/864e5);
+  const openCount=dispatches.filter(d=>isOpen(d)).length;
+  const crCount=dispatches.filter(d=>isOpen(d)&&tc(d)==='code-red').length;
+  const cyCount=dispatches.filter(d=>isOpen(d)&&tc(d)==='code-yellow').length;
+  const pmCount=dispatches.filter(d=>isOpen(d)&&tc(d)==='pm').length;
+  const repCount=dispatches.filter(d=>isOpen(d)&&tc(d)==='repair').length;
+  const woCount=dispatches.filter(d=>isOpen(d)&&tc(d)==='wo').length;
+  const overdueCount=dispatches.filter(d=>isOpen(d)&&ageD(d)>7).length;
+  const closedCount=dispatches.filter(d=>!isOpen(d)).length;
 
-const oeeVals=oeeData.map(r=>parseFloat(r.overall_equipment_effectiveness)).filter(v=>!isNaN(v));
-const avgOEE=oeeVals.length?oeeVals.reduce((s,v)=>s+v,0)/oeeVals.length:null;
-const oeeCls=l2lOeeClass(avgOEE);
+  const oeeVals=oeeData.map(r=>parseFloat(r.overall_equipment_effectiveness)).filter(v=>!isNaN(v));
+  const avgOEE=oeeVals.length?oeeVals.reduce((s,v)=>s+v,0)/oeeVals.length:null;
+  const oeeCls=l2lOeeClass(avgOEE);
 
-const dispFilter=L2LState.dispatchFilter;
-const filtered=dispatches.filter(d=>{
-const open=isOpen(d),t=tc(d),age=ageD(d);
-if(dispFilter===‘open’) return open;
-if(dispFilter===‘code-red’) return open&&t===‘code-red’;
-if(dispFilter===‘code-yellow’) return open&&t===‘code-yellow’;
-if(dispFilter===‘pm’) return open&&t===‘pm’;
-if(dispFilter===‘repair’) return open&&t===‘repair’;
-if(dispFilter===‘wo’) return open&&t===‘wo’;
-if(dispFilter===‘overdue’) return open&&age>7;
-if(dispFilter===‘closed’) return !open;
-return true;
-});
+  const dispFilter=L2LState.dispatchFilter;
+  const filtered=dispatches.filter(d=>{
+    const open=isOpen(d),t=tc(d),age=ageD(d);
+    if(dispFilter==='open') return open;
+    if(dispFilter==='code-red') return open&&t==='code-red';
+    if(dispFilter==='code-yellow') return open&&t==='code-yellow';
+    if(dispFilter==='pm') return open&&t==='pm';
+    if(dispFilter==='repair') return open&&t==='repair';
+    if(dispFilter==='wo') return open&&t==='wo';
+    if(dispFilter==='overdue') return open&&age>7;
+    if(dispFilter==='closed') return !open;
+    return true;
+  });
 
-const mkBtn=(k,label,count,extra)=>{
-const active=dispFilter===k;
-return ‘<button class=“l2l-filter-btn’+(active?’ active’:’’)+’”’+(extra&&!active?’ style=”’+extra+’”’:’’)+
-’ onclick=“L2LState.dispatchFilter='’+k+’';_buildL2LTabShell(document.getElementById('l2l-tab-layout'))”>’+
-label+’ <span class="l2l-count">’+count+’</span></button>’;
-};
-const filterBtns=
-mkBtn(‘all’,‘All’,dispatches.length)+
-mkBtn(‘open’,‘Open’,openCount)+
-mkBtn(‘code-red’,‘🔴 Code Red’,crCount,‘border-color:rgba(185,28,28,.4);color:var(–red)’)+
-mkBtn(‘code-yellow’,‘🟡 Code Yellow’,cyCount,‘border-color:rgba(217,119,6,.4);color:#92400e’)+
-mkBtn(‘repair’,‘Repairs’,repCount)+mkBtn(‘wo’,‘Work Orders’,woCount)+mkBtn(‘pm’,‘PMs’,pmCount)+
-mkBtn(‘overdue’,‘⚠ Overdue’,overdueCount)+mkBtn(‘closed’,‘Completed’,closedCount);
+  const mkBtn=(k,label,count,extra)=>{
+    const active=dispFilter===k;
+    return '<button class="l2l-filter-btn'+(active?' active':'')+'"'+(extra&&!active?' style="'+extra+'"':'')+
+      ' onclick="L2LState.dispatchFilter=\''+k+'\';_buildL2LTabShell(document.getElementById(\'l2l-tab-layout\'))">'+
+      label+' <span class="l2l-count">'+count+'</span></button>';
+  };
+  const filterBtns=
+    mkBtn('all','All',dispatches.length)+
+    mkBtn('open','Open',openCount)+
+    mkBtn('code-red','🔴 Code Red',crCount,'border-color:rgba(185,28,28,.4);color:var(--red)')+
+    mkBtn('code-yellow','🟡 Code Yellow',cyCount,'border-color:rgba(217,119,6,.4);color:#92400e')+
+    mkBtn('repair','Repairs',repCount)+mkBtn('wo','Work Orders',woCount)+mkBtn('pm','PMs',pmCount)+
+    mkBtn('overdue','⚠ Overdue',overdueCount)+mkBtn('closed','Completed',closedCount);
 
-const dayLabel=_l2lSelectedDay?’ — ‘+new Date(_l2lSelectedDay).toLocaleDateString(‘en-US’,{weekday:‘short’,month:‘short’,day:‘numeric’})
-:’ — ’+buildWeekLabel(_l2lWeekStart);
+  const dayLabel=_l2lSelectedDay?' — '+new Date(_l2lSelectedDay).toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})
+    :' — '+buildWeekLabel(_l2lWeekStart);
 
-// OEE section: all-week view groups by day, single-day view shows that day’s lines
-const oeeHtml=_l2lSelectedDay?_oeeTable(oeeData,new Date(_l2lSelectedDay).toLocaleDateString(‘en-US’,{weekday:‘short’,month:‘short’,day:‘numeric’})):_oeeAllWeekTable(allOee);
+  // OEE section: all-week view groups by day, single-day view shows that day's lines
+  const oeeHtml=_l2lSelectedDay?_oeeTable(oeeData,new Date(_l2lSelectedDay).toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})):_oeeAllWeekTable(allOee);
 
-return ‘<div class="l2l-tab-body">’+
-‘<div class="l2l-tab-stats">’+
-‘<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Open</div><div class="l2l-tab-stat-val" style="color:var(--amber)">’+openCount+’</div></div>’+
-‘<div class="l2l-tab-stat" style="border-top:3px solid #dc2626"><div class="l2l-tab-stat-label">🔴 Code Red</div><div class="l2l-tab-stat-val" style="color:#dc2626">’+crCount+’</div></div>’+
-‘<div class="l2l-tab-stat" style="border-top:3px solid #d97706"><div class="l2l-tab-stat-label">🟡 Code Yellow</div><div class="l2l-tab-stat-val" style="color:#d97706">’+cyCount+’</div></div>’+
-‘<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">PMs Open</div><div class="l2l-tab-stat-val" style="color:#7c3aed">’+pmCount+’</div></div>’+
-‘<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Overdue</div><div class="l2l-tab-stat-val" style="color:'+(overdueCount>0?'var(--red)':'var(--green)')+'">’+overdueCount+’</div></div>’+
-‘<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">OEE</div><div class="l2l-tab-stat-val '+oeeCls+'">’+(avgOEE!=null?avgOEE.toFixed(1)+’%’:’—’)+’</div></div>’+
-‘</div>’+
-‘<div class="l2l-section" style="margin-bottom:0">’+
-‘<div class="l2l-section-hdr"><div class="l2l-section-title">📊 OEE & Downtime’+dayLabel+’</div>’+
-(L2LOeeState.error?’<span class="l2l-badge disconnected">Error</span>’:’<span class="l2l-badge '+(oeeVals.length?'connected':'loading')+'">’+(oeeVals.length?oeeVals.length+’ records’:‘Loading…’)+’</span>’)+
-‘</div>’+(L2LOeeState.error?’<div class="l2l-error" style="margin:12px">’+esc(L2LOeeState.error)+’</div>’:’’)+
-‘<div style="overflow-x:auto">’+oeeHtml+’</div></div>’+
-‘<div class="l2l-section">’+
-‘<div class="l2l-section-hdr"><div class="l2l-section-title">⚡ Work Orders & Dispatches’+dayLabel+’</div>’+
-(L2LState.error?’<span class="l2l-badge disconnected">Error</span>’:’<span class="l2l-badge '+(dispatches.length?'connected':'loading')+'">’+(dispatches.length?filtered.length+’ / ‘+dispatches.length+’ total’:‘Loading…’)+’</span>’)+
-‘<button class="l2l-refresh-btn" onclick="l2lRefreshDispatches()" style="margin-left:8px">↻ Refresh</button>’+
-‘</div>’+(L2LState.error?’<div class="l2l-error" style="margin:10px">’+esc(L2LState.error)+’</div>’:’’)+
-‘<div class="l2l-filter-bar" style="flex-wrap:wrap">’+filterBtns+’</div>’+
-_l2lWoTable(filtered)+’</div></div>’;
+  return '<div class="l2l-tab-body">'+
+    '<div class="l2l-tab-stats">'+
+    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Open</div><div class="l2l-tab-stat-val" style="color:var(--amber)">'+openCount+'</div></div>'+
+    '<div class="l2l-tab-stat" style="border-top:3px solid #dc2626"><div class="l2l-tab-stat-label">🔴 Code Red</div><div class="l2l-tab-stat-val" style="color:#dc2626">'+crCount+'</div></div>'+
+    '<div class="l2l-tab-stat" style="border-top:3px solid #d97706"><div class="l2l-tab-stat-label">🟡 Code Yellow</div><div class="l2l-tab-stat-val" style="color:#d97706">'+cyCount+'</div></div>'+
+    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">PMs Open</div><div class="l2l-tab-stat-val" style="color:#7c3aed">'+pmCount+'</div></div>'+
+    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Overdue</div><div class="l2l-tab-stat-val" style="color:'+(overdueCount>0?'var(--red)':'var(--green)')+'">'+overdueCount+'</div></div>'+
+    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">OEE</div><div class="l2l-tab-stat-val '+oeeCls+'">'+(avgOEE!=null?avgOEE.toFixed(1)+'%':'—')+'</div></div>'+
+    '</div>'+
+    '<div class="l2l-section" style="margin-bottom:0">'+
+    '<div class="l2l-section-hdr"><div class="l2l-section-title">📊 OEE &amp; Downtime'+dayLabel+'</div>'+
+    (L2LOeeState.error?'<span class="l2l-badge disconnected">Error</span>':'<span class="l2l-badge '+(oeeVals.length?'connected':'loading')+'">'+(oeeVals.length?oeeVals.length+' records':'Loading…')+'</span>')+
+    '</div>'+(L2LOeeState.error?'<div class="l2l-error" style="margin:12px">'+esc(L2LOeeState.error)+'</div>':'')+
+    '<div style="overflow-x:auto">'+oeeHtml+'</div></div>'+
+    '<div class="l2l-section">'+
+    '<div class="l2l-section-hdr"><div class="l2l-section-title">⚡ Work Orders &amp; Dispatches'+dayLabel+'</div>'+
+    (L2LState.error?'<span class="l2l-badge disconnected">Error</span>':'<span class="l2l-badge '+(dispatches.length?'connected':'loading')+'">'+(dispatches.length?filtered.length+' / '+dispatches.length+' total':'Loading…')+'</span>')+
+    '<button class="l2l-refresh-btn" onclick="l2lRefreshDispatches()" style="margin-left:8px">↻ Refresh</button>'+
+    '</div>'+(L2LState.error?'<div class="l2l-error" style="margin:10px">'+esc(L2LState.error)+'</div>':'')+
+    '<div class="l2l-filter-bar" style="flex-wrap:wrap">'+filterBtns+'</div>'+
+    _l2lWoTable(filtered)+'</div></div>';
 }
 
 // ─── DOWNTIME ────────────────────────────────────────────────
 function _renderL2LDowntime(dispatches){
-const {byLine,events,totalMins}=calcDowntime(dispatches);
-const maxDT=byLine.length?byLine[0][1]:1;
-const barRows=byLine.map(([line,mins])=>{const pct=Math.round(mins/maxDT*100);return’<div class="l2l-dt-bar-row"><div class="l2l-dt-bar-label">’+esc(l2lFriendlyLine(line))+’</div><div class="l2l-dt-bar-track"><div class="l2l-dt-bar-fill" style="width:'+pct+'%"></div></div><div class="l2l-dt-bar-val">’+fmtNumber(mins)+’ min</div></div>’;}).join(’’);
-const eventRows=events.map(d=>{const date=d.reported?new Date(d.reported).toLocaleDateString(‘en-US’,{month:‘short’,day:‘numeric’}):’—’;return’<div class="l2l-dt-event-row"><div class="l2l-dt-event-line">’+esc(l2lFriendlyLine(d.linecode||’—’))+’</div><div class="l2l-dt-event-machine">’+esc(truncate(d.machinedescription||d.machinecode||’—’,14))+’</div><div class="l2l-dt-event-desc">’+esc(truncate(d.description||’—’,60))+’</div><div class="l2l-dt-event-mins">’+fmtNumber(d.downtime)+‘m</div><div class="l2l-dt-event-date">’+date+’</div></div>’;}).join(’’);
-const dayLabel=_l2lSelectedDay?’ — ‘+new Date(_l2lSelectedDay).toLocaleDateString(‘en-US’,{weekday:‘short’,month:‘short’,day:‘numeric’}):’’;
-return’<div class="l2l-tab-body"><div class="l2l-tab-stats">’+
-‘<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Total Downtime</div><div class="l2l-tab-stat-val" style="color:var(--red)">’+fmtNumber(totalMins)+’<span style="font-size:14px;font-weight:400"> min</span></div></div>’+
-‘<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Hours</div><div class="l2l-tab-stat-val" style="color:var(--amber)">’+(totalMins/60).toFixed(1)+’<span style="font-size:14px;font-weight:400"> hrs</span></div></div>’+
-‘<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Events</div><div class="l2l-tab-stat-val">’+events.length+’</div></div>’+
-‘<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Lines Affected</div><div class="l2l-tab-stat-val">’+byLine.length+’</div></div>’+
-‘</div><div class="l2l-tab-split">’+
-‘<div class="l2l-section"><div class="l2l-section-hdr"><div class="l2l-section-title">⏱ By Line’+dayLabel+’</div></div>’+(byLine.length?barRows:’<div class="l2l-empty">No downtime recorded.</div>’)+’</div>’+
-‘<div class="l2l-section"><div class="l2l-section-hdr"><div class="l2l-section-title">Top Events</div><span class="l2l-badge connected">Longest first</span></div>’+(eventRows||’<div class="l2l-empty">No downtime events.</div>’)+’</div>’+
-‘</div></div>’;
+  const {byLine,events,totalMins}=calcDowntime(dispatches);
+  const maxDT=byLine.length?byLine[0][1]:1;
+  const barRows=byLine.map(([line,mins])=>{const pct=Math.round(mins/maxDT*100);return'<div class="l2l-dt-bar-row"><div class="l2l-dt-bar-label">'+esc(l2lFriendlyLine(line))+'</div><div class="l2l-dt-bar-track"><div class="l2l-dt-bar-fill" style="width:'+pct+'%"></div></div><div class="l2l-dt-bar-val">'+fmtNumber(mins)+' min</div></div>';}).join('');
+  const eventRows=events.map(d=>{const date=d.reported?new Date(d.reported).toLocaleDateString('en-US',{month:'short',day:'numeric'}):'—';return'<div class="l2l-dt-event-row"><div class="l2l-dt-event-line">'+esc(l2lFriendlyLine(d.linecode||'—'))+'</div><div class="l2l-dt-event-machine">'+esc(truncate(d.machinedescription||d.machinecode||'—',14))+'</div><div class="l2l-dt-event-desc">'+esc(truncate(d.description||'—',60))+'</div><div class="l2l-dt-event-mins">'+fmtNumber(d.downtime)+'m</div><div class="l2l-dt-event-date">'+date+'</div></div>';}).join('');
+  const dayLabel=_l2lSelectedDay?' — '+new Date(_l2lSelectedDay).toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'}):'';
+  return'<div class="l2l-tab-body"><div class="l2l-tab-stats">'+
+    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Total Downtime</div><div class="l2l-tab-stat-val" style="color:var(--red)">'+fmtNumber(totalMins)+'<span style="font-size:14px;font-weight:400"> min</span></div></div>'+
+    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Hours</div><div class="l2l-tab-stat-val" style="color:var(--amber)">'+(totalMins/60).toFixed(1)+'<span style="font-size:14px;font-weight:400"> hrs</span></div></div>'+
+    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Events</div><div class="l2l-tab-stat-val">'+events.length+'</div></div>'+
+    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Lines Affected</div><div class="l2l-tab-stat-val">'+byLine.length+'</div></div>'+
+    '</div><div class="l2l-tab-split">'+
+    '<div class="l2l-section"><div class="l2l-section-hdr"><div class="l2l-section-title">⏱ By Line'+dayLabel+'</div></div>'+(byLine.length?barRows:'<div class="l2l-empty">No downtime recorded.</div>')+'</div>'+
+    '<div class="l2l-section"><div class="l2l-section-hdr"><div class="l2l-section-title">Top Events</div><span class="l2l-badge connected">Longest first</span></div>'+(eventRows||'<div class="l2l-empty">No downtime events.</div>')+'</div>'+
+    '</div></div>';
 }
 
 // ─── MTTR ────────────────────────────────────────────────────
 function _renderL2LMTTR(dispatches){
-const stats=calcMTTR(dispatches);
-const total=dispatches.filter(d=>d.open===‘F’&&d.reported&&d.completed).length;
-const avg=stats.length?stats.map(s=>s.avg).reduce((s,v)=>s+v,0)/stats.length:null;
-const dayLabel=_l2lSelectedDay?’ — ‘+new Date(_l2lSelectedDay).toLocaleDateString(‘en-US’,{weekday:‘short’,month:‘short’,day:‘numeric’}):’’;
-const rows=stats.map(s=>’<tr><td><span style="font-family:var(--font-head);font-weight:700;font-size:15px;color:var(--navy)">’+esc(l2lFriendlyLine(s.line))+’</span></td>’+
-‘<td><div class="l2l-mttr-val '+mttrClass(s.avg)+'">’+fmtMTTR(s.avg)+’</div><div class="l2l-mttr-sub">’+s.count+’ repair’+(s.count!==1?‘s’:’’)+’</div></td>’+
-‘<td><div class="l2l-mttr-val '+mttrClass(s.max)+'" style="font-size:14px">’+fmtMTTR(s.max)+’</div></td>’+
-‘<td style="font-family:var(--font-mono);font-size:10px;color:var(--muted2)">’+(s.worstMachine?esc(truncate(s.worstMachine.machine,28))+’<br><span style="color:var(--red)">’+fmtMTTR(s.worstMachine.avg)+’ avg</span>’:’—’)+’</td></tr>’).join(’’);
-return’<div class="l2l-tab-body"><div class="l2l-tab-stats">’+
-‘<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Avg MTTR</div><div class="l2l-tab-stat-val '+(avg?mttrClass(avg):'')+'">’+(avg?fmtMTTR(avg):’—’)+’</div></div>’+
-‘<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Repairs Analyzed</div><div class="l2l-tab-stat-val">’+total+’</div></div>’+
-‘<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Lines Tracked</div><div class="l2l-tab-stat-val">’+stats.length+’</div></div>’+
-‘</div><div class="l2l-section"><div class="l2l-section-hdr"><div class="l2l-section-title">🔧 MTTR by Line’+dayLabel+’</div><span class="l2l-badge connected">Reported → Completed</span></div>’+
-‘<div style="font-family:var(--font-mono);font-size:9px;color:var(--muted);padding:7px 14px;letter-spacing:.05em;border-bottom:1px solid var(--border)">🟢 <1hr  🟡 1–4hrs  🔴 >4hrs</div>’+
-(stats.length?’<div style="overflow-x:auto"><table class="l2l-mttr-table"><thead><tr><th>Line</th><th>Avg MTTR</th><th>Worst Case</th><th>Worst Machine</th></tr></thead><tbody>’+rows+’</tbody></table></div>’:’<div class="l2l-empty">No completed repair data.</div>’)+
-‘</div></div>’;
+  const stats=calcMTTR(dispatches);
+  const total=dispatches.filter(d=>d.open==='F'&&d.reported&&d.completed).length;
+  const avg=stats.length?stats.map(s=>s.avg).reduce((s,v)=>s+v,0)/stats.length:null;
+  const dayLabel=_l2lSelectedDay?' — '+new Date(_l2lSelectedDay).toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'}):'';
+  const rows=stats.map(s=>'<tr><td><span style="font-family:var(--font-head);font-weight:700;font-size:15px;color:var(--navy)">'+esc(l2lFriendlyLine(s.line))+'</span></td>'+
+    '<td><div class="l2l-mttr-val '+mttrClass(s.avg)+'">'+fmtMTTR(s.avg)+'</div><div class="l2l-mttr-sub">'+s.count+' repair'+(s.count!==1?'s':'')+'</div></td>'+
+    '<td><div class="l2l-mttr-val '+mttrClass(s.max)+'" style="font-size:14px">'+fmtMTTR(s.max)+'</div></td>'+
+    '<td style="font-family:var(--font-mono);font-size:10px;color:var(--muted2)">'+(s.worstMachine?esc(truncate(s.worstMachine.machine,28))+'<br><span style="color:var(--red)">'+fmtMTTR(s.worstMachine.avg)+' avg</span>':'—')+'</td></tr>').join('');
+  return'<div class="l2l-tab-body"><div class="l2l-tab-stats">'+
+    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Avg MTTR</div><div class="l2l-tab-stat-val '+(avg?mttrClass(avg):'')+'">'+(avg?fmtMTTR(avg):'—')+'</div></div>'+
+    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Repairs Analyzed</div><div class="l2l-tab-stat-val">'+total+'</div></div>'+
+    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Lines Tracked</div><div class="l2l-tab-stat-val">'+stats.length+'</div></div>'+
+    '</div><div class="l2l-section"><div class="l2l-section-hdr"><div class="l2l-section-title">🔧 MTTR by Line'+dayLabel+'</div><span class="l2l-badge connected">Reported → Completed</span></div>'+
+    '<div style="font-family:var(--font-mono);font-size:9px;color:var(--muted);padding:7px 14px;letter-spacing:.05em;border-bottom:1px solid var(--border)">🟢 &lt;1hr  🟡 1–4hrs  🔴 &gt;4hrs</div>'+
+    (stats.length?'<div style="overflow-x:auto"><table class="l2l-mttr-table"><thead><tr><th>Line</th><th>Avg MTTR</th><th>Worst Case</th><th>Worst Machine</th></tr></thead><tbody>'+rows+'</tbody></table></div>':'<div class="l2l-empty">No completed repair data.</div>')+
+    '</div></div>';
 }
 
 // ─── MACHINES ────────────────────────────────────────────────
 function _renderL2LMachines(dispatches){
-const machines=L2LMachinesState.machines;
-if(L2LMachinesState.loading)return’<div class="l2l-tab-body"><div class="l2l-empty">⚙ Loading machines…</div></div>’;
-if(L2LMachinesState.error)return’<div class="l2l-tab-body"><div class="l2l-error" style="margin:16px">’+esc(L2LMachinesState.error)+’</div></div>’;
-if(!machines.length)return’<div class="l2l-tab-body"><div class="l2l-empty">No machines found in L2L.</div></div>’;
-const mapped=Object.entries(L2L.lineCodes).filter(([,v])=>v);
-const selLine=L2LMachinesState.selectedLine||(mapped[0]?.[1]||null);
-const linePills=mapped.map(([ops,l2lCode])=>’<button class="l2l-line-pill'+(selLine===l2lCode?' active':'')+'" onclick="L2LMachinesState.selectedLine=\''+l2lCode+'\';_buildL2LTabShell(document.getElementById(\'l2l-tab-layout\'))">’+ops+’</button>’).join(’’);
-const lineMachines=machines.filter(m=>!selLine||m.linecode===selLine).sort((a,b)=>(b.down_count||0)-(a.down_count||0));
-const dispByMachine={};
-dispatches.forEach(d=>{if(d.machinecode)(dispByMachine[d.machinecode]=dispByMachine[d.machinecode]||[]).push(d);});
-const cards=lineMachines.map(m=>{
-const mD=dispByMachine[m.code]||[],openD=mD.filter(d=>d.open===‘T’).length;
-const isCrit=m.critical&&m.critical!==‘False’&&m.critical!==’’;
-return’<div class="l2l-machine-card'+(isCrit?' critical':openD>0?' has-open':'')+'">’+
-‘<div class="l2l-machine-code">’+esc(m.code)+(isCrit?’ · 🔴 CRITICAL’:’’)+’</div>’+
-‘<div class="l2l-machine-name">’+esc(m.description||m.code)+’</div>’+
-‘<div class="l2l-machine-stats">’+
-‘<div class="l2l-machine-stat"><span style="color:var(--red)">’+(m.down_count||0)+’</span>Stops</div>’+
-‘<div class="l2l-machine-stat"><span style="color:var(--amber)">’+openD+’</span>Open</div>’+
-‘<div class="l2l-machine-stat"><span>’+mD.length+’</span>History</div>’+
-‘</div></div>’;
-}).join(’’);
-return’<div class="l2l-tab-body"><div class="l2l-tab-stats">’+
-‘<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Total Machines</div><div class="l2l-tab-stat-val">’+machines.length+’</div></div>’+
-‘<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">On Line</div><div class="l2l-tab-stat-val">’+lineMachines.length+’</div></div>’+
-‘<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Critical</div><div class="l2l-tab-stat-val" style="color:var(--red)">’+machines.filter(m=>m.critical&&m.critical!==‘False’&&m.critical!==’’).length+’</div></div>’+
-‘</div><div class="l2l-section"><div class="l2l-section-hdr"><div class="l2l-section-title">⚙ Machines by Line</div>’+
-‘<span class="l2l-badge connected">’+machines.length+’ total</span>’+
-‘<button class="l2l-refresh-btn" onclick="L2LMachinesState.machines=[];l2lFetchMachines()" style="margin-left:8px">↻ Refresh</button></div>’+
-‘<div class="l2l-line-selector">’+linePills+’</div>’+
-(lineMachines.length?’<div class="l2l-machine-grid">’+cards+’</div>’:’<div class="l2l-empty">No machines for this line.</div>’)+
-‘</div></div>’;
+  const machines=L2LMachinesState.machines;
+  if(L2LMachinesState.loading)return'<div class="l2l-tab-body"><div class="l2l-empty">⚙ Loading machines…</div></div>';
+  if(L2LMachinesState.error)return'<div class="l2l-tab-body"><div class="l2l-error" style="margin:16px">'+esc(L2LMachinesState.error)+'</div></div>';
+  if(!machines.length)return'<div class="l2l-tab-body"><div class="l2l-empty">No machines found in L2L.</div></div>';
+  const mapped=Object.entries(L2L.lineCodes).filter(([,v])=>v);
+  const selLine=L2LMachinesState.selectedLine||(mapped[0]?.[1]||null);
+  const linePills=mapped.map(([ops,l2lCode])=>'<button class="l2l-line-pill'+(selLine===l2lCode?' active':'')+'" onclick="L2LMachinesState.selectedLine=\''+l2lCode+'\';_buildL2LTabShell(document.getElementById(\'l2l-tab-layout\'))">'+ops+'</button>').join('');
+  const lineMachines=machines.filter(m=>!selLine||m.linecode===selLine).sort((a,b)=>(b.down_count||0)-(a.down_count||0));
+  const dispByMachine={};
+  dispatches.forEach(d=>{if(d.machinecode)(dispByMachine[d.machinecode]=dispByMachine[d.machinecode]||[]).push(d);});
+  const cards=lineMachines.map(m=>{
+    const mD=dispByMachine[m.code]||[],openD=mD.filter(d=>d.open==='T').length;
+    const isCrit=m.critical&&m.critical!=='False'&&m.critical!=='';
+    return'<div class="l2l-machine-card'+(isCrit?' critical':openD>0?' has-open':'')+'">'+
+      '<div class="l2l-machine-code">'+esc(m.code)+(isCrit?' · 🔴 CRITICAL':'')+'</div>'+
+      '<div class="l2l-machine-name">'+esc(m.description||m.code)+'</div>'+
+      '<div class="l2l-machine-stats">'+
+      '<div class="l2l-machine-stat"><span style="color:var(--red)">'+(m.down_count||0)+'</span>Stops</div>'+
+      '<div class="l2l-machine-stat"><span style="color:var(--amber)">'+openD+'</span>Open</div>'+
+      '<div class="l2l-machine-stat"><span>'+mD.length+'</span>History</div>'+
+      '</div></div>';
+  }).join('');
+  return'<div class="l2l-tab-body"><div class="l2l-tab-stats">'+
+    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Total Machines</div><div class="l2l-tab-stat-val">'+machines.length+'</div></div>'+
+    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">On Line</div><div class="l2l-tab-stat-val">'+lineMachines.length+'</div></div>'+
+    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Critical</div><div class="l2l-tab-stat-val" style="color:var(--red)">'+machines.filter(m=>m.critical&&m.critical!=='False'&&m.critical!=='').length+'</div></div>'+
+    '</div><div class="l2l-section"><div class="l2l-section-hdr"><div class="l2l-section-title">⚙ Machines by Line</div>'+
+    '<span class="l2l-badge connected">'+machines.length+' total</span>'+
+    '<button class="l2l-refresh-btn" onclick="L2LMachinesState.machines=[];l2lFetchMachines()" style="margin-left:8px">↻ Refresh</button></div>'+
+    '<div class="l2l-line-selector">'+linePills+'</div>'+
+    (lineMachines.length?'<div class="l2l-machine-grid">'+cards+'</div>':'<div class="l2l-empty">No machines for this line.</div>')+
+    '</div></div>';
 }
 
 // ─── SUBNAV ──────────────────────────────────────────────────
 function _l2lSubNav(){
-const tabs=[{k:‘overview’,icon:‘📊’,label:‘Overview’},{k:‘downtime’,icon:‘⏱’,label:‘Downtime’},{k:‘mttr’,icon:‘🔧’,label:‘MTTR’},{k:‘machines’,icon:‘⚙’,label:‘Machines’}];
-return’<div class="l2l-subnav">’+tabs.map(t=>’<button class="l2l-subnav-btn'+(_l2lSubTab===t.k?' active':'')+'" onclick="switchL2LSubTab(\''+t.k+'\')">’+t.icon+’ ‘+t.label+’</button>’).join(’’)+’</div>’;
+  const tabs=[{k:'overview',icon:'📊',label:'Overview'},{k:'downtime',icon:'⏱',label:'Downtime'},{k:'mttr',icon:'🔧',label:'MTTR'},{k:'machines',icon:'⚙',label:'Machines'}];
+  return'<div class="l2l-subnav">'+tabs.map(t=>'<button class="l2l-subnav-btn'+(_l2lSubTab===t.k?' active':'')+'" onclick="switchL2LSubTab(\''+t.k+'\')">'+t.icon+' '+t.label+'</button>').join('')+'</div>';
 }
 
 // ─── SHELL ───────────────────────────────────────────────────
 function _buildL2LTabShell(container){
-if(!L2L.ready){container.innerHTML=’<div style="padding:40px;text-align:center;font-family:var(--font-mono);font-size:12px;color:var(--muted)">L2L not configured. Go to 🔑 Admin to set up.</div>’;return;}
-const allDispatches=L2LState.dispatches;
-const allOee=L2LOeeState.data;
-const dispatches=_l2lSelectedDay?allDispatches.filter(d=>l2lDispDate(d)===_l2lSelectedDay):allDispatches;
-const oeeData=_l2lSelectedDay?allOee.filter(r=>l2lOeeDate(r)===_l2lSelectedDay):allOee;
+  if(!L2L.ready){container.innerHTML='<div style="padding:40px;text-align:center;font-family:var(--font-mono);font-size:12px;color:var(--muted)">L2L not configured. Go to 🔑 Admin to set up.</div>';return;}
+  const allDispatches=L2LState.dispatches;
+  const allOee=L2LOeeState.data;
+  const dispatches=_l2lSelectedDay?allDispatches.filter(d=>l2lDispDate(d)===_l2lSelectedDay):allDispatches;
+  const oeeData=_l2lSelectedDay?allOee.filter(r=>l2lOeeDate(r)===_l2lSelectedDay):allOee;
 
-const topbar=’<div class="l2l-topbar">’+
-‘<button class="l2l-nav-btn arrow" onclick="l2lNavWeek(-1)">‹</button>’+
-‘<div class="l2l-topbar-label">’+buildWeekLabel(_l2lWeekStart)+’</div>’+
-‘<button class="l2l-nav-btn arrow" onclick="l2lNavWeek(1)">›</button>’+
-‘<button class="l2l-nav-btn" onclick="l2lNavWeek(0)">This Week</button>’+
-‘<span class="l2l-badge connected" style="margin-left:4px">Leading2Lean</span>’+
-‘<button class="l2l-refresh-btn" onclick="_loadL2LTabData(true)" style="margin-left:8px">↻ Refresh All</button>’+
-‘</div>’;
+  const topbar='<div class="l2l-topbar">'+
+    '<button class="l2l-nav-btn arrow" onclick="l2lNavWeek(-1)">‹</button>'+
+    '<div class="l2l-topbar-label">'+buildWeekLabel(_l2lWeekStart)+'</div>'+
+    '<button class="l2l-nav-btn arrow" onclick="l2lNavWeek(1)">›</button>'+
+    '<button class="l2l-nav-btn" onclick="l2lNavWeek(0)">This Week</button>'+
+    '<span class="l2l-badge connected" style="margin-left:4px">Leading2Lean</span>'+
+    '<button class="l2l-refresh-btn" onclick="_loadL2LTabData(true)" style="margin-left:8px">↻ Refresh All</button>'+
+    '</div>';
 
-const daySelector=_l2lDaySelectorHTML(allDispatches,allOee);
-const subnav=_l2lSubNav();
-let body=’’;
-switch(_l2lSubTab){
-case ‘downtime’: body=_renderL2LDowntime(dispatches); break;
-case ‘mttr’:     body=_renderL2LMTTR(dispatches);    break;
-case ‘machines’: body=_renderL2LMachines(allDispatches); break;
-default:         body=_renderL2LOverview(dispatches,oeeData,allOee);
-}
-container.innerHTML=topbar+daySelector+subnav+body;
+  const daySelector=_l2lDaySelectorHTML(allDispatches,allOee);
+  const subnav=_l2lSubNav();
+  let body='';
+  switch(_l2lSubTab){
+    case 'downtime': body=_renderL2LDowntime(dispatches); break;
+    case 'mttr':     body=_renderL2LMTTR(dispatches);    break;
+    case 'machines': body=_renderL2LMachines(allDispatches); break;
+    default:         body=_renderL2LOverview(dispatches,oeeData,allOee);
+  }
+  container.innerHTML=topbar+daySelector+subnav+body;
 }
 
 // ─── PLANNER (from working ops_bridge) ───────────────────────
 function renderPlannerTab(){renderWeekBar();renderScheduleGrid();renderRequestQueue();updateQueueBadge();}
 function renderWeekBar(){
-const{weekStart,weekStatus,loading}=AppState;
-const lbl=document.getElementById(‘week-label’),dt=document.getElementById(‘week-dates’),pill=document.getElementById(‘week-status-pill’),btn=document.getElementById(‘publish-btn’);
-if(!weekStart){if(lbl)lbl.textContent=‘No week loaded’;return;}
-const sat=addDays(weekStart,5),fmt=d=>d.toLocaleDateString(‘en-US’,{month:‘short’,day:‘numeric’,year:‘numeric’});
-if(lbl)lbl.textContent=‘WEEK OF ‘+weekStart.toLocaleDateString(‘en-US’,{month:‘short’,day:‘numeric’}).toUpperCase()+’ – ‘+sat.toLocaleDateString(‘en-US’,{month:‘short’,day:‘numeric’,year:‘numeric’}).toUpperCase();
-if(dt)dt.textContent=fmt(weekStart)+’ — ‘+fmt(sat);
-if(pill){const labels={draft:‘Draft’,published:‘Published’,locked:‘Locked’};pill.textContent=weekStatus?labels[weekStatus]||weekStatus:‘No Week’;pill.className=‘week-status-pill ‘+(weekStatus||‘none’);}
-if(btn){btn.disabled=weekStatus!==‘draft’||!AppState.weekId||loading;btn.textContent=weekStatus===‘published’?‘✓ Published’:weekStatus===‘locked’?‘🔒 Locked’:‘Publish Schedule’;}
+  const{weekStart,weekStatus,loading}=AppState;
+  const lbl=document.getElementById('week-label'),dt=document.getElementById('week-dates'),pill=document.getElementById('week-status-pill'),btn=document.getElementById('publish-btn');
+  if(!weekStart){if(lbl)lbl.textContent='No week loaded';return;}
+  const sat=addDays(weekStart,5),fmt=d=>d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  if(lbl)lbl.textContent='WEEK OF '+weekStart.toLocaleDateString('en-US',{month:'short',day:'numeric'}).toUpperCase()+' – '+sat.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}).toUpperCase();
+  if(dt)dt.textContent=fmt(weekStart)+' — '+fmt(sat);
+  if(pill){const labels={draft:'Draft',published:'Published',locked:'Locked'};pill.textContent=weekStatus?labels[weekStatus]||weekStatus:'No Week';pill.className='week-status-pill '+(weekStatus||'none');}
+  if(btn){btn.disabled=weekStatus!=='draft'||!AppState.weekId||loading;btn.textContent=weekStatus==='published'?'✓ Published':weekStatus==='locked'?'🔒 Locked':'Publish Schedule';}
 }
 function renderScheduleGrid(){
-const wrap=document.getElementById(‘sched-grid-wrap’);if(!wrap)return;
-const{runs,requests,weekStart,loading}=AppState;
-if(loading){wrap.innerHTML=’<div class="loading-state"><div class="spinner"></div> Loading…</div>’;return;}
-const runList=Object.values(runs);
-const cnt=document.getElementById(‘sched-run-count’);if(cnt)cnt.textContent=runList.length+’ run’+(runList.length!==1?‘s’:’’)+’ this week’;
-if(!runList.length){wrap.innerHTML=’<div class="sched-empty"><div class="empty-icon">📅</div><p>No production runs loaded for this week.</p><div class="empty-note">Runs will appear here once the schedule is imported.</div></div>’;return;}
-const grouped={};LINES.forEach(l=>{grouped[l]={};DAY_KEYS.forEach(d=>{grouped[l][d]=[];});});
-runList.forEach(r=>{if(grouped[r.line]&&grouped[r.line][r.day_key]!==undefined)grouped[r.line][r.day_key].push(r);});
-const pmMap={};
-Object.values(requests).forEach(req=>{if(!req.line||!req.proposed_date)return;const dk=dateToDayKey(req.proposed_date,weekStart);if(!dk)return;const k=req.line+’|’+dk;if(!pmMap[k])pmMap[k]=[];pmMap[k].push(req);});
-const today=new Date();today.setHours(0,0,0,0);
-const grid=document.createElement(‘div’);grid.className=‘sched-grid’;
-const corner=document.createElement(‘div’);corner.className=‘sg-corner’;corner.innerHTML=’<span>Line</span>’;grid.appendChild(corner);
-DAY_KEYS.forEach((dk,i)=>{const date=weekStart?addDays(weekStart,i):null,isToday=date&&date.getTime()===today.getTime();const hdr=document.createElement(‘div’);hdr.className=‘sg-day-hdr’+(isToday?’ today’:’’);hdr.innerHTML=’<div class="sg-day-name">’+DAY_LABELS[dk]+’</div><div class="sg-day-date">’+(date?(date.getMonth()+1)+’/’+date.getDate():’’)+’</div>’;grid.appendChild(hdr);});
-LINES.forEach(line=>{
-const lbl=document.createElement(‘div’);lbl.className=‘sg-line-lbl’;lbl.innerHTML=’<span>’+line+’</span>’;grid.appendChild(lbl);
-DAY_KEYS.forEach((dk,i)=>{
-const dayRuns=grouped[line][dk],pms=pmMap[line+’|’+dk]||[],date=weekStart?addDays(weekStart,i):null,isToday=date&&date.getTime()===today.getTime();
-const cell=document.createElement(‘div’);
-if(!dayRuns.length){cell.className=‘sg-cell empty’+(isToday?’ today-col’:’’);cell.innerHTML=’<span class="sg-empty-dash">—</span>’;}
-else{
-cell.className=‘sg-cell has-runs fade-in’+(isToday?’ today-col’:’’);
-const totalCases=dayRuns.reduce((s,r)=>s+(r.cases_needed||0),0),shifts=new Set(dayRuns.map(r=>r.shift).filter(Boolean)),has1=[…shifts].some(s=>s.includes(‘1ST’)),has2=[…shifts].some(s=>s.includes(‘2ND’));
-cell.innerHTML=’<div class="sg-run-count">’+dayRuns.length+’ run’+(dayRuns.length!==1?‘s’:’’)+’</div><div class="sg-cases">’+(totalCases?fmtNum(totalCases)+’ cs’:’—’)+’</div><div class="sg-shift-dots">’+(has1&&has2?’<div class="sg-dot shift-both"></div>’:has1?’<div class="sg-dot shift-1st"></div>’:has2?’<div class="sg-dot shift-2nd"></div>’:’’)+’</div>’;
-}
-if(pms.length){const pendingPMs=pms.filter(p=>p.status===‘pending’),approvedPMs=pms.filter(p=>p.status===‘approved’);const flag=document.createElement(‘div’);flag.className=‘sg-pm-flag ‘+(pendingPMs.length?‘pending’:‘approved’);flag.textContent=‘⚙’;flag.title=pms.length+’ PM request’+(pms.length!==1?‘s’:’’)+’ — ‘+pendingPMs.length+’ pending’;flag.onclick=e=>{e.stopPropagation();setQueueFilter(‘all’);const first=pms[0];setTimeout(()=>{const card=document.querySelector(’.req-card[data-id=”’+first.id+’”]’);if(card)card.scrollIntoView({behavior:‘smooth’,block:‘center’});},50);};cell.appendChild(flag);}
-grid.appendChild(cell);
-});
-});
-wrap.innerHTML=’’;wrap.appendChild(grid);
+  const wrap=document.getElementById('sched-grid-wrap');if(!wrap)return;
+  const{runs,requests,weekStart,loading}=AppState;
+  if(loading){wrap.innerHTML='<div class="loading-state"><div class="spinner"></div> Loading…</div>';return;}
+  const runList=Object.values(runs);
+  const cnt=document.getElementById('sched-run-count');if(cnt)cnt.textContent=runList.length+' run'+(runList.length!==1?'s':'')+' this week';
+  if(!runList.length){wrap.innerHTML='<div class="sched-empty"><div class="empty-icon">📅</div><p>No production runs loaded for this week.</p><div class="empty-note">Runs will appear here once the schedule is imported.</div></div>';return;}
+  const grouped={};LINES.forEach(l=>{grouped[l]={};DAY_KEYS.forEach(d=>{grouped[l][d]=[];});});
+  runList.forEach(r=>{if(grouped[r.line]&&grouped[r.line][r.day_key]!==undefined)grouped[r.line][r.day_key].push(r);});
+  const pmMap={};
+  Object.values(requests).forEach(req=>{if(!req.line||!req.proposed_date)return;const dk=dateToDayKey(req.proposed_date,weekStart);if(!dk)return;const k=req.line+'|'+dk;if(!pmMap[k])pmMap[k]=[];pmMap[k].push(req);});
+  const today=new Date();today.setHours(0,0,0,0);
+  const grid=document.createElement('div');grid.className='sched-grid';
+  const corner=document.createElement('div');corner.className='sg-corner';corner.innerHTML='<span>Line</span>';grid.appendChild(corner);
+  DAY_KEYS.forEach((dk,i)=>{const date=weekStart?addDays(weekStart,i):null,isToday=date&&date.getTime()===today.getTime();const hdr=document.createElement('div');hdr.className='sg-day-hdr'+(isToday?' today':'');hdr.innerHTML='<div class="sg-day-name">'+DAY_LABELS[dk]+'</div><div class="sg-day-date">'+(date?(date.getMonth()+1)+'/'+date.getDate():'')+'</div>';grid.appendChild(hdr);});
+  LINES.forEach(line=>{
+    const lbl=document.createElement('div');lbl.className='sg-line-lbl';lbl.innerHTML='<span>'+line+'</span>';grid.appendChild(lbl);
+    DAY_KEYS.forEach((dk,i)=>{
+      const dayRuns=grouped[line][dk],pms=pmMap[line+'|'+dk]||[],date=weekStart?addDays(weekStart,i):null,isToday=date&&date.getTime()===today.getTime();
+      const cell=document.createElement('div');
+      if(!dayRuns.length){cell.className='sg-cell empty'+(isToday?' today-col':'');cell.innerHTML='<span class="sg-empty-dash">—</span>';}
+      else{
+        cell.className='sg-cell has-runs fade-in'+(isToday?' today-col':'');
+        const totalCases=dayRuns.reduce((s,r)=>s+(r.cases_needed||0),0),shifts=new Set(dayRuns.map(r=>r.shift).filter(Boolean)),has1=[...shifts].some(s=>s.includes('1ST')),has2=[...shifts].some(s=>s.includes('2ND'));
+        cell.innerHTML='<div class="sg-run-count">'+dayRuns.length+' run'+(dayRuns.length!==1?'s':'')+'</div><div class="sg-cases">'+(totalCases?fmtNum(totalCases)+' cs':'—')+'</div><div class="sg-shift-dots">'+(has1&&has2?'<div class="sg-dot shift-both"></div>':has1?'<div class="sg-dot shift-1st"></div>':has2?'<div class="sg-dot shift-2nd"></div>':'')+'</div>';
+      }
+      if(pms.length){const pendingPMs=pms.filter(p=>p.status==='pending'),approvedPMs=pms.filter(p=>p.status==='approved');const flag=document.createElement('div');flag.className='sg-pm-flag '+(pendingPMs.length?'pending':'approved');flag.textContent='⚙';flag.title=pms.length+' PM request'+(pms.length!==1?'s':'')+' — '+pendingPMs.length+' pending';flag.onclick=e=>{e.stopPropagation();setQueueFilter('all');const first=pms[0];setTimeout(()=>{const card=document.querySelector('.req-card[data-id="'+first.id+'"]');if(card)card.scrollIntoView({behavior:'smooth',block:'center'});},50);};cell.appendChild(flag);}
+      grid.appendChild(cell);
+    });
+  });
+  wrap.innerHTML='';wrap.appendChild(grid);
 }
 function renderRequestQueue(){
-const list=document.getElementById(‘request-list’);if(!list)return;
-const{requests,queueFilter,loading}=AppState;
-if(loading){list.innerHTML=’<div class="loading-state"><div class="spinner"></div> Loading…</div>’;return;}
-let items=Object.values(requests);
-if(queueFilter===‘pending’)items=items.filter(r=>r.status===‘pending’);
-else if(queueFilter===‘reviewed’)items=items.filter(r=>r.status!==‘pending’);
-const PW={critical:0,high:1,normal:2,low:3};
-items.sort((a,b)=>{if(a.status===‘pending’&&b.status!==‘pending’)return-1;if(a.status!==‘pending’&&b.status===‘pending’)return 1;const pw=(PW[a.priority]||2)-(PW[b.priority]||2);if(pw!==0)return pw;return new Date(a.proposed_date)-new Date(b.proposed_date);});
-const pendingCount=Object.values(requests).filter(r=>r.status===‘pending’).length;
-const cnt=document.getElementById(‘queue-count’);if(cnt)cnt.textContent=pendingCount+’ pending’;
-if(!items.length){const msg=queueFilter===‘pending’?‘No pending requests.’:queueFilter===‘reviewed’?‘No reviewed requests.’:‘No requests found.’;list.innerHTML=’<div class="queue-empty"><div class="empty-icon">✅</div><p>’+msg+’</p></div>’;return;}
-list.innerHTML=’’;items.forEach(req=>list.appendChild(makeRequestCard(req)));
+  const list=document.getElementById('request-list');if(!list)return;
+  const{requests,queueFilter,loading}=AppState;
+  if(loading){list.innerHTML='<div class="loading-state"><div class="spinner"></div> Loading…</div>';return;}
+  let items=Object.values(requests);
+  if(queueFilter==='pending')items=items.filter(r=>r.status==='pending');
+  else if(queueFilter==='reviewed')items=items.filter(r=>r.status!=='pending');
+  const PW={critical:0,high:1,normal:2,low:3};
+  items.sort((a,b)=>{if(a.status==='pending'&&b.status!=='pending')return-1;if(a.status!=='pending'&&b.status==='pending')return 1;const pw=(PW[a.priority]||2)-(PW[b.priority]||2);if(pw!==0)return pw;return new Date(a.proposed_date)-new Date(b.proposed_date);});
+  const pendingCount=Object.values(requests).filter(r=>r.status==='pending').length;
+  const cnt=document.getElementById('queue-count');if(cnt)cnt.textContent=pendingCount+' pending';
+  if(!items.length){const msg=queueFilter==='pending'?'No pending requests.':queueFilter==='reviewed'?'No reviewed requests.':'No requests found.';list.innerHTML='<div class="queue-empty"><div class="empty-icon">✅</div><p>'+msg+'</p></div>';return;}
+  list.innerHTML='';items.forEach(req=>list.appendChild(makeRequestCard(req)));
 }
 function makeRequestCard(req){
-const isPending=req.status===‘pending’,isDenied=req.status===‘denied’,isApproved=req.status===‘approved’,isDenyOpen=AppState.openDenyPanelId===req.id;
-const card=document.createElement(‘div’);card.className=‘req-card priority-’+(req.priority||‘normal’)+’ fade-in’;card.dataset.id=req.id;
-const hdr=document.createElement(‘div’);hdr.className=‘req-card-hdr’;
-hdr.innerHTML=’<div class="req-card-hdr-left"><div class="req-equip-name">’+esc(req.equipment_name)+’</div><div class="req-type-row"><span class="req-type-badge '+(req.request_type||'')+'">’+((req.request_type||‘PM’).toUpperCase())+’</span><span class="req-status-badge '+(req.status||'')+'">’+(req.status||‘pending’).toUpperCase()+’</span><span class="req-priority-badge '+(req.priority||'')+'">’+(req.priority||’’).toUpperCase()+’</span></div></div>’;
-card.appendChild(hdr);
-const duration=req.duration_minutes?fmtDuration(req.duration_minutes):calcDurationFromTimes(req.proposed_start,req.proposed_end);
-const body=document.createElement(‘div’);body.className=‘req-card-body’;
-body.innerHTML=’<div class="req-meta-item"><div class="req-meta-label">Proposed Date</div><div class="req-meta-val">’+fmtDate(req.proposed_date)+’</div></div><div class="req-meta-item"><div class="req-meta-label">Line</div><div class="req-meta-val">’+(req.line?‘Line ‘+req.line:‘General’)+’</div></div><div class="req-meta-item"><div class="req-meta-label">Time Window</div><div class="req-meta-val mono">’+fmtTime12(req.proposed_start)+’ – ‘+fmtTime12(req.proposed_end)+’</div></div><div class="req-meta-item"><div class="req-meta-label">Duration</div><div class="req-meta-val mono" style="color:var(--amber);font-weight:600">’+(duration||’—’)+’</div></div>’;
-card.appendChild(body);
-if(req.description){const desc=document.createElement(‘div’);desc.className=‘req-desc’;desc.innerHTML=’<div class="req-desc-label">Description</div>’+esc(req.description);card.appendChild(desc);}
-if(isPending){
-const actions=document.createElement(‘div’);actions.className=‘req-actions’;actions.id=‘req-actions-’+req.id;
-const ab=document.createElement(‘button’);ab.className=‘btn-approve’;ab.id=‘approve-btn-’+req.id;ab.innerHTML=‘✓ Approve’;ab.onclick=()=>approveRequest(req.id);
-const db_=document.createElement(‘button’);db_.className=‘btn-deny’+(isDenyOpen?’ active’:’’);db_.id=‘deny-btn-’+req.id;db_.innerHTML=‘✕ Deny’;db_.onclick=()=>toggleDenyPanel(req.id);
-actions.appendChild(ab);actions.appendChild(db_);card.appendChild(actions);
-const dp=document.createElement(‘div’);dp.className=‘deny-panel’+(isDenyOpen?’ open’:’’);dp.id=‘deny-panel-’+req.id;
-dp.innerHTML=’<div class="deny-panel-title">Denial Details</div><div class="dp-field"><label class="dp-label">Reason <span class="req-mark">*</span></label><textarea class="dp-textarea" id="deny-reason-'+req.id+'" placeholder="Explain why this cannot be accommodated…"></textarea></div><div class="dp-field"><label class="dp-label">Suggested Alternate Date <span class="req-mark">*</span></label><input type="date" class="dp-input" id="deny-alt-date-'+req.id+'"></div><div class="dp-field"><label class="dp-label">Alternate Time <span style="color:var(--muted);margin-left:4px">(optional)</span></label><div class="dp-row"><input type="time" class="dp-input" id="deny-alt-start-'+req.id+'"><input type="time" class="dp-input" id="deny-alt-end-'+req.id+'"></div></div><button class="btn-confirm-deny" onclick="submitDenial(\''+req.id+'\')">Confirm Denial</button>’;
-card.appendChild(dp);
-}
-if(isApproved){const b=document.createElement(‘div’);b.className=‘req-reviewed-banner approved’;b.innerHTML=‘✓ Approved · ‘+fmtDatetime(req.reviewed_at);card.appendChild(b);}
-if(isDenied){
-const b=document.createElement(‘div’);b.className=‘req-reviewed-banner denied’;b.innerHTML=‘✕ Denied · ‘+fmtDatetime(req.reviewed_at);card.appendChild(b);
-if(req.denial_reason){const r=document.createElement(‘div’);r.className=‘denial-reason-display’;r.innerHTML=’<div class="drd-label">Denial Reason</div><div class="drd-text">’+esc(req.denial_reason)+’</div>’;card.appendChild(r);}
-if(req.alternate_date){const a=document.createElement(‘div’);a.className=‘alt-date-display’;a.textContent=’📅 Suggested alternate: ’+fmtDate(req.alternate_date);card.appendChild(a);}
-}
-return card;
+  const isPending=req.status==='pending',isDenied=req.status==='denied',isApproved=req.status==='approved',isDenyOpen=AppState.openDenyPanelId===req.id;
+  const card=document.createElement('div');card.className='req-card priority-'+(req.priority||'normal')+' fade-in';card.dataset.id=req.id;
+  const hdr=document.createElement('div');hdr.className='req-card-hdr';
+  hdr.innerHTML='<div class="req-card-hdr-left"><div class="req-equip-name">'+esc(req.equipment_name)+'</div><div class="req-type-row"><span class="req-type-badge '+(req.request_type||'')+'">'+((req.request_type||'PM').toUpperCase())+'</span><span class="req-status-badge '+(req.status||'')+'">'+(req.status||'pending').toUpperCase()+'</span><span class="req-priority-badge '+(req.priority||'')+'">'+(req.priority||'').toUpperCase()+'</span></div></div>';
+  card.appendChild(hdr);
+  const duration=req.duration_minutes?fmtDuration(req.duration_minutes):calcDurationFromTimes(req.proposed_start,req.proposed_end);
+  const body=document.createElement('div');body.className='req-card-body';
+  body.innerHTML='<div class="req-meta-item"><div class="req-meta-label">Proposed Date</div><div class="req-meta-val">'+fmtDate(req.proposed_date)+'</div></div><div class="req-meta-item"><div class="req-meta-label">Line</div><div class="req-meta-val">'+(req.line?'Line '+req.line:'General')+'</div></div><div class="req-meta-item"><div class="req-meta-label">Time Window</div><div class="req-meta-val mono">'+fmtTime12(req.proposed_start)+' – '+fmtTime12(req.proposed_end)+'</div></div><div class="req-meta-item"><div class="req-meta-label">Duration</div><div class="req-meta-val mono" style="color:var(--amber);font-weight:600">'+(duration||'—')+'</div></div>';
+  card.appendChild(body);
+  if(req.description){const desc=document.createElement('div');desc.className='req-desc';desc.innerHTML='<div class="req-desc-label">Description</div>'+esc(req.description);card.appendChild(desc);}
+  if(isPending){
+    const actions=document.createElement('div');actions.className='req-actions';actions.id='req-actions-'+req.id;
+    const ab=document.createElement('button');ab.className='btn-approve';ab.id='approve-btn-'+req.id;ab.innerHTML='✓ Approve';ab.onclick=()=>approveRequest(req.id);
+    const db_=document.createElement('button');db_.className='btn-deny'+(isDenyOpen?' active':'');db_.id='deny-btn-'+req.id;db_.innerHTML='✕ Deny';db_.onclick=()=>toggleDenyPanel(req.id);
+    actions.appendChild(ab);actions.appendChild(db_);card.appendChild(actions);
+    const dp=document.createElement('div');dp.className='deny-panel'+(isDenyOpen?' open':'');dp.id='deny-panel-'+req.id;
+    dp.innerHTML='<div class="deny-panel-title">Denial Details</div><div class="dp-field"><label class="dp-label">Reason <span class="req-mark">*</span></label><textarea class="dp-textarea" id="deny-reason-'+req.id+'" placeholder="Explain why this cannot be accommodated…"></textarea></div><div class="dp-field"><label class="dp-label">Suggested Alternate Date <span class="req-mark">*</span></label><input type="date" class="dp-input" id="deny-alt-date-'+req.id+'"></div><div class="dp-field"><label class="dp-label">Alternate Time <span style="color:var(--muted);margin-left:4px">(optional)</span></label><div class="dp-row"><input type="time" class="dp-input" id="deny-alt-start-'+req.id+'"><input type="time" class="dp-input" id="deny-alt-end-'+req.id+'"></div></div><button class="btn-confirm-deny" onclick="submitDenial(\''+req.id+'\')">Confirm Denial</button>';
+    card.appendChild(dp);
+  }
+  if(isApproved){const b=document.createElement('div');b.className='req-reviewed-banner approved';b.innerHTML='✓ Approved · '+fmtDatetime(req.reviewed_at);card.appendChild(b);}
+  if(isDenied){
+    const b=document.createElement('div');b.className='req-reviewed-banner denied';b.innerHTML='✕ Denied · '+fmtDatetime(req.reviewed_at);card.appendChild(b);
+    if(req.denial_reason){const r=document.createElement('div');r.className='denial-reason-display';r.innerHTML='<div class="drd-label">Denial Reason</div><div class="drd-text">'+esc(req.denial_reason)+'</div>';card.appendChild(r);}
+    if(req.alternate_date){const a=document.createElement('div');a.className='alt-date-display';a.textContent='📅 Suggested alternate: '+fmtDate(req.alternate_date);card.appendChild(a);}
+  }
+  return card;
 }
 
 async function bootstrapData(){
-if(!db)return;
-try{
-const monday=getMondayOfWeek(new Date());
-const[weekRes,requestsRes,notifsRes]=await Promise.all([
-db.from(T.WEEKS).select(’*’).lte(‘week_start’,toISODate(monday)).order(‘week_start’,{ascending:false}).limit(1),
-db.from(T.REQUESTS).select(’*’).gte(‘proposed_date’,toISODate(addDays(new Date(),-90))).order(‘proposed_date’,{ascending:false}),
-db.from(T.NOTIFS).select(’*’).eq(‘recipient’,‘planner’).order(‘created_at’,{ascending:false}).limit(50),
-]);
-if(weekRes.error)throw new Error(’Weeks: ’+weekRes.error.message);
-if(requestsRes.error)throw new Error(’Requests: ‘+requestsRes.error.message);
-let weekId=null,weekStart=null,weekStatus=null;
-if(weekRes.data?.length){weekId=weekRes.data[0].id;weekStart=new Date(weekRes.data[0].week_start+‘T00:00:00’);weekStatus=weekRes.data[0].status;}
-else weekStart=monday;
-let runs={};
-if(weekId){const r=await db.from(T.RUNS).select(’*’).eq(‘week_id’,weekId).order(‘seq’,{ascending:true});if(r.error)throw new Error(’Runs: ’+r.error.message);runs=Object.fromEntries((r.data||[]).map(r=>[r.id,r]));}
-const requests=Object.fromEntries((requestsRes.data||[]).map(r=>[r.id,r]));
-const notifications=notifsRes.data||[];
-patchState({weekId,weekStart,weekStatus,runs,requests,notifications,unreadCount:notifications.filter(n=>!n.read).length,loading:false});
-updateNotifBadge();hideConnBar();
-}catch(e){console.error(e);showConnError(‘Could not load data: ‘+e.message);patchState({loading:false});}
+  if(!db)return;
+  try{
+    const monday=getMondayOfWeek(new Date());
+    const[weekRes,requestsRes,notifsRes]=await Promise.all([
+      db.from(T.WEEKS).select('*').lte('week_start',toISODate(monday)).order('week_start',{ascending:false}).limit(1),
+      db.from(T.REQUESTS).select('*').gte('proposed_date',toISODate(addDays(new Date(),-90))).order('proposed_date',{ascending:false}),
+      db.from(T.NOTIFS).select('*').eq('recipient','planner').order('created_at',{ascending:false}).limit(50),
+    ]);
+    if(weekRes.error)throw new Error('Weeks: '+weekRes.error.message);
+    if(requestsRes.error)throw new Error('Requests: '+requestsRes.error.message);
+    let weekId=null,weekStart=null,weekStatus=null;
+    if(weekRes.data?.length){weekId=weekRes.data[0].id;weekStart=new Date(weekRes.data[0].week_start+'T00:00:00');weekStatus=weekRes.data[0].status;}
+    else weekStart=monday;
+    let runs={};
+    if(weekId){const r=await db.from(T.RUNS).select('*').eq('week_id',weekId).order('seq',{ascending:true});if(r.error)throw new Error('Runs: '+r.error.message);runs=Object.fromEntries((r.data||[]).map(r=>[r.id,r]));}
+    const requests=Object.fromEntries((requestsRes.data||[]).map(r=>[r.id,r]));
+    const notifications=notifsRes.data||[];
+    patchState({weekId,weekStart,weekStatus,runs,requests,notifications,unreadCount:notifications.filter(n=>!n.read).length,loading:false});
+    updateNotifBadge();hideConnBar();
+  }catch(e){console.error(e);showConnError('Could not load data: '+e.message);patchState({loading:false});}
 }
 function subscribeRealtime(){
-if(!db)return;if(realtimeChannel)realtimeChannel.unsubscribe();
-realtimeChannel=db.channel(‘mapp’).on(‘postgres_changes’,{event:’*’,schema:‘public’,table:T.REQUESTS},p=>{
-if(p.eventType===‘DELETE’){const u={…AppState.requests};delete u[p.old.id];patchState({requests:u});}
-else patchState({requests:{…AppState.requests,[p.new.id]:p.new}});updateQueueBadge();
-}).on(‘postgres_changes’,{event:‘INSERT’,schema:‘public’,table:T.NOTIFS},p=>{
-if(p.new.recipient===‘planner’)patchState({notifications:[p.new,…AppState.notifications],unreadCount:AppState.unreadCount+1},false);updateNotifBadge();
-}).subscribe();
+  if(!db)return;if(realtimeChannel)realtimeChannel.unsubscribe();
+  realtimeChannel=db.channel('mapp').on('postgres_changes',{event:'*',schema:'public',table:T.REQUESTS},p=>{
+    if(p.eventType==='DELETE'){const u={...AppState.requests};delete u[p.old.id];patchState({requests:u});}
+    else patchState({requests:{...AppState.requests,[p.new.id]:p.new}});updateQueueBadge();
+  }).on('postgres_changes',{event:'INSERT',schema:'public',table:T.NOTIFS},p=>{
+    if(p.new.recipient==='planner')patchState({notifications:[p.new,...AppState.notifications],unreadCount:AppState.unreadCount+1},false);updateNotifBadge();
+  }).subscribe();
 }
 
 async function approveRequest(requestId){
-if(!db){toast(‘No database connection.’,‘error’);return;}
-try{
-const{data,error}=await db.from(T.REQUESTS).update({status:‘approved’,reviewed_at:new Date().toISOString(),reviewed_by:‘planner’}).eq(‘id’,requestId).select().single();
-if(error)throw error;
-patchState({requests:{…AppState.requests,[requestId]:data},openDenyPanelId:AppState.openDenyPanelId===requestId?null:AppState.openDenyPanelId});
-await db.from(T.NOTIFS).insert({request_id:requestId,recipient:‘maintenance’,event_type:‘approved’,message:‘Your request for “’+data.equipment_name+’” on ‘+fmtDate(data.proposed_date)+’ was approved.’});
-updateQueueBadge();toast(’✓ Approved: ’+data.equipment_name,‘success’);
-}catch(e){toast(‘Error: ‘+e.message,‘error’);}
+  if(!db){toast('No database connection.','error');return;}
+  try{
+    const{data,error}=await db.from(T.REQUESTS).update({status:'approved',reviewed_at:new Date().toISOString(),reviewed_by:'planner'}).eq('id',requestId).select().single();
+    if(error)throw error;
+    patchState({requests:{...AppState.requests,[requestId]:data},openDenyPanelId:AppState.openDenyPanelId===requestId?null:AppState.openDenyPanelId});
+    await db.from(T.NOTIFS).insert({request_id:requestId,recipient:'maintenance',event_type:'approved',message:'Your request for "'+data.equipment_name+'" on '+fmtDate(data.proposed_date)+' was approved.'});
+    updateQueueBadge();toast('✓ Approved: '+data.equipment_name,'success');
+  }catch(e){toast('Error: '+e.message,'error');}
 }
 function toggleDenyPanel(id){patchState({openDenyPanelId:AppState.openDenyPanelId===id?null:id});}
 async function submitDenial(requestId){
-if(!db){toast(‘No database connection.’,‘error’);return;}
-const reason=document.getElementById(‘deny-reason-’+requestId)?.value?.trim();
-const altDate=document.getElementById(‘deny-alt-date-’+requestId)?.value;
-const altStart=document.getElementById(‘deny-alt-start-’+requestId)?.value||null;
-const altEnd=document.getElementById(‘deny-alt-end-’+requestId)?.value||null;
-if(!reason||reason.length<5){toast(‘Please provide a reason (min 5 chars).’,‘warning’);return;}
-if(!altDate){toast(‘An alternate date is required.’,‘warning’);return;}
-try{
-const{data,error}=await db.from(T.REQUESTS).update({status:‘denied’,reviewed_at:new Date().toISOString(),reviewed_by:‘planner’,denial_reason:reason,alternate_date:altDate,…(altStart&&altEnd?{alternate_start:altStart,alternate_end:altEnd}:{alternate_start:null,alternate_end:null})}).eq(‘id’,requestId).select().single();
-if(error)throw error;
-patchState({requests:{…AppState.requests,[requestId]:data},openDenyPanelId:null});
-await db.from(T.NOTIFS).insert({request_id:requestId,recipient:‘maintenance’,event_type:‘denied’,message:‘Your request for “’+data.equipment_name+’” was denied. Reason: ‘+reason+’. Suggested alternate: ‘+fmtDate(altDate)+’.’});
-updateQueueBadge();toast(‘Request denied — alternate date recorded.’,‘info’);
-}catch(e){toast(‘Error: ‘+e.message,‘error’);}
+  if(!db){toast('No database connection.','error');return;}
+  const reason=document.getElementById('deny-reason-'+requestId)?.value?.trim();
+  const altDate=document.getElementById('deny-alt-date-'+requestId)?.value;
+  const altStart=document.getElementById('deny-alt-start-'+requestId)?.value||null;
+  const altEnd=document.getElementById('deny-alt-end-'+requestId)?.value||null;
+  if(!reason||reason.length<5){toast('Please provide a reason (min 5 chars).','warning');return;}
+  if(!altDate){toast('An alternate date is required.','warning');return;}
+  try{
+    const{data,error}=await db.from(T.REQUESTS).update({status:'denied',reviewed_at:new Date().toISOString(),reviewed_by:'planner',denial_reason:reason,alternate_date:altDate,...(altStart&&altEnd?{alternate_start:altStart,alternate_end:altEnd}:{alternate_start:null,alternate_end:null})}).eq('id',requestId).select().single();
+    if(error)throw error;
+    patchState({requests:{...AppState.requests,[requestId]:data},openDenyPanelId:null});
+    await db.from(T.NOTIFS).insert({request_id:requestId,recipient:'maintenance',event_type:'denied',message:'Your request for "'+data.equipment_name+'" was denied. Reason: '+reason+'. Suggested alternate: '+fmtDate(altDate)+'.'});
+    updateQueueBadge();toast('Request denied — alternate date recorded.','info');
+  }catch(e){toast('Error: '+e.message,'error');}
 }
 async function publishWeek(){
-if(!db||!AppState.weekId)return;
-try{const{error}=await db.from(T.WEEKS).update({status:‘published’,published_at:new Date().toISOString()}).eq(‘id’,AppState.weekId);if(error)throw error;patchState({weekStatus:‘published’});toast(‘Schedule published.’,‘success’);}
-catch(e){toast(‘Error: ‘+e.message,‘error’);}
+  if(!db||!AppState.weekId)return;
+  try{const{error}=await db.from(T.WEEKS).update({status:'published',published_at:new Date().toISOString()}).eq('id',AppState.weekId);if(error)throw error;patchState({weekStatus:'published'});toast('Schedule published.','success');}
+  catch(e){toast('Error: '+e.message,'error');}
 }
 async function navigateWeek(dir){
-if(!AppState.weekStart)return;
-const ns=addDays(AppState.weekStart,dir*7);
-patchState({loading:true,runs:{},weekId:null,weekStart:ns,weekStatus:null});
-if(!db)return;
-try{
-const wr=await db.from(T.WEEKS).select(’*’).eq(‘week_start’,toISODate(ns)).maybeSingle();
-if(wr.error)throw wr.error;
-let runs={},weekId=null,weekStatus=null;
-if(wr.data){weekId=wr.data.id;weekStatus=wr.data.status;const rr=await db.from(T.RUNS).select(’*’).eq(‘week_id’,weekId).order(‘seq’);if(rr.error)throw rr.error;runs=Object.fromEntries((rr.data||[]).map(r=>[r.id,r]));}
-patchState({weekId,weekStatus,runs,loading:false});
-}catch(e){toast(‘Error: ‘+e.message,‘error’);patchState({loading:false});}
+  if(!AppState.weekStart)return;
+  const ns=addDays(AppState.weekStart,dir*7);
+  patchState({loading:true,runs:{},weekId:null,weekStart:ns,weekStatus:null});
+  if(!db)return;
+  try{
+    const wr=await db.from(T.WEEKS).select('*').eq('week_start',toISODate(ns)).maybeSingle();
+    if(wr.error)throw wr.error;
+    let runs={},weekId=null,weekStatus=null;
+    if(wr.data){weekId=wr.data.id;weekStatus=wr.data.status;const rr=await db.from(T.RUNS).select('*').eq('week_id',weekId).order('seq');if(rr.error)throw rr.error;runs=Object.fromEntries((rr.data||[]).map(r=>[r.id,r]));}
+    patchState({weekId,weekStatus,runs,loading:false});
+  }catch(e){toast('Error: '+e.message,'error');patchState({loading:false});}
 }
-function setQueueFilter(f){document.querySelectorAll(’.qf-btn’).forEach(b=>b.classList.toggle(‘active’,b.dataset.filter===f));patchState({queueFilter:f});}
-function updateQueueBadge(){const p=Object.values(AppState.requests).filter(r=>r.status===‘pending’).length;const tb=document.getElementById(‘tab-badge-planner’),qb=document.getElementById(‘qf-pending-badge’);if(tb){tb.textContent=p;tb.classList.toggle(‘show’,p>0);}if(qb)qb.textContent=p;}
-function updateNotifBadge(){const b=document.getElementById(‘notif-badge’);if(b){b.textContent=AppState.unreadCount;b.classList.toggle(‘show’,AppState.unreadCount>0);}}
-function handleNotifBell(){if(!db||!AppState.unreadCount)return;db.from(T.NOTIFS).update({read:true}).eq(‘recipient’,‘planner’).eq(‘read’,false).then(()=>{patchState({unreadCount:0},false);updateNotifBadge();});}
+function setQueueFilter(f){document.querySelectorAll('.qf-btn').forEach(b=>b.classList.toggle('active',b.dataset.filter===f));patchState({queueFilter:f});}
+function updateQueueBadge(){const p=Object.values(AppState.requests).filter(r=>r.status==='pending').length;const tb=document.getElementById('tab-badge-planner'),qb=document.getElementById('qf-pending-badge');if(tb){tb.textContent=p;tb.classList.toggle('show',p>0);}if(qb)qb.textContent=p;}
+function updateNotifBadge(){const b=document.getElementById('notif-badge');if(b){b.textContent=AppState.unreadCount;b.classList.toggle('show',AppState.unreadCount>0);}}
+function handleNotifBell(){if(!db||!AppState.unreadCount)return;db.from(T.NOTIFS).update({read:true}).eq('recipient','planner').eq('read',false).then(()=>{patchState({unreadCount:0},false);updateNotifBadge();});}
 
 // ─── UTILITIES ────────────────────────────────────────────────
-function toast(msg,type=‘info’){const c=document.getElementById(‘toast-container’);const el=document.createElement(‘div’);el.className=‘toast ‘+type;const icons={success:‘✓’,error:‘✕’,info:‘ℹ’,warning:‘⚠’};el.innerHTML=’<span>’+(icons[type]||’’)+’</span><span>’+msg+’</span>’;c.appendChild(el);setTimeout(()=>{el.style.animation=‘toastOut .2s ease forwards’;setTimeout(()=>el.remove(),220);},3400);}
+function toast(msg,type='info'){const c=document.getElementById('toast-container');const el=document.createElement('div');el.className='toast '+type;const icons={success:'✓',error:'✕',info:'ℹ',warning:'⚠'};el.innerHTML='<span>'+(icons[type]||'')+'</span><span>'+msg+'</span>';c.appendChild(el);setTimeout(()=>{el.style.animation='toastOut .2s ease forwards';setTimeout(()=>el.remove(),220);},3400);}
 function getMondayOfWeek(d){const dt=new Date(d);dt.setHours(0,0,0,0);const day=dt.getDay();dt.setDate(dt.getDate()+(day===0?-6:1-day));return dt;}
 function addDays(d,n){const dt=new Date(d);dt.setDate(dt.getDate()+n);return dt;}
-function fmtDate(s){if(!s)return’—’;const d=new Date(s.includes(‘T’)?s:s+‘T00:00:00’);return d.toLocaleDateString(‘en-US’,{month:‘short’,day:‘numeric’,year:‘numeric’});}
-function fmtDatetime(s){if(!s)return’—’;const d=new Date(s);return d.toLocaleDateString(‘en-US’,{month:‘short’,day:‘numeric’})+’ ‘+d.toLocaleTimeString(‘en-US’,{hour:‘numeric’,minute:‘2-digit’});}
-function fmtTime12(t){if(!t)return’—’;const[h,m]=t.split(’:’).map(Number);return(h%12||12)+’:’+String(m).padStart(2,‘0’)+(h>=12?’ PM’:’ AM’);}
-function fmtNum(n){if(n==null)return’—’;return Number(n).toLocaleString(‘en-US’);}
-function fmtDuration(m){if(!m)return null;const h=Math.floor(m/60),mn=m%60;if(h===0)return mn+’ min’;if(mn===0)return h+’ hr’;return h+’ hr ‘+mn+’ min’;}
-function calcDurationFromTimes(s,e){if(!s||!e)return null;const[sh,sm]=s.split(’:’).map(Number),[eh,em]=e.split(’:’).map(Number),mins=(eh*60+em)-(sh*60+sm);return mins>0?fmtDuration(mins):null;}
-function dateToDayKey(isoDate,weekStart){if(!isoDate||!weekStart)return null;const d=new Date(isoDate+‘T00:00:00’),ws=new Date(weekStart);ws.setHours(0,0,0,0);const diff=Math.round((d-ws)/86400000);return DAY_KEYS[diff]||null;}
+function fmtDate(s){if(!s)return'—';const d=new Date(s.includes('T')?s:s+'T00:00:00');return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}
+function fmtDatetime(s){if(!s)return'—';const d=new Date(s);return d.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' '+d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});}
+function fmtTime12(t){if(!t)return'—';const[h,m]=t.split(':').map(Number);return(h%12||12)+':'+String(m).padStart(2,'0')+(h>=12?' PM':' AM');}
+function fmtNum(n){if(n==null)return'—';return Number(n).toLocaleString('en-US');}
+function fmtDuration(m){if(!m)return null;const h=Math.floor(m/60),mn=m%60;if(h===0)return mn+' min';if(mn===0)return h+' hr';return h+' hr '+mn+' min';}
+function calcDurationFromTimes(s,e){if(!s||!e)return null;const[sh,sm]=s.split(':').map(Number),[eh,em]=e.split(':').map(Number),mins=(eh*60+em)-(sh*60+sm);return mins>0?fmtDuration(mins):null;}
+function dateToDayKey(isoDate,weekStart){if(!isoDate||!weekStart)return null;const d=new Date(isoDate+'T00:00:00'),ws=new Date(weekStart);ws.setHours(0,0,0,0);const diff=Math.round((d-ws)/86400000);return DAY_KEYS[diff]||null;}
 
 // ─── BOOT ────────────────────────────────────────────────────
 initL2L();
 initSupabase();
 </script>
-
 </body>
 </html>
