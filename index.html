@@ -556,7 +556,7 @@ function initL2L(){
 
 async function callL2L(endpoint,params={}) {
   const qs=new URLSearchParams(params).toString();
-  const url=L2L_EDGE_FN+'?endpoint='+encodeURIComponent(endpoint)+(qs?'&'+qs:'');
+  const url=L2L_EDGE_FN+'?resource='+encodeURIComponent(endpoint)+(qs?'&'+qs:'');
   const session=db?(await db.auth.getSession()).data.session:null;
   const token=session?.access_token||SUPABASE_ANON;
   const hdrs={'Content-Type':'application/json','apikey':SUPABASE_ANON,'Authorization':'Bearer '+token};
@@ -684,7 +684,7 @@ async function l2lRefreshOEE(){
   try{
     const wMon=_l2lWeekStart||getMondayOf(new Date());
     const wSat=new Date(wMon);wSat.setDate(wSat.getDate()+5);
-    const data=await callL2L('daily_summary_data_by_line',{site:L2L.siteId,limit:500});
+    const data=await callL2L('pitchdetails',{site:L2L.siteId,limit:500});
     L2LOeeState.data=data?.data||data?.objects||(Array.isArray(data)?data:[]);
   }catch(e){L2LOeeState.error=e.message;}
   L2LOeeState.loading=false;
