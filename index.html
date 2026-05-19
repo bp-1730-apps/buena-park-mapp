@@ -664,37 +664,28 @@ function calcMTTR(dispatches){
 // ─── L2L FETCH ───────────────────────────────────────────────
 async function l2lRefreshDispatches(){
   L2LState.loading=true;L2LState.error=null;
-  toast('⚡ Fetching dispatches…','info');
   try{
-    const wMon=_l2lWeekStart||getMondayOf(new Date());
-    const wEnd=new Date(wMon);wEnd.setDate(wEnd.getDate()+6);
-    const data=await callL2L('dispatches',{site:L2L.siteId,limit:500,order_by:'created'});
+    const data=await callL2L('dispatches',{site:L2L.siteId,limit:500,order_by:'-created'});
     const recs=data?.data||data?.objects||(Array.isArray(data)?data:null);
     if(recs){
-      toast('Raw recs: '+recs.length+' | keys: '+Object.keys(data).slice(0,6).join(','),'info');
-      const monMs=wMon.getTime(),endMs=wEnd.getTime()+864e5;
-      const sample=recs[0];
-      if(sample) toast('Sample fields: '+Object.keys(sample).slice(0,8).join(','),'info');
-      L2LState.dispatches=recs.filter(d=>{const ts=d.reported||d.created;if(!ts)return true;const t=new Date(ts).getTime();return t>=monMs&&t<endMs;});
-      L2LState.lastFetchTime=Date.now();L2LState.fetchedWeek=toISODate(wMon);
-      toast('After filter: '+L2LState.dispatches.length+' / '+recs.length+' records','success');
-    }else if(data?.error){L2LState.error=data.error;toast('Dispatch error: '+data.error,'error');}
-    else{toast('Shape: '+JSON.stringify(Object.keys(data||{})),'warning');}
-  }catch(e){L2LState.error=e.message;toast('Dispatch fail: '+e.message.slice(0,80),'error');}
+      L2LState.dispatches=recs;
+      L2LState.lastFetchTime=Date.now();
+      L2LState.fetchedWeek=toISODate(_l2lWeekStart||getMondayOf(new Date()));
+    }else if(data?.error)L2LState.error=data.error;
+  }catch(e){L2LState.error=e.message;}
   L2LState.loading=false;
   const c=document.getElementById('l2l-tab-layout');if(c)_buildL2LTabShell(c);
 }
 
 async function l2lRefreshOEE(){
   L2LOeeState.loading=true;L2LOeeState.error=null;
-  toast('📊 Fetching OEE…','info');
   try{
     const wMon=_l2lWeekStart||getMondayOf(new Date());
     const wSat=new Date(wMon);wSat.setDate(wSat.getDate()+5);
-    const data=await callL2L('pitchdetails',{site:L2L.siteId,limit:500});
+    const data=await callL2L('pitchdetails',{site:L2L.siteId,limit:500,
+      start:toISODate(wMon),end:toISODate(wSat)});
     L2LOeeState.data=data?.data||data?.objects||(Array.isArray(data)?data:[]);
-    toast('OEE: '+L2LOeeState.data.length+' records','success');
-  }catch(e){L2LOeeState.error=e.message;toast('OEE fail: '+e.message.slice(0,80),'error');}
+  }catch(e){L2LOeeState.error=e.message;}
   L2LOeeState.loading=false;
   const c=document.getElementById('l2l-tab-layout');if(c)_buildL2LTabShell(c);
 }
