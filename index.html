@@ -602,6 +602,12 @@ function l2lSelectDay(dateStr){
   const c=document.getElementById('l2l-tab-layout');
   if(c)_buildL2LTabShell(c);
 }
+function toggleOeeDay(ds){
+  const key=ds.replace(/-/g,'');
+  document.querySelectorAll('.oee-day-'+key).forEach(r=>{r.style.display=r.style.display==='none'?'':'none';});
+  const hdr=document.querySelector('.oee-dhdr-'+key);
+  if(hdr){hdr.classList.toggle('collapsed');const ch=hdr.querySelector('.oee-chevron');if(ch)ch.textContent=hdr.classList.contains('collapsed')?'▶':'▼';}
+}
 
 // ─── L2L HELPERS ─────────────────────────────────────────────
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
@@ -804,17 +810,20 @@ function _oeeAllWeekTable(allOee){
   weekDays.forEach(day=>{
     const dayData=byDay[day.date]||[];
     const isToday=day.date===today;
+    const key=day.date.replace(/-/g,'');
+    const startCollapsed=!isToday;
     // Day header row
     const dayOeeVals=dayData.map(r=>parseFloat(r.overall_equipment_effectiveness)).filter(v=>!isNaN(v));
     const dayAvg=dayOeeVals.length?dayOeeVals.reduce((s,v)=>s+v,0)/dayOeeVals.length:null;
     const dayCls=l2lOeeClass(dayAvg);
-    html+='<tr class="l2l-oee-day-hdr"><td colspan="5">'+
+    html+='<tr class="l2l-oee-day-hdr oee-dhdr-'+key+(startCollapsed?' collapsed':'')+'" onclick="toggleOeeDay(\''+day.date+'\')" style="cursor:pointer">'+
+      '<td colspan="5"><span class="oee-chevron" style="margin-right:8px;font-size:10px">'+(startCollapsed?'▶':'▼')+'</span>'+
       day.short+' '+day.displayDate+(isToday?' ◀ TODAY':'')+
       (dayAvg!=null?'<span style="margin-left:12px;font-family:var(--font-head);font-size:13px;color:'+(dayCls==='green'?'#4ade80':dayCls==='amber'?'#fcd34d':'#fca5a5')+'">'+dayAvg.toFixed(1)+'% avg OEE</span>':'')+
       '<span style="font-family:var(--font-mono);font-size:10px;font-weight:400;opacity:.6;margin-left:12px">'+dayData.length+' line record'+(dayData.length!==1?'s':'')+'</span>'+
       '</td></tr>';
     if(!dayData.length){
-      html+='<tr class="l2l-day-empty"><td colspan="5">No OEE records for this day</td></tr>';
+      html+='<tr class="l2l-day-empty oee-day-'+key+'" style="'+(startCollapsed?'display:none':'')+'"><td colspan="5">No OEE records for this day</td></tr>';
     } else {
       // Build byLine for this day
       const byLine={};
@@ -830,7 +839,8 @@ function _oeeAllWeekTable(allOee){
       Object.values(byLine).sort((a,b)=>a.code.localeCompare(b.code)).forEach(r=>{
         const avg=r.oeeVals.length?r.oeeVals.reduce((s,v)=>s+v,0)/r.oeeVals.length:null;
         const cls=l2lOeeClass(avg),w=avg!=null?Math.min(100,avg).toFixed(0):0;
-        html+='<tr><td><span class="l2l-oee-line">'+esc(l2lFriendlyLine(r.code))+'</span></td>'+
+        html+='<tr class="oee-day-'+key+'" style="'+(startCollapsed?'display:none':'')+'">'+
+          '<td><span class="l2l-oee-line">'+esc(l2lFriendlyLine(r.code))+'</span></td>'+
           '<td><div class="l2l-oee-val '+cls+'">'+(avg!=null?avg.toFixed(1)+'%':'—')+'</div>'+
           '<div class="l2l-oee-bar"><div class="l2l-oee-fill '+cls+'" style="width:'+w+'%"></div></div></td>'+
           '<td><span class="l2l-dt-val'+(r.downtime>120?' high':'')+'">'+( r.downtime>0?r.downtime.toFixed(0)+' min':'—')+'</span></td>'+
