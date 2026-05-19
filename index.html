@@ -558,8 +558,8 @@ async function callL2L(endpoint,params={}) {
   const qs=new URLSearchParams(params).toString();
   const url=L2L_EDGE_FN+'?endpoint='+encodeURIComponent(endpoint)+(qs?'&'+qs:'');
   const session=db?(await db.auth.getSession()).data.session:null;
-  const hdrs={'Content-Type':'application/json'};
-  if(session?.access_token) hdrs['Authorization']='Bearer '+session.access_token;
+  const token=session?.access_token||SUPABASE_ANON;
+  const hdrs={'Content-Type':'application/json','apikey':SUPABASE_ANON,'Authorization':'Bearer '+token};
   const res=await fetch(url,{headers:hdrs});
   if(!res.ok) throw new Error('L2L proxy '+res.status+': '+await res.text());
   return res.json();
