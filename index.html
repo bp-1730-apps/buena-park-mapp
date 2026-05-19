@@ -684,8 +684,11 @@ async function l2lRefreshOEE(){
     const wSat=new Date(wMon);wSat.setDate(wSat.getDate()+5);
     const data=await callL2L('pitchdetails',{site:L2L.siteId,limit:500,
       start:toISODate(wMon),end:toISODate(wSat)});
-    L2LOeeState.data=data?.data||data?.objects||(Array.isArray(data)?data:[]);
-  }catch(e){L2LOeeState.error=e.message;}
+    const recs=data?.data||data?.objects||(Array.isArray(data)?data:[]);
+    toast('OEE keys:'+Object.keys(data||{}).slice(0,6).join(','),'info');
+    toast('OEE raw:'+recs.length+(recs[0]?' fields:'+Object.keys(recs[0]).slice(0,6).join(','):''),'info');
+    L2LOeeState.data=recs;
+  }catch(e){L2LOeeState.error=e.message;toast('OEE fail:'+e.message.slice(0,80),'error');}
   L2LOeeState.loading=false;
   const c=document.getElementById('l2l-tab-layout');if(c)_buildL2LTabShell(c);
 }
