@@ -667,7 +667,7 @@ async function l2lRefreshDispatches(){
   try{
     const wMon=_l2lWeekStart||getMondayOf(new Date());
     const wEnd=new Date(wMon);wEnd.setDate(wEnd.getDate()+6);
-    const data=await callL2L('dispatches',{site:L2L.siteId,limit:500,order_by:'created',start:toISODate(wMon)+' 00:00',end:toISODate(wEnd)+' 23:59'});
+    const data=await callL2L('dispatches',{site:L2L.siteId,limit:500,order_by:'created'});
     const recs=data?.data||data?.objects||(Array.isArray(data)?data:null);
     if(recs){
       const monMs=wMon.getTime(),endMs=wEnd.getTime()+864e5;
@@ -684,7 +684,7 @@ async function l2lRefreshOEE(){
   try{
     const wMon=_l2lWeekStart||getMondayOf(new Date());
     const wSat=new Date(wMon);wSat.setDate(wSat.getDate()+5);
-    const data=await callL2L('daily_summary_data_by_line',{site:L2L.siteId,start:toISODate(wMon)+' 00:00',end:toISODate(wSat)+' 23:59',limit:500});
+    const data=await callL2L('daily_summary_data_by_line',{site:L2L.siteId,limit:500});
     L2LOeeState.data=data?.data||data?.objects||(Array.isArray(data)?data:[]);
   }catch(e){L2LOeeState.error=e.message;}
   L2LOeeState.loading=false;
