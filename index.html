@@ -716,7 +716,27 @@ async function _loadL2LTabData(force=false){
   else{const c=document.getElementById('l2l-tab-layout');if(c)_buildL2LTabShell(c);}
 }
 
-async function renderL2LTab(){initL2L();await _loadL2LTabData(false);}
+async function renderL2LTab(){
+  initL2L();
+  // Immediately show the chrome so the user sees structure, not a blank loading message
+  const c=document.getElementById('l2l-tab-layout');
+  if(c&&L2L.ready){
+    const loadingBody='<div class="l2l-tab-body"><div class="l2l-tab-stats">'+
+      '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Open</div><div class="l2l-tab-stat-val" style="color:var(--muted)">—</div></div>'.repeat(4)+'</div>'+
+      '<div class="l2l-section"><div class="l2l-section-hdr"><div class="l2l-section-title">📊 OEE &amp; Downtime</div><span class="l2l-badge loading">Fetching…</span></div>'+
+      '<div style="padding:24px;text-align:center;font-family:var(--font-mono);font-size:11px;color:var(--muted)"><div class="spinner" style="margin:0 auto 10px"></div>Connecting to L2L…</div></div>'+
+      '<div class="l2l-section"><div class="l2l-section-hdr"><div class="l2l-section-title">⚡ Work Orders</div><span class="l2l-badge loading">Fetching…</span></div>'+
+      '<div style="padding:24px;text-align:center;font-family:var(--font-mono);font-size:11px;color:var(--muted)">Loading dispatches…</div></div></div>';
+    const topbar='<div class="l2l-topbar">'+
+      '<button class="l2l-nav-btn arrow" onclick="l2lNavWeek(-1)">‹</button>'+
+      '<div class="l2l-topbar-label">'+buildWeekLabel(_l2lWeekStart)+'</div>'+
+      '<button class="l2l-nav-btn arrow" onclick="l2lNavWeek(1)">›</button>'+
+      '<button class="l2l-nav-btn" onclick="l2lNavWeek(0)">This Week</button>'+
+      '<span class="l2l-badge connected" style="margin-left:4px">Leading2Lean</span></div>';
+    c.innerHTML=topbar+_l2lSubNav()+loadingBody;
+  }
+  await _loadL2LTabData(false);
+}
 
 // ─── DAY SELECTOR ────────────────────────────────────────────
 function _l2lDaySelectorHTML(allDispatches, allOee){
@@ -1064,30 +1084,39 @@ function _l2lSubNav(){
 // ─── SHELL ───────────────────────────────────────────────────
 function _buildL2LTabShell(container){
   if(!L2L.ready){container.innerHTML='<div style="padding:40px;text-align:center;font-family:var(--font-mono);font-size:12px;color:var(--muted)">L2L not configured. Go to 🔑 Admin to set up.</div>';return;}
-  const allDispatches=L2LState.dispatches;
-  const allOee=L2LOeeState.data;
-  const dispatches=_l2lSelectedDay?allDispatches.filter(d=>l2lDispDate(d)===_l2lSelectedDay):allDispatches;
-  const oeeData=_l2lSelectedDay?allOee.filter(r=>l2lOeeDate(r)===_l2lSelectedDay):allOee;
+  try{
+    const allDispatches=L2LState.dispatches||[];
+    const allOee=L2LOeeState.data||[];
+    const dispatches=_l2lSelectedDay?allDispatches.filter(d=>l2lDispDate(d)===_l2lSelectedDay):allDispatches;
+    const oeeData=_l2lSelectedDay?allOee.filter(r=>l2lOeeDate(r)===_l2lSelectedDay):allOee;
 
-  const topbar='<div class="l2l-topbar">'+
-    '<button class="l2l-nav-btn arrow" onclick="l2lNavWeek(-1)">‹</button>'+
-    '<div class="l2l-topbar-label">'+buildWeekLabel(_l2lWeekStart)+'</div>'+
-    '<button class="l2l-nav-btn arrow" onclick="l2lNavWeek(1)">›</button>'+
-    '<button class="l2l-nav-btn" onclick="l2lNavWeek(0)">This Week</button>'+
-    '<span class="l2l-badge connected" style="margin-left:4px">Leading2Lean</span>'+
-    '<button class="l2l-refresh-btn" onclick="_loadL2LTabData(true)" style="margin-left:8px">↻ Refresh All</button>'+
-    '</div>';
+    const topbar='<div class="l2l-topbar">'+
+      '<button class="l2l-nav-btn arrow" onclick="l2lNavWeek(-1)">‹</button>'+
+      '<div class="l2l-topbar-label">'+buildWeekLabel(_l2lWeekStart)+'</div>'+
+      '<button class="l2l-nav-btn arrow" onclick="l2lNavWeek(1)">›</button>'+
+      '<button class="l2l-nav-btn" onclick="l2lNavWeek(0)">This Week</button>'+
+      '<span class="l2l-badge connected" style="margin-left:4px">Leading2Lean</span>'+
+      '<button class="l2l-refresh-btn" onclick="_loadL2LTabData(true)" style="margin-left:8px">↻ Refresh All</button>'+
+      '</div>';
 
-  const daySelector=_l2lDaySelectorHTML(allDispatches,allOee);
-  const subnav=_l2lSubNav();
-  let body='';
-  switch(_l2lSubTab){
-    case 'downtime': body=_renderL2LDowntime(dispatches); break;
-    case 'mttr':     body=_renderL2LMTTR(dispatches);    break;
-    case 'machines': body=_renderL2LMachines(allDispatches); break;
-    default:         body=_renderL2LOverview(dispatches,oeeData,allOee);
+    const daySelector=_l2lDaySelectorHTML(allDispatches,allOee);
+    const subnav=_l2lSubNav();
+    let body='';
+    switch(_l2lSubTab){
+      case 'downtime': body=_renderL2LDowntime(dispatches); break;
+      case 'mttr':     body=_renderL2LMTTR(dispatches);    break;
+      case 'machines': body=_renderL2LMachines(allDispatches); break;
+      default:         body=_renderL2LOverview(dispatches,oeeData,allOee);
+    }
+    container.innerHTML=topbar+daySelector+subnav+body;
+  }catch(err){
+    container.innerHTML='<div style="padding:32px;font-family:var(--font-mono);font-size:12px">'+
+      '<div style="color:var(--red);font-weight:700;margin-bottom:8px">⚠ Render error</div>'+
+      '<div style="color:var(--muted);white-space:pre-wrap">'+String(err)+'</div>'+
+      '<button onclick="_loadL2LTabData(true)" style="margin-top:16px;background:var(--navy);color:#fff;border:none;padding:8px 18px;border-radius:3px;font-family:var(--font-mono);font-size:11px;cursor:pointer">↻ Retry</button>'+
+      '</div>';
+    console.error('[L2L] _buildL2LTabShell crashed:', err);
   }
-  container.innerHTML=topbar+daySelector+subnav+body;
 }
 
 // ─── PLANNER (from working ops_bridge) ───────────────────────
