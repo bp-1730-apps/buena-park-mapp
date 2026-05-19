@@ -671,12 +671,15 @@ async function l2lRefreshDispatches(){
     const data=await callL2L('dispatches',{site:L2L.siteId,limit:500,order_by:'created'});
     const recs=data?.data||data?.objects||(Array.isArray(data)?data:null);
     if(recs){
+      toast('Raw recs: '+recs.length+' | keys: '+Object.keys(data).slice(0,6).join(','),'info');
       const monMs=wMon.getTime(),endMs=wEnd.getTime()+864e5;
+      const sample=recs[0];
+      if(sample) toast('Sample fields: '+Object.keys(sample).slice(0,8).join(','),'info');
       L2LState.dispatches=recs.filter(d=>{const ts=d.reported||d.created;if(!ts)return true;const t=new Date(ts).getTime();return t>=monMs&&t<endMs;});
       L2LState.lastFetchTime=Date.now();L2LState.fetchedWeek=toISODate(wMon);
-      toast('Dispatches: '+L2LState.dispatches.length+' records','success');
+      toast('After filter: '+L2LState.dispatches.length+' / '+recs.length+' records','success');
     }else if(data?.error){L2LState.error=data.error;toast('Dispatch error: '+data.error,'error');}
-    else{toast('Dispatches: unexpected response shape','warning');}
+    else{toast('Shape: '+JSON.stringify(Object.keys(data||{})),'warning');}
   }catch(e){L2LState.error=e.message;toast('Dispatch fail: '+e.message.slice(0,80),'error');}
   L2LState.loading=false;
   const c=document.getElementById('l2l-tab-layout');if(c)_buildL2LTabShell(c);
