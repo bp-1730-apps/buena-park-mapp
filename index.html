@@ -430,6 +430,36 @@ header{background:linear-gradient(90deg,#0d1b2e,#1e3a6e 55%,#0d1b2e);border-bott
         <button onclick="saveL2LConfig()" style="background:var(--navy);color:#fff;border:none;padding:9px 20px;font-family:var(--font-head);font-weight:700;font-size:13px;border-radius:3px;cursor:pointer">Save L2L Config</button>
         <span id="l2l-save-msg" style="font-family:var(--font-mono);font-size:11px;color:var(--green);margin-left:12px;display:none">Saved!</span>
       </div>
+      <div style="background:#fff;border:1px solid var(--border2);border-radius:4px;padding:20px;margin-bottom:16px">
+        <h3 style="font-family:var(--font-head);font-size:16px;font-weight:700;margin:0 0 4px;color:var(--navy)">🔬 L2L Raw API Explorer</h3>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-bottom:14px">Fire raw calls to the L2L proxy and inspect the response</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+          <div>
+            <label style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:block;margin-bottom:4px">Endpoint</label>
+            <select id="api-exp-endpoint" style="width:100%;padding:8px;border:1px solid var(--border2);border-radius:3px;font-family:var(--font-mono);font-size:12px;background:#fff">
+              <option>dispatches</option>
+              <option>pitchdetails</option>
+              <option>downtime</option>
+              <option>lines</option>
+              <option>areas</option>
+              <option>machines</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:block;margin-bottom:4px">Limit</label>
+            <input id="api-exp-limit" type="number" value="5" min="1" max="500" style="width:100%;padding:8px;border:1px solid var(--border2);border-radius:3px;font-family:var(--font-mono);font-size:12px">
+          </div>
+        </div>
+        <div style="margin-bottom:12px">
+          <label style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:block;margin-bottom:4px">Extra Params <span style="opacity:.6">(one per line: key=value)</span></label>
+          <textarea id="api-exp-params" rows="4" placeholder="site=2&#10;line=1&#10;start=2026-05-18&#10;end=2026-05-24" style="width:100%;padding:8px;border:1px solid var(--border2);border-radius:3px;font-family:var(--font-mono);font-size:12px;resize:vertical"></textarea>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+          <button onclick="fireApiExplorer()" style="background:var(--navy);color:#fff;border:none;padding:9px 22px;font-family:var(--font-head);font-weight:700;font-size:13px;border-radius:3px;cursor:pointer">▶ Fire</button>
+          <span id="api-exp-status" style="font-family:var(--font-mono);font-size:11px;color:var(--muted)"></span>
+        </div>
+        <div id="api-exp-result" style="background:var(--card);border:1px solid var(--border);border-radius:3px;padding:12px;font-family:var(--font-mono);font-size:11px;white-space:pre-wrap;overflow:auto;max-height:420px;color:var(--text);display:none"></div>
+      </div>
       <div style="background:#fff;border:1px solid var(--border2);border-radius:4px;padding:20px">
         <h3 style="font-family:var(--font-head);font-size:16px;font-weight:700;margin:0 0 8px;color:var(--navy)">Session</h3>
         <div style="font-family:var(--font-mono);font-size:12px;color:var(--muted2);margin-bottom:12px" id="admin-user-info">—</div>
@@ -527,6 +557,34 @@ function switchTab(tab) {
 
 // ─── ADMIN ────────────────────────────────────────────────────
 const LINES_MAPP=['2A','2E','2F','MP4','PL1','PL2','PXM6'];
+async function fireApiExplorer(){
+  const endpoint=document.getElementById('api-exp-endpoint').value;
+  const limit=document.getElementById('api-exp-limit').value||5;
+  const rawParams=document.getElementById('api-exp-params').value.trim();
+  const status=document.getElementById('api-exp-status');
+  const result=document.getElementById('api-exp-result');
+  status.textContent='Firing…';result.style.display='none';
+  const params={site:L2L.siteId||'2',limit};
+  rawParams.split('\n').forEach(line=>{
+    const [k,...v]=line.trim().split('=');
+    if(k&&v.length)params[k.trim()]=v.join('=').trim();
+  });
+  const t0=Date.now();
+  try{
+    const data=await callL2L(endpoint,params);
+    const elapsed=Date.now()-t0;
+    const recs=data?.data||data?.objects||(Array.isArray(data)?data:null);
+    status.textContent=(recs?recs.length+' records':'')+' — '+elapsed+'ms';
+    status.style.color='var(--green)';
+    result.style.display='block';
+    result.textContent=JSON.stringify(data,null,2);
+  }catch(e){
+    status.textContent='Error: '+e.message;
+    status.style.color='var(--red)';
+    result.style.display='block';
+    result.textContent=e.message;
+  }
+}
 function renderAdminTab(){
   const g=document.getElementById('l2l-line-mappings');
   if(!g) return;
