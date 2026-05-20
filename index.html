@@ -233,6 +233,7 @@ header{background:linear-gradient(90deg,#0d1b2e,#1e3a6e 55%,#0d1b2e);border-bott
 .l2l-tab-stat{flex:1;min-width:100px;padding:12px 16px;border-right:1px solid var(--border)}
 .l2l-tab-stat:last-child{border-right:none}
 .l2l-tab-stat-label{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px}
+.l2l-tab-stat-sub{font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);opacity:.7;margin-top:3px}
 .l2l-tab-stat-val{font-family:var(--font-head);font-size:26px;font-weight:800;line-height:1}
 .l2l-tab-stat-val.green{color:var(--green)}.l2l-tab-stat-val.amber{color:#92400e}.l2l-tab-stat-val.red{color:var(--red)}
 
@@ -696,8 +697,12 @@ function mttrClass(m){return m<60?'green':m<240?'amber':'red';}
 function fmtMTTR(m){return m<60?Math.round(m)+' min':(m/60).toFixed(1)+' hrs';}
 
 function calcDowntime(dispatches){
-  const byLine={},events=dispatches.filter(d=>(d.downtime||0)>0);
-  events.forEach(d=>{const l=d.linecode||'Unknown';byLine[l]=(byLine[l]||0)+d.downtime;});
+  const byLine={},events=dispatches.filter(d=>(parseFloat(d.downtime)||0)>0);
+  events.forEach(d=>{
+    const l=d.lineabbreviation||d.linecode||'Unknown';
+    const mins=(parseFloat(d.downtime)||0)/60;
+    byLine[l]=(byLine[l]||0)+mins;
+  });
   return{byLine:Object.entries(byLine).sort((a,b)=>b[1]-a[1]),events:events.sort((a,b)=>(b.downtime||0)-(a.downtime||0)).slice(0,60),totalMins:Object.values(byLine).reduce((s,v)=>s+v,0)};
 }
 function calcMTTR(dispatches){
@@ -735,76 +740,13 @@ async function l2lRefreshDispatches(){
   const c=document.getElementById('l2l-tab-layout');if(c)_buildL2LTabShell(c);
 }
 
-async function l2lRefreshOEE(){
-  L2LOeeState.loading=true;L2LOeeState.error=null;
-  try{
-    const wMon=_l2lWeekStart||getMondayOf(new Date());
-    const wSat=new Date(wMon);wSat.setDate(wSat.getDate()+5);
-    const start=toISODate(wMon),end=toISODate(wSat);
-    // Step 1: fetch line list to get numeric IDs
-    const linesData=await callL2L('lines',{site:L2L.siteId,limit:100});
-    const lineRecs=linesData?.data||linesData?.objects||(Array.isArray(linesData)?linesData:[]);
-    const lineIds=lineRecs.map(r=>r.id);
-    toast('Lines: '+lineRecs.map(r=>r.code||r.id).join(', ').slice(0,80),'info');
-    if(!lineIds.length){L2LOeeState.error='No lines returned';L2LOeeState.loading=false;const c=document.getElementById('l2l-tab-layout');if(c)_buildL2LTabShell(c);return;}
-    // Step 2: probe first line to find working param format
-    const timed=p=>Promise.race([p,new Promise((_,r)=>setTimeout(()=>r(new Error('timeout')),8000))]);
-    const probe=async(params)=>{
-      const d=await timed(callL2L('pitchdetails',{site:L2L.siteId,limit:5,line:lineIds[0],...params}));
-      return d?.data||d?.objects||(Array.isArray(d)?d:[]);
-    };
-    let fmt='';
-    let testRecs=[];
-    // Try 1: start + end as YYYY-MM-DD
-    testRecs=await probe({start,end}).catch(()=>[]);
-    if(testRecs.length){fmt='start/end';}
-    // Try 2: start + inclusive
-    if(!fmt) testRecs=await probe({start,inclusive:1}).catch(()=>[]);
-    if(testRecs.length&&!fmt){fmt='start/inclusive';}
-    // Try 3: broader 30-day window
-    const mon30=new Date(wSat);mon30.setDate(mon30.getDate()-30);
-    if(!fmt) testRecs=await probe({start:toISODate(mon30),end}).catch(()=>[]);
-    if(testRecs.length&&!fmt){fmt='30d';}
-    toast('Probe: fmt='+(fmt||'none')+' recs='+testRecs.length+(testRecs[0]?' f:'+Object.keys(testRecs[0]).slice(0,5).join(','):''),'info');
-    const flat=[];
-    if(fmt){
-      const params=fmt==='start/inclusive'?{start,inclusive:1}:{start,end:fmt==='30d'?end:end};
-      for(const lineId of lineIds){
-        try{
-          const d=await timed(callL2L('pitchdetails',{site:L2L.siteId,limit:200,line:lineId,...params}));
-          flat.push(...(d?.data||d?.objects||(Array.isArray(d)?d:[])));
-        }catch(e){}
-      }
-    }
-    L2LOeeState.data=flat;
-    toast('OEE done: '+flat.length+' recs','info');
-  }catch(e){L2LOeeState.error=e.message;toast('OEE fail:'+e.message.slice(0,80),'error');}
-  L2LOeeState.loading=false;
-  const c=document.getElementById('l2l-tab-layout');if(c)_buildL2LTabShell(c);
-}
-
-async function l2lFetchMachines(){
-  L2LMachinesState.loading=true;L2LMachinesState.error=null;
-  const c=document.getElementById('l2l-tab-layout');if(c)_buildL2LTabShell(c);
-  try{
-    const data=await callL2L('machines',{site:L2L.siteId,active:'True',limit:500});
-    L2LMachinesState.machines=data?.objects||(Array.isArray(data)?data:[]);
-    if(!L2LMachinesState.selectedLine){const f=Object.values(L2L.lineCodes).find(c=>c);L2LMachinesState.selectedLine=f||null;}
-  }catch(e){L2LMachinesState.error=e.message;}
-  L2LMachinesState.loading=false;
-  const c2=document.getElementById('l2l-tab-layout');if(c2)_buildL2LTabShell(c2);
-}
+// OEE via pitchdetails unavailable at this site — derived from dispatch data
 
 async function _loadL2LTabData(force=false){
   if(!L2L.ready)return;
   const wk=toISODate(_l2lWeekStart);
-  const needsOEE=force||L2LOeeState.weekStart!==wk||!L2LOeeState.data.length;
   const needsDisp=force||L2LState.fetchedWeek!==wk;
-  L2LOeeState.weekStart=wk;
-  const p=[];
-  if(needsOEE)p.push(l2lRefreshOEE());
-  if(needsDisp)p.push(l2lRefreshDispatches());
-  if(p.length)await Promise.all(p);
+  if(needsDisp) await l2lRefreshDispatches();
   else{const c=document.getElementById('l2l-tab-layout');if(c)_buildL2LTabShell(c);}
 }
 
@@ -831,7 +773,7 @@ async function renderL2LTab(){
 }
 
 // ─── DAY SELECTOR ────────────────────────────────────────────
-function _l2lDaySelectorHTML(allDispatches, allOee){
+function _l2lDaySelectorHTML(allDispatches){
   const weekDays=getWeekDays(_l2lWeekStart);
   const today=toISODate(new Date());
   // Counts per day from dispatches
@@ -842,11 +784,10 @@ function _l2lDaySelectorHTML(allDispatches, allOee){
     if(dt&&cntByDay[dt]!==undefined){cntByDay[dt]++;const t=l2lTypeClass(d.dispatchtypecode);if(t==='code-red')crByDay[dt]++;if(t==='code-yellow')cyByDay[dt]++;}
   });
   // OEE per day
-  const oeeByDay={};
-  weekDays.forEach(d=>{oeeByDay[d.date]=[];});
-  allOee.forEach(row=>{
-    const dt=l2lOeeDate(row);
-    if(dt&&oeeByDay[dt]!==undefined){const v=parseFloat(row.overall_equipment_effectiveness);if(!isNaN(v))oeeByDay[dt].push(v);}
+  const dtByDay={};
+  weekDays.forEach(d=>{dtByDay[d.date]=0;});
+  allDispatches.forEach(d=>{
+    const dt=l2lDispDate(d);if(dt&&dtByDay[dt]!==undefined)dtByDay[dt]+=(parseFloat(d.downtime)||0);
   });
 
   let html='<div class="l2l-day-selector">';
@@ -854,261 +795,19 @@ function _l2lDaySelectorHTML(allDispatches, allOee){
   weekDays.forEach(d=>{
     const isToday=d.date===today,isActive=_l2lSelectedDay===d.date;
     const cr=crByDay[d.date]||0,cy=cyByDay[d.date]||0,cnt=cntByDay[d.date]||0;
-    const dayOeeVals=oeeByDay[d.date]||[];
-    const dayAvgOEE=dayOeeVals.length?dayOeeVals.reduce((s,v)=>s+v,0)/dayOeeVals.length:null;
-    const dayOeeCls=l2lOeeClass(dayAvgOEE);
-    html+='<button class="l2l-day-pill'+(isActive?' active':'')+(isToday?' today':'')+'" onclick="l2lSelectDay(\''+d.date+'\')">'+
+    const dayDTsecs=dtByDay[d.date]||0;
+    const dayDTstr=dayDTsecs>=3600?(dayDTsecs/3600).toFixed(1)+'h':dayDTsecs>0?Math.round(dayDTsecs/60)+'m':'';
+    html+='<button class="l2l-day-pill'+(isActive?' active':'')+(isToday?' today':'')+'" onclick="l2lSelectDay(''+d.date+'')">'+
       '<span class="dp-day">'+d.short+'</span>'+
       '<span class="dp-date">'+d.displayDate+(isToday?' ◀':' ')+'</span>'+
       '<span class="dp-cnt">'+cnt+' disp</span>'+
-      (dayAvgOEE!=null?'<span class="dp-oee '+(isActive?'':dayOeeCls)+'">OEE '+dayAvgOEE.toFixed(0)+'%</span>':'<span class="dp-oee" style="opacity:.4">OEE —</span>')+
+      (dayDTstr?'<span class="dp-oee" style="color:#fca5a5">DT '+dayDTstr+'</span>':'<span class="dp-oee" style="opacity:.35">DT —</span>')+
       '<span class="dp-badges">'+
       (cr?'<span style="background:#dc2626;color:#fff;padding:0 4px;border-radius:2px;font-family:var(--font-mono);font-size:9px">CR '+cr+'</span>':'')+
       (cy?'<span style="background:#d97706;color:#fff;padding:0 4px;border-radius:2px;font-family:var(--font-mono);font-size:9px">CY '+cy+'</span>':'')+
       '</span></button>';
   });
   return html+'</div>';
-}
-
-// ─── OEE TABLE HELPER ────────────────────────────────────────
-function _oeeTable(oeeData, label){
-  const byLine={};
-  oeeData.forEach(row=>{
-    const code=row.line||'?';
-    if(!byLine[code])byLine[code]={code,oeeVals:[],downtime:0,actual:0,demand:0};
-    const oee=parseFloat(row.overall_equipment_effectiveness);
-    if(!isNaN(oee))byLine[code].oeeVals.push(oee);
-    byLine[code].downtime+=parseFloat(row.downtime_minutes||0);
-    byLine[code].actual+=parseFloat(row.actual||0);
-    byLine[code].demand+=parseFloat(row.demand||0);
-  });
-  const rows=Object.values(byLine).sort((a,b)=>a.code.localeCompare(b.code));
-  if(!rows.length) return '<div class="l2l-empty">'+(L2LOeeState.loading?'Loading OEE…':'No OEE data for '+label+'.')+'</div>';
-  return '<table class="l2l-oee-table"><thead><tr><th>Line</th><th>OEE</th><th>Downtime</th><th>Actual cs</th><th>Planned cs</th></tr></thead><tbody>'+
-    rows.map(r=>{
-      const avg=r.oeeVals.length?r.oeeVals.reduce((s,v)=>s+v,0)/r.oeeVals.length:null;
-      const cls=l2lOeeClass(avg),w=avg!=null?Math.min(100,avg).toFixed(0):0;
-      return '<tr><td><span class="l2l-oee-line">'+esc(l2lFriendlyLine(r.code))+'</span></td>'+
-        '<td><div class="l2l-oee-val '+cls+'">'+(avg!=null?avg.toFixed(1)+'%':'—')+'</div>'+
-        '<div class="l2l-oee-bar"><div class="l2l-oee-fill '+cls+'" style="width:'+w+'%"></div></div></td>'+
-        '<td><span class="l2l-dt-val'+(r.downtime>120?' high':'')+'">'+( r.downtime>0?r.downtime.toFixed(0)+' min':'—')+'</span></td>'+
-        '<td style="font-family:var(--font-mono);font-size:11px">'+(r.actual>0?fmtNumber(Math.round(r.actual)):'—')+'</td>'+
-        '<td style="font-family:var(--font-mono);font-size:11px">'+(r.demand>0?fmtNumber(Math.round(r.demand)):'—')+'</td></tr>';
-    }).join('')+'</tbody></table>';
-}
-
-// ─── OEE ALL-WEEK (grouped by day) ───────────────────────────
-function _oeeAllWeekTable(allOee){
-  const weekDays=getWeekDays(_l2lWeekStart);
-  const today=toISODate(new Date());
-  // Group OEE records by day
-  const byDay={};
-  weekDays.forEach(d=>{byDay[d.date]=[];});
-  const undated=[];
-  allOee.forEach(row=>{
-    const dt=l2lOeeDate(row);
-    if(dt&&byDay[dt]!==undefined) byDay[dt].push(row);
-    else undated.push(row);
-  });
-
-  // Check if any day has OEE data
-  const hasAnyDayData=weekDays.some(d=>byDay[d.date].length>0);
-  if(!hasAnyDayData&&undated.length===0) return '<div class="l2l-empty">'+(L2LOeeState.loading?'Loading OEE…':'No OEE data for this week.')+'</div>';
-
-  // If no day breakdown available (all undated), fall back to regular table
-  if(!hasAnyDayData&&undated.length>0) return _oeeTable(undated,'this week');
-
-  let html='<table class="l2l-oee-table"><thead><tr><th>Line</th><th>OEE</th><th>Downtime</th><th>Actual cs</th><th>Planned cs</th></tr></thead><tbody>';
-  weekDays.forEach(day=>{
-    const dayData=byDay[day.date]||[];
-    const isToday=day.date===today;
-    const key=day.date.replace(/-/g,'');
-    const startCollapsed=!isToday;
-    // Day header row
-    const dayOeeVals=dayData.map(r=>parseFloat(r.overall_equipment_effectiveness)).filter(v=>!isNaN(v));
-    const dayAvg=dayOeeVals.length?dayOeeVals.reduce((s,v)=>s+v,0)/dayOeeVals.length:null;
-    const dayCls=l2lOeeClass(dayAvg);
-    html+='<tr class="l2l-oee-day-hdr oee-dhdr-'+key+(startCollapsed?' collapsed':'')+'" onclick="toggleOeeDay(\''+day.date+'\')" style="cursor:pointer">'+
-      '<td colspan="5"><span class="oee-chevron" style="margin-right:8px;font-size:10px">'+(startCollapsed?'▶':'▼')+'</span>'+
-      day.short+' '+day.displayDate+(isToday?' ◀ TODAY':'')+
-      (dayAvg!=null?'<span style="margin-left:12px;font-family:var(--font-head);font-size:13px;color:'+(dayCls==='green'?'#4ade80':dayCls==='amber'?'#fcd34d':'#fca5a5')+'">'+dayAvg.toFixed(1)+'% avg OEE</span>':'')+
-      '<span style="font-family:var(--font-mono);font-size:10px;font-weight:400;opacity:.6;margin-left:12px">'+dayData.length+' line record'+(dayData.length!==1?'s':'')+'</span>'+
-      '</td></tr>';
-    if(!dayData.length){
-      html+='<tr class="l2l-day-empty oee-day-'+key+'" style="'+(startCollapsed?'display:none':'')+'"><td colspan="5">No OEE records for this day</td></tr>';
-    } else {
-      // Build byLine for this day
-      const byLine={};
-      dayData.forEach(row=>{
-        const code=row.line||'?';
-        if(!byLine[code])byLine[code]={code,oeeVals:[],downtime:0,actual:0,demand:0};
-        const oee=parseFloat(row.overall_equipment_effectiveness);
-        if(!isNaN(oee))byLine[code].oeeVals.push(oee);
-        byLine[code].downtime+=parseFloat(row.downtime_minutes||0);
-        byLine[code].actual+=parseFloat(row.actual||0);
-        byLine[code].demand+=parseFloat(row.demand||0);
-      });
-      Object.values(byLine).sort((a,b)=>a.code.localeCompare(b.code)).forEach(r=>{
-        const avg=r.oeeVals.length?r.oeeVals.reduce((s,v)=>s+v,0)/r.oeeVals.length:null;
-        const cls=l2lOeeClass(avg),w=avg!=null?Math.min(100,avg).toFixed(0):0;
-        html+='<tr class="oee-day-'+key+'" style="'+(startCollapsed?'display:none':'')+'">'+
-          '<td><span class="l2l-oee-line">'+esc(l2lFriendlyLine(r.code))+'</span></td>'+
-          '<td><div class="l2l-oee-val '+cls+'">'+(avg!=null?avg.toFixed(1)+'%':'—')+'</div>'+
-          '<div class="l2l-oee-bar"><div class="l2l-oee-fill '+cls+'" style="width:'+w+'%"></div></div></td>'+
-          '<td><span class="l2l-dt-val'+(r.downtime>120?' high':'')+'">'+( r.downtime>0?r.downtime.toFixed(0)+' min':'—')+'</span></td>'+
-          '<td style="font-family:var(--font-mono);font-size:11px">'+(r.actual>0?fmtNumber(Math.round(r.actual)):'—')+'</td>'+
-          '<td style="font-family:var(--font-mono);font-size:11px">'+(r.demand>0?fmtNumber(Math.round(r.demand)):'—')+'</td></tr>';
-      });
-    }
-  });
-  return html+'</tbody></table>';
-}
-
-// ─── WO TABLE ────────────────────────────────────────────────
-function _l2lDispRow(d){
-  const open=d.open==='T',t=l2lTypeClass(d.dispatchtypecode);
-  const age=Math.floor((Date.now()-new Date(d.created||Date.now()).getTime())/864e5);
-  const overdue=open&&age>7;
-  const line=l2lFriendlyLine(d.linecode||d.lineabbreviation||'');
-  const machine=d.machinedescription||d.machinecode||'';
-  const rowCls=t==='code-red'?'row-code-red':t==='code-yellow'?'row-code-yellow':overdue?'row-overdue':'';
-  const ageLabel=age===0?'Today':age===1?'1d':age+'d';
-  const stsBadge=open?(overdue?'<span class="l2l-meta-badge overdue">⚠ Overdue</span>':'<span class="l2l-meta-badge open">Open</span>'):'<span class="l2l-meta-badge closed">Done</span>';
-  const woPrefix=t==='code-red'?'🔴 ':t==='code-yellow'?'🟡 ':'';
-  return '<tr class="'+rowCls+'">'+
-    '<td class="l2l-wo-num">'+woPrefix+'#'+(d.dispatchnumber||d.id)+'</td>'+
-    '<td><span class="l2l-meta-badge '+t+'">'+esc(d.dispatchtypecode||t)+'</span></td>'+
-    '<td style="font-family:var(--font-head);font-weight:700;font-size:13px;color:var(--navy);white-space:nowrap">'+esc(line||'—')+'</td>'+
-    '<td><div class="l2l-wo-machine">'+esc(machine||'—')+'</div></td>'+
-    '<td><div class="l2l-wo-desc">'+esc(d.description||'(no description)')+'</div></td>'+
-    '<td>'+stsBadge+'</td>'+
-    '<td style="font-family:var(--font-mono);font-size:10px;color:var(--muted);white-space:nowrap">'+ageLabel+'</td>'+
-    '<td style="font-family:var(--font-mono);font-size:11px;font-weight:700;color:var(--red);white-space:nowrap">'+(d.downtime?d.downtime+'m':'—')+'</td>'+
-    '</tr>';
-}
-
-function _l2lWoTable(filtered){
-  let rows='';
-  if(_l2lSelectedDay){
-    rows=filtered.length?filtered.map(_l2lDispRow).join(''):'<tr><td colspan="8"><div class="l2l-empty">No dispatches for this day matching the filter.</div></td></tr>';
-  } else {
-    const weekDays=getWeekDays(_l2lWeekStart);
-    const today=toISODate(new Date());
-    const byDay={};weekDays.forEach(d=>{byDay[d.date]=[];});
-    filtered.forEach(d=>{const dt=l2lDispDate(d);if(dt&&byDay[dt]!==undefined)byDay[dt].push(d);else if(weekDays.length)byDay[weekDays[0].date].push(d);});
-    weekDays.forEach(day=>{
-      const dayDisps=(byDay[day.date]||[]).slice().sort((a,b)=>{
-        const p=d=>{const t=l2lTypeClass(d.dispatchtypecode);return t==='code-red'?0:t==='code-yellow'?1:2;};
-        return p(a)-p(b);
-      });
-      const isToday=day.date===today;
-      const crD=dayDisps.filter(d=>l2lTypeClass(d.dispatchtypecode)==='code-red').length;
-      const cyD=dayDisps.filter(d=>l2lTypeClass(d.dispatchtypecode)==='code-yellow').length;
-      rows+='<tr class="l2l-day-hdr-row"><td colspan="8">'+day.short+' '+day.displayDate+(isToday?' ◀ TODAY':'')+
-        '<span style="font-family:var(--font-mono);font-size:10px;font-weight:400;opacity:.65;margin-left:12px">'+dayDisps.length+' dispatch'+(dayDisps.length!==1?'es':'')+'</span>'+
-        (crD?'<span style="margin-left:8px;font-family:var(--font-mono);font-size:9px;background:#dc2626;color:#fff;padding:1px 7px;border-radius:2px">CR '+crD+'</span>':'')+
-        (cyD?'<span style="margin-left:4px;font-family:var(--font-mono);font-size:9px;background:#d97706;color:#fff;padding:1px 7px;border-radius:2px">CY '+cyD+'</span>':'')+
-        '</td></tr>';
-      if(!dayDisps.length) rows+='<tr class="l2l-day-empty"><td colspan="8">No dispatches</td></tr>';
-      else rows+=dayDisps.map(_l2lDispRow).join('');
-    });
-  }
-  return '<div class="l2l-wo-wrap"><table class="l2l-wo-table"><thead><tr>'+
-    '<th>#</th><th>Type</th><th>Line</th><th>Machine</th><th>Description</th><th>Status</th><th>Age</th><th>DT</th>'+
-    '</tr></thead><tbody>'+rows+'</tbody></table></div>';
-}
-
-// ─── OVERVIEW ────────────────────────────────────────────────
-function _renderL2LOverview(dispatches, oeeData, allOee){
-  const isOpen=d=>d.open==='T';
-  const tc=d=>l2lTypeClass(d.dispatchtypecode);
-  const ageD=d=>Math.floor((Date.now()-new Date(d.created||Date.now()).getTime())/864e5);
-  const openCount=dispatches.filter(d=>isOpen(d)).length;
-  const crCount=dispatches.filter(d=>isOpen(d)&&tc(d)==='code-red').length;
-  const cyCount=dispatches.filter(d=>isOpen(d)&&tc(d)==='code-yellow').length;
-  const pmCount=dispatches.filter(d=>isOpen(d)&&tc(d)==='pm').length;
-  const repCount=dispatches.filter(d=>isOpen(d)&&tc(d)==='repair').length;
-  const woCount=dispatches.filter(d=>isOpen(d)&&tc(d)==='wo').length;
-  const overdueCount=dispatches.filter(d=>isOpen(d)&&ageD(d)>7).length;
-  const closedCount=dispatches.filter(d=>!isOpen(d)).length;
-
-  const oeeVals=oeeData.map(r=>parseFloat(r.overall_equipment_effectiveness)).filter(v=>!isNaN(v));
-  const avgOEE=oeeVals.length?oeeVals.reduce((s,v)=>s+v,0)/oeeVals.length:null;
-  const oeeCls=l2lOeeClass(avgOEE);
-
-  const dispFilter=L2LState.dispatchFilter;
-  const filtered=dispatches.filter(d=>{
-    const open=isOpen(d),t=tc(d),age=ageD(d);
-    if(dispFilter==='open') return open;
-    if(dispFilter==='code-red') return open&&t==='code-red';
-    if(dispFilter==='code-yellow') return open&&t==='code-yellow';
-    if(dispFilter==='pm') return open&&t==='pm';
-    if(dispFilter==='repair') return open&&t==='repair';
-    if(dispFilter==='wo') return open&&t==='wo';
-    if(dispFilter==='overdue') return open&&age>7;
-    if(dispFilter==='closed') return !open;
-    return true;
-  });
-
-  const mkBtn=(k,label,count,extra)=>{
-    const active=dispFilter===k;
-    return '<button class="l2l-filter-btn'+(active?' active':'')+'"'+(extra&&!active?' style="'+extra+'"':'')+
-      ' onclick="L2LState.dispatchFilter=\''+k+'\';_buildL2LTabShell(document.getElementById(\'l2l-tab-layout\'))">'+
-      label+' <span class="l2l-count">'+count+'</span></button>';
-  };
-  const filterBtns=
-    mkBtn('all','All',dispatches.length)+
-    mkBtn('open','Open',openCount)+
-    mkBtn('code-red','🔴 Code Red',crCount,'border-color:rgba(185,28,28,.4);color:var(--red)')+
-    mkBtn('code-yellow','🟡 Code Yellow',cyCount,'border-color:rgba(217,119,6,.4);color:#92400e')+
-    mkBtn('repair','Repairs',repCount)+mkBtn('wo','Work Orders',woCount)+mkBtn('pm','PMs',pmCount)+
-    mkBtn('overdue','⚠ Overdue',overdueCount)+mkBtn('closed','Completed',closedCount);
-
-  const dayLabel=_l2lSelectedDay?' — '+new Date(_l2lSelectedDay).toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})
-    :' — '+buildWeekLabel(_l2lWeekStart);
-
-  // OEE section: all-week view groups by day, single-day view shows that day's lines
-  const oeeHtml=_l2lSelectedDay?_oeeTable(oeeData,new Date(_l2lSelectedDay).toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})):_oeeAllWeekTable(allOee);
-
-  return '<div class="l2l-tab-body">'+
-    '<div class="l2l-tab-stats">'+
-    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Open</div><div class="l2l-tab-stat-val" style="color:var(--amber)">'+openCount+'</div></div>'+
-    '<div class="l2l-tab-stat" style="border-top:3px solid #dc2626"><div class="l2l-tab-stat-label">🔴 Code Red</div><div class="l2l-tab-stat-val" style="color:#dc2626">'+crCount+'</div></div>'+
-    '<div class="l2l-tab-stat" style="border-top:3px solid #d97706"><div class="l2l-tab-stat-label">🟡 Code Yellow</div><div class="l2l-tab-stat-val" style="color:#d97706">'+cyCount+'</div></div>'+
-    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">PMs Open</div><div class="l2l-tab-stat-val" style="color:#7c3aed">'+pmCount+'</div></div>'+
-    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Overdue</div><div class="l2l-tab-stat-val" style="color:'+(overdueCount>0?'var(--red)':'var(--green)')+'">'+overdueCount+'</div></div>'+
-    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">OEE</div><div class="l2l-tab-stat-val '+oeeCls+'">'+(avgOEE!=null?avgOEE.toFixed(1)+'%':'—')+'</div></div>'+
-    '</div>'+
-    '<div class="l2l-section" style="margin-bottom:0">'+
-    '<div class="l2l-section-hdr"><div class="l2l-section-title">📊 OEE &amp; Downtime'+dayLabel+'</div>'+
-    (L2LOeeState.error?'<span class="l2l-badge disconnected">Error</span>':'<span class="l2l-badge '+(oeeVals.length?'connected':'loading')+'">'+(oeeVals.length?oeeVals.length+' records':'Loading…')+'</span>')+
-    '</div>'+(L2LOeeState.error?'<div class="l2l-error" style="margin:12px">'+esc(L2LOeeState.error)+'</div>':'')+
-    '<div style="overflow-x:auto">'+oeeHtml+'</div></div>'+
-    '<div class="l2l-section">'+
-    '<div class="l2l-section-hdr"><div class="l2l-section-title">⚡ Work Orders &amp; Dispatches'+dayLabel+'</div>'+
-    (L2LState.error?'<span class="l2l-badge disconnected">Error</span>':'<span class="l2l-badge '+(dispatches.length?'connected':'loading')+'">'+(dispatches.length?filtered.length+' / '+dispatches.length+' total':'Loading…')+'</span>')+
-    '<button class="l2l-refresh-btn" onclick="l2lRefreshDispatches()" style="margin-left:8px">↻ Refresh</button>'+
-    '</div>'+(L2LState.error?'<div class="l2l-error" style="margin:10px">'+esc(L2LState.error)+'</div>':'')+
-    '<div class="l2l-filter-bar" style="flex-wrap:wrap">'+filterBtns+'</div>'+
-    _l2lWoTable(filtered)+'</div></div>';
-}
-
-// ─── DOWNTIME ────────────────────────────────────────────────
-function _renderL2LDowntime(dispatches){
-  const {byLine,events,totalMins}=calcDowntime(dispatches);
-  const maxDT=byLine.length?byLine[0][1]:1;
-  const barRows=byLine.map(([line,mins])=>{const pct=Math.round(mins/maxDT*100);return'<div class="l2l-dt-bar-row"><div class="l2l-dt-bar-label">'+esc(l2lFriendlyLine(line))+'</div><div class="l2l-dt-bar-track"><div class="l2l-dt-bar-fill" style="width:'+pct+'%"></div></div><div class="l2l-dt-bar-val">'+fmtNumber(mins)+' min</div></div>';}).join('');
-  const eventRows=events.map(d=>{const date=d.reported?new Date(d.reported).toLocaleDateString('en-US',{month:'short',day:'numeric'}):'—';return'<div class="l2l-dt-event-row"><div class="l2l-dt-event-line">'+esc(l2lFriendlyLine(d.linecode||'—'))+'</div><div class="l2l-dt-event-machine">'+esc(truncate(d.machinedescription||d.machinecode||'—',14))+'</div><div class="l2l-dt-event-desc">'+esc(truncate(d.description||'—',60))+'</div><div class="l2l-dt-event-mins">'+fmtNumber(d.downtime)+'m</div><div class="l2l-dt-event-date">'+date+'</div></div>';}).join('');
-  const dayLabel=_l2lSelectedDay?' — '+new Date(_l2lSelectedDay).toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'}):'';
-  return'<div class="l2l-tab-body"><div class="l2l-tab-stats">'+
-    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Total Downtime</div><div class="l2l-tab-stat-val" style="color:var(--red)">'+fmtNumber(totalMins)+'<span style="font-size:14px;font-weight:400"> min</span></div></div>'+
-    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Hours</div><div class="l2l-tab-stat-val" style="color:var(--amber)">'+(totalMins/60).toFixed(1)+'<span style="font-size:14px;font-weight:400"> hrs</span></div></div>'+
-    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Events</div><div class="l2l-tab-stat-val">'+events.length+'</div></div>'+
-    '<div class="l2l-tab-stat"><div class="l2l-tab-stat-label">Lines Affected</div><div class="l2l-tab-stat-val">'+byLine.length+'</div></div>'+
-    '</div><div class="l2l-tab-split">'+
-    '<div class="l2l-section"><div class="l2l-section-hdr"><div class="l2l-section-title">⏱ By Line'+dayLabel+'</div></div>'+(byLine.length?barRows:'<div class="l2l-empty">No downtime recorded.</div>')+'</div>'+
-    '<div class="l2l-section"><div class="l2l-section-hdr"><div class="l2l-section-title">Top Events</div><span class="l2l-badge connected">Longest first</span></div>'+(eventRows||'<div class="l2l-empty">No downtime events.</div>')+'</div>'+
-    '</div></div>';
 }
 
 // ─── MTTR ────────────────────────────────────────────────────
@@ -1178,9 +877,7 @@ function _buildL2LTabShell(container){
   if(!L2L.ready){container.innerHTML='<div style="padding:40px;text-align:center;font-family:var(--font-mono);font-size:12px;color:var(--muted)">L2L not configured. Go to 🔑 Admin to set up.</div>';return;}
   try{
     const allDispatches=L2LState.dispatches||[];
-    const allOee=L2LOeeState.data||[];
     const dispatches=_l2lSelectedDay?allDispatches.filter(d=>l2lDispDate(d)===_l2lSelectedDay):allDispatches;
-    const oeeData=_l2lSelectedDay?allOee.filter(r=>l2lOeeDate(r)===_l2lSelectedDay):allOee;
 
     const topbar='<div class="l2l-topbar">'+
       '<button class="l2l-nav-btn arrow" onclick="l2lNavWeek(-1)">‹</button>'+
@@ -1191,14 +888,14 @@ function _buildL2LTabShell(container){
       '<button class="l2l-refresh-btn" onclick="_loadL2LTabData(true)" style="margin-left:8px">↻ Refresh All</button>'+
       '</div>';
 
-    const daySelector=_l2lDaySelectorHTML(allDispatches,allOee);
+    const daySelector=_l2lDaySelectorHTML(allDispatches);
     const subnav=_l2lSubNav();
     let body='';
     switch(_l2lSubTab){
       case 'downtime': body=_renderL2LDowntime(dispatches); break;
       case 'mttr':     body=_renderL2LMTTR(dispatches);    break;
       case 'machines': body=_renderL2LMachines(allDispatches); break;
-      default:         body=_renderL2LOverview(dispatches,oeeData,allOee);
+      default:         body=_renderL2LOverview(dispatches,allDispatches);
     }
     container.innerHTML=topbar+daySelector+subnav+body;
   }catch(err){
