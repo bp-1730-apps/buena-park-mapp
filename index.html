@@ -797,7 +797,7 @@ function _l2lDaySelectorHTML(allDispatches){
     const cr=crByDay[d.date]||0,cy=cyByDay[d.date]||0,cnt=cntByDay[d.date]||0;
     const dayDTsecs=dtByDay[d.date]||0;
     const dayDTstr=dayDTsecs>=3600?(dayDTsecs/3600).toFixed(1)+'h':dayDTsecs>0?Math.round(dayDTsecs/60)+'m':'';
-    html+='<button class="l2l-day-pill'+(isActive?' active':'')+(isToday?' today':'')+'" onclick="l2lSelectDay(''+d.date+'')">'+
+    html+='<button class="l2l-day-pill'+(isActive?' active':'')+(isToday?' today':'')+'" onclick="l2lSelectDay(\''+d.date+'\')">'+
       '<span class="dp-day">'+d.short+'</span>'+
       '<span class="dp-date">'+d.displayDate+(isToday?' ◀':' ')+'</span>'+
       '<span class="dp-cnt">'+cnt+' disp</span>'+
