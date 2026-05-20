@@ -686,10 +686,9 @@ async function l2lRefreshOEE(){
     // Step 1: fetch line list to get numeric IDs
     const linesData=await callL2L('lines',{site:L2L.siteId,limit:100});
     const lineRecs=linesData?.data||linesData?.objects||(Array.isArray(linesData)?linesData:[]);
-    const l2lLineCodes=new Set(Object.values(L2L.lineCodes).filter(Boolean));
-    const lineIds=lineRecs.filter(r=>l2lLineCodes.has(r.abbreviation||r.linecode||r.code||'')).map(r=>r.id);
-    toast('Lines found: '+lineIds.length+' IDs'+(lineRecs[0]?' f:'+Object.keys(lineRecs[0]).slice(0,6).join(','):''),'info');
-    if(!lineIds.length){L2LOeeState.error='No matching lines found';L2LOeeState.loading=false;const c=document.getElementById('l2l-tab-layout');if(c)_buildL2LTabShell(c);return;}
+    const lineIds=lineRecs.map(r=>r.id);
+    toast('Lines: '+lineRecs.map(r=>r.code||r.id).join(', ').slice(0,80),'info');
+    if(!lineIds.length){L2LOeeState.error='No lines returned';L2LOeeState.loading=false;const c=document.getElementById('l2l-tab-layout');if(c)_buildL2LTabShell(c);return;}
     // Step 2: fetch pitchdetails per line ID
     const timed=p=>Promise.race([p,new Promise((_,r)=>setTimeout(()=>r(new Error('timeout')),8000))]);
     const flat=[];
