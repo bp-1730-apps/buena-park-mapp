@@ -683,16 +683,22 @@ async function l2lRefreshOEE(){
     const wMon=_l2lWeekStart||getMondayOf(new Date());
     const wSat=new Date(wMon);wSat.setDate(wSat.getDate()+5);
     const start=toISODate(wMon),end=toISODate(wSat);
-    const lineCodes=Object.values(L2L.lineCodes).filter(Boolean);
+    // Step 1: fetch line list to get numeric IDs
+    const linesData=await callL2L('lines',{site:L2L.siteId,limit:100});
+    const lineRecs=linesData?.data||linesData?.objects||(Array.isArray(linesData)?linesData:[]);
+    const l2lLineCodes=new Set(Object.values(L2L.lineCodes).filter(Boolean));
+    const lineIds=lineRecs.filter(r=>l2lLineCodes.has(r.abbreviation||r.linecode||r.code||'')).map(r=>r.id);
+    toast('Lines found: '+lineIds.length+' IDs'+(lineRecs[0]?' f:'+Object.keys(lineRecs[0]).slice(0,6).join(','):''),'info');
+    if(!lineIds.length){L2LOeeState.error='No matching lines found';L2LOeeState.loading=false;const c=document.getElementById('l2l-tab-layout');if(c)_buildL2LTabShell(c);return;}
+    // Step 2: fetch pitchdetails per line ID
     const timed=p=>Promise.race([p,new Promise((_,r)=>setTimeout(()=>r(new Error('timeout')),8000))]);
     const flat=[];
-    for(const line of lineCodes){
+    for(const lineId of lineIds){
       try{
-        const d=await timed(callL2L('pitchdetails',{site:L2L.siteId,limit:200,start,end,line}));
+        const d=await timed(callL2L('pitchdetails',{site:L2L.siteId,limit:200,start,end,line:lineId}));
         const recs=d?.data||d?.objects||(Array.isArray(d)?d:[]);
         flat.push(...recs);
-        if(d?.error) toast('OEE '+line+': '+String(d.error).slice(0,60),'warning');
-      }catch(e){toast('OEE '+line+' skip: '+e.message.slice(0,40),'warning');}
+      }catch(e){}
     }
     L2LOeeState.data=flat;
     toast('OEE done: '+flat.length+' recs'+(flat[0]?' f:'+Object.keys(flat[0]).slice(0,6).join(','):''),'info');
