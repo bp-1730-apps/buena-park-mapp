@@ -689,8 +689,10 @@ async function l2lRefreshOEE(){
         .then(d=>d?.data||d?.objects||(Array.isArray(d)?d:[]))
         .catch(()=>[])
     ));
-    L2LOeeState.data=results.flat();
-  }catch(e){L2LOeeState.error=e.message;}
+    const flat=results.flat();
+    L2LOeeState.data=flat;
+    toast('OEE:'+flat.length+' recs'+(flat[0]?' f:'+Object.keys(flat[0]).slice(0,8).join(','):''),'info');
+  }catch(e){L2LOeeState.error=e.message;toast('OEE fail:'+e.message.slice(0,80),'error');}
   L2LOeeState.loading=false;
   const c=document.getElementById('l2l-tab-layout');if(c)_buildL2LTabShell(c);
 }
