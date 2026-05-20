@@ -680,12 +680,17 @@ async function l2lRefreshDispatches(){
 async function l2lRefreshOEE(){
   L2LOeeState.loading=true;L2LOeeState.error=null;
   try{
-    const data=await callL2L('pitchdetails',{site:L2L.siteId,limit:500});
-    const recs=data?.data||data?.objects||(Array.isArray(data)?data:[]);
-    if(data?.error) toast('OEE err:'+String(data.error).slice(0,80),'error');
-    else toast('OEE raw:'+recs.length+(recs[0]?' f:'+Object.keys(recs[0]).slice(0,6).join(','):''),'info');
-    L2LOeeState.data=recs;
-  }catch(e){L2LOeeState.error=e.message;toast('OEE fail:'+e.message.slice(0,80),'error');}
+    const wMon=_l2lWeekStart||getMondayOf(new Date());
+    const wSat=new Date(wMon);wSat.setDate(wSat.getDate()+5);
+    const start=toISODate(wMon),end=toISODate(wSat);
+    const lineCodes=Object.values(L2L.lineCodes).filter(Boolean);
+    const results=await Promise.all(lineCodes.map(line=>
+      callL2L('pitchdetails',{site:L2L.siteId,limit:200,start,end,line})
+        .then(d=>d?.data||d?.objects||(Array.isArray(d)?d:[]))
+        .catch(()=>[])
+    ));
+    L2LOeeState.data=results.flat();
+  }catch(e){L2LOeeState.error=e.message;}
   L2LOeeState.loading=false;
   const c=document.getElementById('l2l-tab-layout');if(c)_buildL2LTabShell(c);
 }
